@@ -12,12 +12,12 @@ namespace UserInterface
 
     public class Database
     {
-        private string connectionString = "Server=localhost;id=kitbox;Database=kitbox;";
+        private static string connectionString = @"server=localhost;userid=root;database=kitbox;password=Mgbgt1979";
         private static MySqlConnection dataBaseConnection;
 
-        public static void InitializeDB()
+        private void InitializeDB()
         {
-            dataBaseConnection = new MySqlConnection(this.connectionString);
+            dataBaseConnection = new MySqlConnection(connectionString);
         }
 
         public static bool LogIn(string email, string password)
@@ -44,12 +44,16 @@ namespace UserInterface
         }
         public static MySqlDataReader Fetch(string query)
         {
-            InitializeDB();
+            dataBaseConnection = new MySqlConnection(connectionString);
             MySqlCommand command = new MySqlCommand(query, dataBaseConnection);
             try
             {
                 dataBaseConnection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Console.WriteLine("{0} ", reader.GetString(1));
+                }
                 return reader;
             }
             catch (MySqlException ex)

@@ -17,7 +17,7 @@ namespace UserInterface
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new MainInterface());
-            Console.WriteLine(Database.Fetch("Select * from supplier"));
+            Database.Fetch("Select * from supplier");
         }
     }
 }
