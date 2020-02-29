@@ -14,9 +14,9 @@ namespace UserInterface
         [STAThread]
         static void Main()
         {
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MainInterface());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainInterface());
             Database.Fetch("Select * from supplier");
         }
     }
