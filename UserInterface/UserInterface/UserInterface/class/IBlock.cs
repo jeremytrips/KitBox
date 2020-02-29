@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace UserInterface
 {
-    public abstract class Part
+    interface IBlock
     {
-        protected double price;
-        protected int length;
-        protected string name;
-        protected string code;
-
+        Dictionary<string, object> GetDescription();
+        double GetPrice();
+        Part[] GetParts();
     }
 }
