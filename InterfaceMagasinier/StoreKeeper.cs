@@ -91,5 +91,11 @@ namespace InterfaceMagasinier
         {
 
         }
+
+        private void Button5_Click_1(object sender, EventArgs e)
+        {
+            var newForm = new Form1();
+            newForm.Show();
+        }
     }
 }

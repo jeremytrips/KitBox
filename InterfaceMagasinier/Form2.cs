@@ -16,5 +16,15 @@ namespace InterfaceMagasinier
         {
             InitializeComponent();
         }
+
+        private void Label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
