@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace UserInterface
 {
-    interface IBlock
+    interface IBox
     {
         Dictionary<string, object> GetDescription();
         double GetPrice();
-        Part[] GetParts();
+        Component[] GetParts();
     }
 }

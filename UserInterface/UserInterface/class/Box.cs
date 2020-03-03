@@ -14,7 +14,7 @@ namespace UserInterface
         private int depth;
         private bool hasDoor;
         private string doorColor;
-        private Part[] parts;
+        private Component[] Component;
 
         public Box(int height, string pannelsColor,  int[] size, string door)
         {
@@ -40,9 +40,9 @@ namespace UserInterface
             return a;
         }
 
-        public Part[] GetParts()
+        public Component[] GetParts()
         {
-            return this.parts;
+            return this.Component;
         }
         
         public double GetPrice()

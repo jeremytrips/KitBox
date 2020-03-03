@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UserInterface
+namespace userInterface
 {
-    public partial class MainInterface : Form
+    public partial class Form1 : Form
     {
-        public MainInterface()
+        public Form1()
         {
             InitializeComponent();
+        }
+
+        private void oldOrderButton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("yup");
         }
     }
 }

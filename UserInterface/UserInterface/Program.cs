@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UserInterface
+namespace userInterface
 {
     static class Program
     {
@@ -16,8 +16,7 @@ namespace UserInterface
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainInterface());
-            Database.Fetch("Select * from supplier");
+            Application.Run(new Form1());
         }
     }
 }
