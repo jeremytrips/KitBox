@@ -4,7 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UserInterface
+/*
+ * TODO : Fix the ToListDescription
+
+*/
+
+namespace userInterface
 {
     public abstract class Component
     {
@@ -12,6 +17,26 @@ namespace UserInterface
         protected int length;
         protected string name;
         protected string code;
+        
+        public Component(int i)
+        {
+            // to remove
+            this.price = i;
+        }
 
+        public Dictionary<String, Component> getDescription()
+        {
+            return null;
+        }
+
+        public string ToListDescription()
+        {
+            return "I'm the description";
+        }
+
+        public override string ToString()
+        {
+            return String.Format("{}", this.price) ;
+        }
     }
 }

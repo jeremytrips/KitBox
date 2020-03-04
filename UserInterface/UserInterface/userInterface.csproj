@@ -70,13 +70,22 @@
   <ItemGroup>
     <Compile Include="class\Angle.cs" />
     <Compile Include="class\Box.cs" />
+    <Compile Include="class\Block.cs" />
     <Compile Include="class\Cleat.cs" />
     <Compile Include="class\ClientOrder.cs" />
     <Compile Include="class\Component.cs" />
-    <Compile Include="class\Cupboard.cs" />
     <Compile Include="class\database.cs" />
     <Compile Include="class\Door.cs" />
-    <Compile Include="class\IBox.cs" />
+    <Compile Include="class\KitBox.cs" />
+    <Compile Include="class\KitboxTabControl\AddBlockButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="class\KitboxTabControl\KitbocTab.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="class\KitboxTabControl\KitboxListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="class\Order.cs" />
     <Compile Include="class\Panel.cs" />
     <Compile Include="class\SupplierOrder.cs" />

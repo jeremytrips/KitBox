@@ -1,12 +1,10 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 
-namespace UserInterface
+namespace userInterface
 {
-    class Box : IBox
+    class Box : Block
     {
         private string pannelsColor;
         private int height;
@@ -16,7 +14,7 @@ namespace UserInterface
         private string doorColor;
         private Component[] Component;
 
-        public Box(int height, string pannelsColor,  int[] size, string door)
+        public Box(int height, Color pannelsColor,  int[] size, string door)
         {
             this.height = height;
             this.hasDoor = (door == null) ? false : true;
@@ -48,6 +46,11 @@ namespace UserInterface
         public double GetPrice()
         {
             return -1;
+        }
+
+        public new string ToListDescription()
+        {
+            return null;
         }
     }
 }

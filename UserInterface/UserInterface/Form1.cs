@@ -17,9 +17,28 @@ namespace userInterface
             InitializeComponent();
         }
 
-        private void oldOrderButton_Click(object sender, EventArgs e)
+        private void OldOrderButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("yup");
+            
+        }
+
+        private void AddKitbox_Click(object sender, EventArgs e)
+        {
+            String title = "Kitbox " + (kitBoxToOrderTabs.TabCount + 1).ToString();
+            KitBoxTab toAdd = new KitBoxTab();
+            kitBoxToOrderTabs.TabPages.Add(toAdd);
+        }
+
+        private void AddBlockButton_Click(object sender, EventArgs e)
+        {
+            var item1 = new ListViewItem(new[] { "id123", "Tom", "24" });
+            int selectedTab = kitBoxToOrderTabs.SelectedIndex;
+            Console.WriteLine(selectedTab);
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
