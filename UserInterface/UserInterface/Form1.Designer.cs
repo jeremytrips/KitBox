@@ -28,30 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.oldOrderButton = new System.Windows.Forms.Button();
-            this.oldOrderName = new System.Windows.Forms.TextBox();
+
+            this.oldOrderLayout = new OldOrderLayout(this.HandleOldOrder); 
             this.kitBoxToOrderTabs = new System.Windows.Forms.TabControl();
-            this.button1 = new System.Windows.Forms.Button();
+            this.addKitBoxButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // oldOrderButton
-            // 
-            this.oldOrderButton.Location = new System.Drawing.Point(34, 52);
-            this.oldOrderButton.Name = "oldOrderButton";
-            this.oldOrderButton.Size = new System.Drawing.Size(152, 35);
-            this.oldOrderButton.TabIndex = 0;
-            this.oldOrderButton.Text = "Select an old order";
-            this.oldOrderButton.UseVisualStyleBackColor = true;
-            this.oldOrderButton.Click += new System.EventHandler(this.OldOrderButton_Click);
-            // 
-            // oldOrderName
-            // 
-            this.oldOrderName.BackColor = System.Drawing.SystemColors.Window;
-            this.oldOrderName.Location = new System.Drawing.Point(34, 26);
-            this.oldOrderName.Name = "oldOrderName";
-            this.oldOrderName.Size = new System.Drawing.Size(152, 20);
-            this.oldOrderName.TabIndex = 1;
-            this.oldOrderName.Enter += new System.EventHandler(this.OldOrderButton_Click);
+
             // 
             // kitBoxToOrderTabs
             // 
@@ -60,46 +42,38 @@
             this.kitBoxToOrderTabs.SelectedIndex = 0;
             this.kitBoxToOrderTabs.Size = new System.Drawing.Size(577, 385);
             this.kitBoxToOrderTabs.TabIndex = 4;
+
             // 
-            // button1
+            // AddKitBoxButton
             // 
-            this.button1.Location = new System.Drawing.Point(865, 620);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.AddKitbox_Click);
+            this.addKitBoxButton.Location = new System.Drawing.Point(833, 605);
+            this.addKitBoxButton.Name = "AddKitBoxButton";
+            this.addKitBoxButton.Size = new System.Drawing.Size(107, 51);
+            this.addKitBoxButton.TabIndex = 5;
+            this.addKitBoxButton.Text = "Add a KitBox";
+            this.addKitBoxButton.UseVisualStyleBackColor = true;
+            this.addKitBoxButton.Click += new System.EventHandler(this.AddKitbox_Click);
+
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 681);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1024, 720);
+            this.Controls.Add(this.addKitBoxButton);
             this.Controls.Add(this.kitBoxToOrderTabs);
-            this.Controls.Add(this.oldOrderName);
-            this.Controls.Add(this.oldOrderButton);
+            this.Controls.Add(this.oldOrderLayout);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "My fck kitbox";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button oldOrderButton;
-        private System.Windows.Forms.TextBox oldOrderName;
+        private OldOrderLayout oldOrderLayout;
         private System.Windows.Forms.TabControl kitBoxToOrderTabs;
-        //private System.Windows.Forms.TabPage tabPage1;
-        //private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.ListView blockList;
-        private System.Windows.Forms.Button AddBlockButton;
-        private System.Windows.Forms.Button button1;
-        //private System.Windows.Forms.ColumnHeader Height;
-        //private System.Windows.Forms.ColumnHeader Color;
-        //private System.Windows.Forms.ColumnHeader Door;
+        private System.Windows.Forms.Button addKitBoxButton;
     }
 }
 

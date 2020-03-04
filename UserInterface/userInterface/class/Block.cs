@@ -7,6 +7,7 @@ using userInterface;
 
 /*
  * TODO :   - Remember how to impose a child class to have a certain function (ToListDescription)
+ *          - Create a widget class to properly display block
  */
 
 namespace userInterface
@@ -18,10 +19,7 @@ namespace userInterface
         protected string name;
         protected string code;
 
-        public virtual string ToListDescription()
-        {
-            return null;
-        }
+        public abstract String ToListDescription();
         Dictionary<string, object> GetDescription()
         {
             return null;

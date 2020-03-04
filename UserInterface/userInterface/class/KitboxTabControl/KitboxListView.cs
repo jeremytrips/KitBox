@@ -27,7 +27,7 @@ namespace userInterface
 
         private void UpdateData(object sender, EventArgs e)
         {
-            Console.WriteLine(sender);
+            Console.WriteLine(this.SelectedIndex);
         }
 
         public void AddBox(Box box)

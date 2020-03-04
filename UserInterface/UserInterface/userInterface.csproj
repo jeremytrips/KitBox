@@ -80,10 +80,13 @@
     <Compile Include="class\KitboxTabControl\AddBlockButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="class\KitboxTabControl\KitbocTab.cs">
+    <Compile Include="class\KitboxTabControl\KitbocxTab.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="class\KitboxTabControl\KitboxListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="class\OldOrder\OldOrderLayout.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="class\Order.cs" />

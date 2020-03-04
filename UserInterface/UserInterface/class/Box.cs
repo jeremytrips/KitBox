@@ -48,9 +48,9 @@ namespace userInterface
             return -1;
         }
 
-        public new string ToListDescription()
+        public override string ToListDescription()
         {
-            return null;
+            return "Description in the Box.cs";
         }
     }
 }
