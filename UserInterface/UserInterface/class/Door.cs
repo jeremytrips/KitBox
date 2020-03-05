@@ -1,19 +1,17 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace userInterface
 {
-    class Door: Component
+    /*Abstract class for all types of door*/
+    abstract class Door : Part
     {
-        private int width;
-        private string type;
-        
-        public Door(int i): base(i)
-        {
-            Console.WriteLine("Door " + i + " instanciate");
-        }
+        /*Variable that contains either glassdoor or classicdoor*/
+        protected int width;
+        protected string type;
+
+        public override abstract Dictionary<string, Object> GetDescription();
+        protected string determiningDimension1 = "width";
+        protected string determiningDimension2 = "height";
     }
 }

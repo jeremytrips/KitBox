@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace userInterface
 {
-    /* Class that groups all cleats*/
-    class Cleat : Part
+    /*Inheritance of the abstract class door, the classic door*/
+    class ClassicDoor : Door
     {
-        private string determiningDimension = "height";
+        private string color;
 
-        /*Builder*/
-        public Cleat(float price, int length)
+        public ClassicDoor(float price, int length, string color, int width) /*builder*/
         {
             this.price = price;
-            this.length =  length;
-            this.name = "Tasseau";
+            this.length = length;
+            this.color = color;
+            this.width = width;
+            this.type = "ClassicDoor";
+            this.name = "porte";
         }
 
         /*Returns a dictionary with all panel information*/
@@ -26,8 +28,12 @@ namespace userInterface
             {
                 { "price", this.price },
                 { "length", this.length },
+                { "width", this.width },
+                { "color", this.color },
+                { "type", this.type },
                 { "ref", this.name },
-                { "dim", this.determiningDimension },
+                { "dim1", this.determiningDimension1 },
+                { "dim2", this.determiningDimension2 },
                 { "code", this.code }
             };
             return Description;
