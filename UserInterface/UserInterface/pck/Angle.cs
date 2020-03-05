@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace userInterface
 {
-    public class Angle : Part
+    public class Angle : Component
     {
         private string color;
         private string determiningDimension = "height"; 
@@ -17,7 +17,7 @@ namespace userInterface
         }
 
         /*Returns a dictionary with all panel information*/
-        public override Dictionary<string, Object> GetDescription()
+        public Dictionary<string, Object> GetDescription()
         {
             Dictionary<string, Object> Description = new Dictionary<string, Object>();
             Description.Add("price", this.price);
@@ -31,7 +31,7 @@ namespace userInterface
 
         /*Setter for angle's length
          * Height of cupboard might not be available in stock => select another angle*/
-        public override void SetLength(int newHeight)
+        public void SetLength(int newHeight)
         {
             Console.WriteLine(String.Format("WARNING : changing the length of the angles from {0} to {1}", this.length, newHeight));
             this.length = newHeight;

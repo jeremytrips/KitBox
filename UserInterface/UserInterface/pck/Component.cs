@@ -18,10 +18,9 @@ namespace userInterface
         protected string name;
         protected string code;
         
-        public Component(int i)
+        public Component()
         {
-            // to remove
-            this.price = i;
+
         }
 
         public Dictionary<String, Component> getDescription()

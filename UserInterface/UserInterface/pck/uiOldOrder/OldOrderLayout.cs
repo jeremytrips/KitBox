@@ -42,9 +42,8 @@ namespace userInterface
         {
             // Mouting Flow Layout 
             this.Controls.Add(this.displayResearchButton);
-            this.Location = new System.Drawing.Point(34, 94);
-            this.Name = "flowLayoutPanel1";
-            this.Size = new System.Drawing.Size(156, 67);
+            this.Location = new System.Drawing.Point(25, 25);
+            this.Size = new System.Drawing.Size(156, 67); 
 
             // Mount oldOrderTextBox
             this.oldOrderTextBox.BackColor = System.Drawing.SystemColors.Window;

@@ -32,11 +32,16 @@ namespace userInterface
             // Todo
         }
 
-        public Dictionary<string, object> GetDescription()
+        public override Dictionary<string, object> GetDescription()
         {
             Dictionary<string, object> a = new Dictionary<string, object>();
             return a;
         }
+
+        //public override Dictionary<string, object> GetDescription()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
         public Component[] GetParts()
         {

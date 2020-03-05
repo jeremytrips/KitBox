@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace userInterface
 {
     /* Class that groups all cleats*/
-    class Cleat : Part
+    class Cleat : Component
     {
         private string determiningDimension = "height";
 
@@ -20,7 +20,7 @@ namespace userInterface
         }
 
         /*Returns a dictionary with all panel information*/
-        public override Dictionary<string, Object> GetDescription()
+        public new Dictionary<string, Object> GetDescription()
         {
             Dictionary<string, Object> Description = new Dictionary<string, Object>
             {

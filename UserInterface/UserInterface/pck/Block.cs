@@ -20,11 +20,8 @@ namespace userInterface
         protected string code;
 
         public abstract String ToListDescription();
-        Dictionary<string, object> GetDescription()
-        {
-            return null;
-        }
-        double GetPrice()
+        public abstract Dictionary<string, object> GetDescription();
+        public double GetPrice()
         {
             return this.price;
         }

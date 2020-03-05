@@ -48,5 +48,10 @@ namespace userInterface
             Console.WriteLine(e);
             Console.WriteLine("mabite");
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

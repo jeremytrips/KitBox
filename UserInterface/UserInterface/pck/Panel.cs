@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace userInterface
 {
     /*Class that groups all panels*/
-    class Panel : Part
+    class Panel : Component
     {
         private string color;
         private int width;
@@ -39,7 +39,7 @@ namespace userInterface
         }
 
         /*Returns a dictionary with all panel information*/
-        public override Dictionary<string, Object> GetDescription()
+        public Dictionary<string, Object> GetDescription()
         {
             Dictionary<string, Object> Description = new Dictionary<string, Object>
             {
