@@ -14,16 +14,10 @@ namespace userInterface
         private string doorColor;
         private Component[] Component;
 
-        public Box(int height, Color pannelsColor,  int[] size, string door)
+        public Box(int[] size)
         {
-            this.height = height;
-            this.hasDoor = (door == null) ? false : true;
-            if (this.hasDoor)
-            {
-                this.doorColor = door;
-            }
             this.width = size[0];
-            this.height = size[1];
+            this.depth = size[1];
 
         }
 

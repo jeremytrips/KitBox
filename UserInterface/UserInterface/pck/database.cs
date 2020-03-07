@@ -10,15 +10,10 @@ using MySql.Data.MySqlClient;
 namespace userInterface
 {
 
-    public class Database
+    public static class Database
     {
-        private static string connectionString = @"server=localhost;userid=root;database=kitbox;password=Mgbgt1979";
+        private static string connectionString = @"server=localhost;user=root;database=kitbox;password=Mgbgt1979";
         private static MySqlConnection dataBaseConnection;
-
-        private void InitializeDB()
-        {
-            dataBaseConnection = new MySqlConnection(connectionString);
-        }
 
         public static bool LogIn(string email, string password)
         {
@@ -44,16 +39,12 @@ namespace userInterface
         }
         public static MySqlDataReader Fetch(string query)
         {
-            dataBaseConnection = new MySqlConnection(connectionString);
+            MySqlConnection dataBaseConnection = new MySqlConnection(connectionString);
             MySqlCommand command = new MySqlCommand(query, dataBaseConnection);
             try
             {
                 dataBaseConnection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    Console.WriteLine("{0} ", reader.GetString(1));
-                }
                 return reader;
             }
             catch (MySqlException ex)
@@ -63,6 +54,7 @@ namespace userInterface
                 //The two most common error numbers when connecting are as follows:
                 //0: Cannot connect to server.
                 //1045: Invalid user name and/or password.
+
                 switch (ex.Number)
                 {
                     case 0:
@@ -73,7 +65,24 @@ namespace userInterface
                         break;
                 }
                 return null;
-            }        
+            }
+        }
+        public static List<List<int>> FetchAvailableDimension()
+        {
+            MySqlConnection dataBaseConnection = new MySqlConnection(connectionString);
+            MySqlDataReader rdr = Fetch("SELECT * FROM component WHERE reference LIKE \"%Panneau%\"");
+            List<int> depth = new List<int>();
+            List<int> width = new List<int>();
+            while (rdr.Read())
+            {
+                depth.Add(rdr.GetInt16(4));
+                width.Add(rdr.GetInt16(5));
+            }
+            width = width.Distinct().ToList();
+            depth = depth.Distinct().ToList();
+            depth.Remove(0);
+            width.Remove(0);
+            return new List<List<int>> { depth, width };
         }
     }
 }

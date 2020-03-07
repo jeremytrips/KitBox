@@ -7,21 +7,23 @@ using System.Windows.Forms;
 
 
 /*
- * TODO :   - find a way to send  
+ * TODO :  
  */
 namespace userInterface
 {
     class OldOrderLayout : FlowLayoutPanel
     {
         private Button oldOrderButton = new Button();
-        private TextBox oldOrderTextBox = new TextBox();
+        private CustomTextBox oldOrderTextBox;
         private Button displayResearchButton = new Button();
 
-        public OldOrderLayout(EventHandler handler) : base()
+        public OldOrderLayout(EventHandler handler, string hintText) : base()
         {
-            this.MountComponent();
+            
             this.oldOrderButton.Click += new EventHandler(handler);
             this.displayResearchButton.Click += new EventHandler(this.DisplayResearch);
+            this.oldOrderTextBox = new CustomTextBox(hintText);
+            this.MountComponent();
         }
 
         public string GetOldOrderName()
@@ -57,6 +59,7 @@ namespace userInterface
             this.oldOrderButton.Size = new System.Drawing.Size(152, 35);
             this.oldOrderButton.Text = "Select the old order";
             this.oldOrderButton.UseVisualStyleBackColor = true;
+
 
             // Mount displayResearchButton
             this.displayResearchButton.Location = new System.Drawing.Point(34, 94);

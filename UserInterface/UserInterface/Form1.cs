@@ -17,9 +17,16 @@ namespace userInterface
 {
     public partial class Form1 : Form
     {
+
+        private Dictionary<KitBox, List<DataPanel>> userOrder = new Dictionary<KitBox, List<DataPanel>> { };
+        private int selectedKitBox = -1;
+        private OldOrderLayout oldOrederLayout;
+
         public Form1()
         {
             InitializeComponent();
+            this.oldOrderLayout = new OldOrderLayout(this.HandleOldOrder, "Enter user name");
+            this.Controls.Add(this.oldOrderLayout);
         }
 
         private void OldOrderButton_Click(object sender, EventArgs e)
@@ -29,9 +36,41 @@ namespace userInterface
 
         private void AddKitbox_Click(object sender, EventArgs e)
         {
+            GeneralDataPanel generalDataPanel = new GeneralDataPanel();
+            SpecificDataPanel specificDataPanel = new SpecificDataPanel(KitBox.Id);
             KitBoxTab toAdd = new KitBoxTab();
+            KitBox newKitBox = new KitBox();
             kitBoxToOrderTabs.TabPages.Add(toAdd);
             kitBoxToOrderTabs.SelectedTab = toAdd;
+            this.userOrder.Add( newKitBox, new List<DataPanel> { generalDataPanel, specificDataPanel });
+
+            this.SetKitBoxData(null, null);
+
+        }
+
+        private void SetKitBoxData(object sender, EventArgs e)
+        {
+            this.selectedKitBox = this.kitBoxToOrderTabs.SelectedIndex;
+            
+            foreach (KeyValuePair<KitBox, List<DataPanel>> kitBox in this.userOrder)
+            {
+                try
+                {
+                    this.Controls.Remove(kitBox.Value[0]);
+                    this.Controls.Remove(kitBox.Value[1]);
+                    foreach (KeyValuePair<KitBox, List<DataPanel>> pair in this.userOrder)
+                    {
+                        if (pair.Key.Equals(this.selectedKitBox))
+                        {
+                            this.Controls.Add(pair.Value[0]);
+                            this.Controls.Add(pair.Value[1]);
+                            break;
+                        }
+                    }
+                }
+                catch{ }
+            }
+            
         }
 
         private void HandleOldOrder(object sender, EventArgs e)
@@ -44,14 +83,8 @@ namespace userInterface
              */
             string orderToFetch = this.oldOrderLayout.GetOldOrderName();
             
-            Console.WriteLine(this.oldOrderLayout.GetOldOrderName());
-            Console.WriteLine(e);
-            Console.WriteLine("mabite");
+            
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -8,14 +8,29 @@ namespace userInterface
 {
     class KitBox
     {
+        private static int id = 0;
         private double price;
         private Box[] kitBoxComponent;
+        private int selfId;
 
         public KitBox()
         {
             // to fix
             Random a = new Random();
             this.price = a.Next();
+            this.selfId = id;
+            id++;
+        }
+
+        public static int Id { get
+            {
+                return id;
+            }
+        }
+
+        public bool Equals(int i)
+        {
+            return this.selfId == i;
         }
     }
 }

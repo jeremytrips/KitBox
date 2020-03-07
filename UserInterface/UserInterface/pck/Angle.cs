@@ -29,8 +29,9 @@ namespace userInterface
             return Description;
         }
 
-        /*Setter for angle's length
-         * Height of cupboard might not be available in stock => select another angle*/
+        /* Setter for angle's length
+         * Height of cupboard might not be available in stock => select another angle
+         */
         public void SetLength(int newHeight)
         {
             Console.WriteLine(String.Format("WARNING : changing the length of the angles from {0} to {1}", this.length, newHeight));
