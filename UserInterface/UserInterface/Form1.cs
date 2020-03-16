@@ -18,8 +18,8 @@ namespace userInterface
     public partial class Form1 : Form
     {
 
-        private Dictionary<KitBox, List<DataPanel>> userOrder = new Dictionary<KitBox, List<DataPanel>> { };
-        private KitBox selectedKitBox = null;
+        private List<GeneralDataPanel> kitboxData = new List<GeneralDataPanel> { };
+        private GeneralDataPanel selectedGeneralDataPanel;  
 
         public Form1()
         {
@@ -30,26 +30,26 @@ namespace userInterface
 
         private void OldOrderButton_Click(object sender, EventArgs e)
         {
-            if(this.userOrder.Count != 0)
+            if(this.kitboxData.Count != 0)
             {
                 // Warning delete actual order
             }
             Database.Fetch("SELECT * FROM ORDER WHERE ");
+            // Handle the fetched order.
         }
 
         private void AddKitbox_Click(object sender, EventArgs e)
         {
-            KitBoxTab toAdd = new KitBoxTab();
-            KitBox newKitBox = new KitBox();
+            /*
+             * Add a new kitbox
+             */
             GeneralDataPanel generalDataPanel = new GeneralDataPanel();
-            SpecificDataPanel specificDataPanel = new SpecificDataPanel(newKitBox.Id);
-            
-            kitBoxToOrderTabs.TabPages.Add(toAdd);
-            kitBoxToOrderTabs.SelectedTab = toAdd;
-            this.userOrder.Add( newKitBox, new List<DataPanel> { generalDataPanel, specificDataPanel });
+            this.kitboxData.Add(generalDataPanel);
+            this.selectedGeneralDataPanel = generalDataPanel;
+            this.Controls.Add(generalDataPanel);
 
-            this.selectedKitBox = newKitBox;
-            this.SetKitBoxData(null, null);
+            this.kitBoxToOrderTabs.TabPages.Add(generalDataPanel.GetKitBoxTab());
+            this.kitBoxToOrderTabs.SelectedTab = generalDataPanel.GetKitBoxTab();
         }
 
         private void SetKitBoxData(object sender, EventArgs e)
@@ -57,24 +57,18 @@ namespace userInterface
             /*
              * Used to remove current KitBox data layout and display the selected one.
              */
-            // this.selectedKitBox;
-            foreach (KeyValuePair<KitBox, List<DataPanel>> kitBox in this.userOrder)
+            foreach (GeneralDataPanel kitBox in this.kitboxData)
             {
                 try
                 {
-                    if (kitBox.Key.Equals(this.kitBoxToOrderTabs.SelectedIndex))
-                    {
-                        this.selectedKitBox = kitBox.Key;
-                    }
-                    this.Controls.Remove(kitBox.Value[0]);
-                    this.Controls.Remove(kitBox.Value[1]);
-                    
+                    this.Controls.Remove(kitBox);
                 }
                 catch { }
             }
-            this.Controls.Add(this.userOrder[this.selectedKitBox][0]);
-            this.Controls.Add(this.userOrder[this.selectedKitBox][1]);
+            this.selectedGeneralDataPanel = this.kitboxData[this.kitBoxToOrderTabs.SelectedIndex];
+            this.Controls.Add(this.selectedGeneralDataPanel);
         }
+    
 
         private void HandleOldOrder(object sender, EventArgs e)
         {
@@ -85,8 +79,6 @@ namespace userInterface
                                 string querry = "SELECT * FROM order WHERE "user_id"=id of the user 
              */
             string orderToFetch = this.oldOrderLayout.GetOldOrderName();
-            
-            
         }
 
         private void RemoveLayerButton_Click(object sender, EventArgs e)
@@ -95,7 +87,16 @@ namespace userInterface
              * Remove the current selected layer in the 
              * 
              */
-            //this.selectedKitBox.RemoveLayer(i);
+            this.selectedGeneralDataPanel.RemoveLayer();
+        }
+
+        private void AddLayerButton_Click(object sender, EventArgs e)
+        {
+            /*
+             * Add a layer in the current selected kitbox.
+             */
+            this.selectedGeneralDataPanel.AddLayer();
+
         }
     }
 }

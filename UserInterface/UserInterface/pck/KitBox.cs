@@ -12,6 +12,8 @@ namespace userInterface
         private double price;
         private Box[] kitBoxComponent;
         private int selfId;
+        private int width;
+        private int depth;
 
         public KitBox()
         {
@@ -28,6 +30,9 @@ namespace userInterface
             }
         }
 
+        public int Width { get => width; set => width = value; }
+        public int Depth { get => depth; set => depth = value; }
+
         public bool Equals(int i)
         {
             return this.selfId == i;
@@ -36,6 +41,14 @@ namespace userInterface
         public override string ToString()
         {
             return this.selfId.ToString();
+        }
+
+        public Dictionary<string, object> GetData()
+        {
+            return new Dictionary<string, object>
+            {
+
+            };
         }
     }
 }

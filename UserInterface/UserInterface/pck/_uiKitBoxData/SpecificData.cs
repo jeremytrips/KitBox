@@ -15,11 +15,22 @@ namespace userInterface
 {
     class SpecificDataPanel: DataPanel
     {
+        /*
+         * SpecificDataPanel 
+         * =================
+         * Simple layout that display the selecter layer data ( color, door, height, ...)
+         * 
+         */
         static int a = 0;
         private Label test = new Label();
-        private int id;
-        public SpecificDataPanel(int id): base()
+
+        private int toRemoveX;
+        private int toRemoveY;
+
+        public SpecificDataPanel(int x, int y): base()
         {
+            this.toRemoveX = x;
+            this.toRemoveY = y;
             this.MountLayout();
             a++;
         }
@@ -27,7 +38,7 @@ namespace userInterface
         private void MountLayout()
         {
             // Mounting layout
-            this.Location = new System.Drawing.Point(30, 219);
+            this.Location = new System.Drawing.Point(0, 115);
             this.Size = new System.Drawing.Size(400, 350);
             this.BackColor = System.Drawing.Color.Red;
 
@@ -35,7 +46,7 @@ namespace userInterface
             this.test.AutoSize = true;
             this.test.Location = new System.Drawing.Point(161, 160);
             this.test.Size = new System.Drawing.Size(35, 13);
-            this.test.Text = "label" + a;
+            this.test.Text = "label" + this.toRemoveX + "." + this.toRemoveY;
 
             this.Controls.Add(this.test);
         }

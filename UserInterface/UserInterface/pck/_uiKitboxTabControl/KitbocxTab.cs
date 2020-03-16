@@ -14,16 +14,14 @@ namespace userInterface
 {
     class KitBoxTab : TabPage
     {
-        static int id = 0;
-        private KitBox KitBox;
-      
+        static int id = 0;      
 
-        public KitBoxTab(KitBox kitbox)
-        {
-            id++;
-            this.KitBox = kitbox;
-            this.MountTab();
-        }
+        //public KitBoxTab(KitBox kitbox)
+        //{
+        //    id++;
+        //    this.KitBox = kitbox;
+        //    this.MountTab();
+        //}
 
         public KitBoxTab()
         {
@@ -36,10 +34,11 @@ namespace userInterface
         {
             // Block list mounting
             this.Location = new System.Drawing.Point(450, 72);
-            this.Padding = new System.Windows.Forms.Padding(3);
-            this.Size = new System.Drawing.Size(529, 480);
+            //this.Padding = new System.Windows.Forms.Padding();
+            this.Size = new System.Drawing.Size(530, 480);
             this.Text = "Kitbox " + id.ToString();
             this.UseVisualStyleBackColor = true;
+            //this.BackColor = System.Drawing.Color.Aquamarine;
             this.SuspendLayout();
         } 
 

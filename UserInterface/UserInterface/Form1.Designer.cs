@@ -37,7 +37,7 @@
             // kitBoxToOrderTabs
             // 
             this.kitBoxToOrderTabs.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.kitBoxToOrderTabs.Location = new System.Drawing.Point(456, 89);
+            this.kitBoxToOrderTabs.Location = new System.Drawing.Point(450, 90);
             this.kitBoxToOrderTabs.Name = "kitBoxToOrderTabs";
             this.kitBoxToOrderTabs.SelectedIndex = 0;
             this.kitBoxToOrderTabs.Size = new System.Drawing.Size(530, 480);
@@ -72,6 +72,7 @@
             this.AddLayerButton.TabIndex = 6;
             this.AddLayerButton.Text = "Add a layer on the kitbox";
             this.AddLayerButton.UseVisualStyleBackColor = true;
+            this.AddLayerButton.Click += new System.EventHandler(this.AddLayerButton_Click);
             // 
             // Form1
             // 
@@ -90,8 +91,6 @@
 
         #endregion
 
-        private SpecificDataPanel specificDataPanel;
-        private GeneralDataPanel generalDataPanel;
         private OldOrderLayout oldOrderLayout;
         private System.Windows.Forms.TabControl kitBoxToOrderTabs;
         private System.Windows.Forms.Button addKitBoxButton;

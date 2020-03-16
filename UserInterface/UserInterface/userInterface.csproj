@@ -71,6 +71,9 @@
     <Compile Include="pck\Angle.cs" />
     <Compile Include="pck\Box.cs" />
     <Compile Include="pck\Block.cs" />
+    <Compile Include="pck\Class1.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="pck\Cleat.cs" />
     <Compile Include="pck\ClientOrder.cs" />
     <Compile Include="pck\Component.cs" />

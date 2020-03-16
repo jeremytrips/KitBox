@@ -13,6 +13,9 @@ namespace userInterface
 {
     class GeneralDataPanel : DataPanel
     {
+
+        static int toRemove = 0;
+
         private Label label1 = new Label();
         private Label label2 = new Label();
         private Label label3 = new Label();
@@ -20,42 +23,118 @@ namespace userInterface
         private ComboBox depthList = new ComboBox();
         private ComboBox widthList = new ComboBox();
 
-        // General Data of the kitbox
-        private int width;
-        private int depth;
+        // Store the data of each Block of the kitbox.
+        private List<SpecificDataPanel> specificDataPanelList = new List<SpecificDataPanel> { };
+        private SpecificDataPanel selectedSpecificDataPanel;
+
+        // Store the graphic representation of each Block.
+        private List<TestPanel> blockList = new List<TestPanel> { };
+        private TestPanel selectedBlock;
+
+        // Store the number of block to check the max ammount
+        private int numberOfBLock = 0;
+
+        // Kitbox that is currently create by the user.
+        private KitBox kitbox = new KitBox();
+
+        // Tab in the TabBox it is the actual representation of the kibtox on the interface
+        private KitBoxTab kitboxTab = new KitBoxTab();
 
         public GeneralDataPanel() : base()
         {
-
+            toRemove++;
             this.MountLayout();
+            //this.Controls.Add();
+            this.AddLayer();
             this.SetComboBox();
+            this.depthList.SelectedIndexChanged += new EventHandler(this.SetDepth);
+            this.widthList.SelectedIndexChanged += new EventHandler(this.SetWidth); 
+        }
 
-            this.depthList.SelectedIndexChanged += new System.EventHandler(this.SetDepth);
-            this.widthList.SelectedIndexChanged += new EventHandler(this.SetWidth);
+        public void HandlePanelClick(object sender, EventArgs e, int index)
+        {
+            /*
+             * Used to hide the current specific data panel and display the selected one
+             */
+            Console.WriteLine(index);
+            this.Controls.Remove(this.selectedSpecificDataPanel);
+            this.selectedSpecificDataPanel = this.specificDataPanelList[index];
+            this.Controls.Add(this.selectedSpecificDataPanel);
+        }
+        
+        public KitBoxTab GetKitBoxTab()
+        {
+            return this.kitboxTab;
         }
 
         public override Dictionary<string, object> GetData()
         {
-            return new Dictionary<string, object>{ { "width", this.width }, { "height", this.depth }};
+            return this.kitbox.GetData();
+        }
+
+
+        public void AddLayer()
+        {
+            if (this.numberOfBLock < 8)
+            {
+                SpecificDataPanel newPanel = new SpecificDataPanel(toRemove, this.specificDataPanelList.Count);
+                TestPanel newDisplayPanel = new TestPanel(this.numberOfBLock);
+                newDisplayPanel.Click += new System.EventHandler((object sender, EventArgs e) => this.HandlePanelClick(sender, e, newDisplayPanel.Index));
+                this.specificDataPanelList.Add(newPanel);
+                this.selectedSpecificDataPanel = newPanel;
+                foreach(SpecificDataPanel temp in this.specificDataPanelList)
+                {
+                    this.Controls.Remove(temp);
+                }
+                this.Controls.Add(this.selectedSpecificDataPanel);
+
+                this.blockList.Add(newDisplayPanel);
+                this.kitboxTab.Controls.Add(newDisplayPanel);
+                this.selectedBlock = newDisplayPanel;
+
+                this.numberOfBLock++;
+            }
+            else
+            {
+                MessageBox.Show("You can't add more than 8 layer to your kitbox", "Warning");
+            }
+        }
+
+        public void RemoveLayer()
+        {
+            if (this.numberOfBLock > 1)
+            {
+                this.blockList.Remove(this.selectedBlock);
+                this.kitboxTab.Controls.Remove(this.selectedBlock);
+                this.selectedBlock = this.blockList[this.blockList.Count - 1];
+
+                this.specificDataPanelList.Remove(this.selectedSpecificDataPanel);
+                this.Controls.Remove(this.selectedSpecificDataPanel);
+                this.selectedSpecificDataPanel = this.specificDataPanelList[this.specificDataPanelList.Count - 1];
+                this.Controls.Add(this.selectedSpecificDataPanel);
+
+                this.numberOfBLock--;
+            }
         }
 
         public override void SetData(Dictionary<string, object> dataToSet)
         {
+            // TODO : See the data frame used to retrieve data
             this.widthList.SelectedItem = (int) dataToSet["width"];
-            this.width = (int) dataToSet["width"];
+            this.kitbox.Width = (int) dataToSet["width"];
 
             this.depthList.SelectedItem = (int)dataToSet["depth"];
-            this.depth = (int)dataToSet["depth"];
+            this.kitbox.Depth = (int)dataToSet["depth"];
         }
 
         private void SetWidth(object sender, EventArgs e)
         {
-            this.width =  (int) this.widthList.SelectedItem;
+            this.kitbox.Width = (int) this.widthList.SelectedItem;
         }
 
         private void SetDepth(object sender, EventArgs e)
         {
-            this.depth = (int)this.depthList.SelectedItem;
+            this.kitbox.Depth = (int)this.depthList.SelectedItem;
         }
 
         private void SetComboBox()
@@ -84,8 +163,9 @@ namespace userInterface
             this.Controls.Add(this.label2);
             this.Controls.Add(this.widthList);
             this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.Color.AntiqueWhite;
             this.Location = new System.Drawing.Point(30, 100);
-            this.Size = new System.Drawing.Size(400, 113);
+            this.Size = new System.Drawing.Size(400, 465);
 
             // Label 1 mounting
             this.label1.AutoSize = true;
