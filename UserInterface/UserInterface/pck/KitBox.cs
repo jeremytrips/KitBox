@@ -16,21 +16,26 @@ namespace userInterface
         public KitBox()
         {
             // to fix
-            Random a = new Random();
-            this.price = a.Next();
+            //Random a = new Random();
+            //this.price = a.Next();
             this.selfId = id;
             id++;
         }
 
-        public static int Id { get
+        public int Id { get
             {
-                return id;
+                return this.selfId;
             }
         }
 
         public bool Equals(int i)
         {
             return this.selfId == i;
+        }
+
+        public override string ToString()
+        {
+            return this.selfId.ToString();
         }
     }
 }

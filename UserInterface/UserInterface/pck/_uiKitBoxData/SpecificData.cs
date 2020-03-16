@@ -17,7 +17,7 @@ namespace userInterface
     {
         static int a = 0;
         private Label test = new Label();
-        private int id = new int();
+        private int id;
         public SpecificDataPanel(int id): base()
         {
             this.MountLayout();

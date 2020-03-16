@@ -30,8 +30,8 @@
         {
             this.kitBoxToOrderTabs = new System.Windows.Forms.TabControl();
             this.addKitBoxButton = new System.Windows.Forms.Button();
-            //this.generalDataPanel = new userInterface.GeneralDataPanel();
-            //this.specificDataPanel = new userInterface.SpecificDataPanel();
+            this.RemoveLayerButton = new System.Windows.Forms.Button();
+            this.AddLayerButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // kitBoxToOrderTabs
@@ -53,32 +53,35 @@
             this.addKitBoxButton.Text = "Add a KitBox";
             this.addKitBoxButton.UseVisualStyleBackColor = true;
             this.addKitBoxButton.Click += new System.EventHandler(this.AddKitbox_Click);
-            //// 
-            //// generalDataPanel
-            //// 
-            //this.generalDataPanel.BackColor = System.Drawing.Color.Red;
-            //this.generalDataPanel.Location = new System.Drawing.Point(30, 100);
-            //this.generalDataPanel.Name = "generalDataPanel";
-            //this.generalDataPanel.Size = new System.Drawing.Size(400, 113);
-            //this.generalDataPanel.TabIndex = 5;
-            //// 
-            //// specificDataPanel
-            //// 
-            //this.specificDataPanel.BackColor = System.Drawing.Color.Red;
-            //this.specificDataPanel.Location = new System.Drawing.Point(30, 219);
-            //this.specificDataPanel.Name = "specificDataPanel";
-            //this.specificDataPanel.Size = new System.Drawing.Size(400, 350);
-            //this.specificDataPanel.TabIndex = 6;
+            // 
+            // RemoveLayerButton
+            // 
+            this.RemoveLayerButton.Location = new System.Drawing.Point(456, 575);
+            this.RemoveLayerButton.Name = "RemoveLayerButton";
+            this.RemoveLayerButton.Size = new System.Drawing.Size(146, 23);
+            this.RemoveLayerButton.TabIndex = 5;
+            this.RemoveLayerButton.Text = "Remove layer on the kitbox";
+            this.RemoveLayerButton.UseVisualStyleBackColor = true;
+            this.RemoveLayerButton.Click += new System.EventHandler(this.RemoveLayerButton_Click);
+            // 
+            // AddLayerButton
+            // 
+            this.AddLayerButton.Location = new System.Drawing.Point(840, 575);
+            this.AddLayerButton.Name = "AddLayerButton";
+            this.AddLayerButton.Size = new System.Drawing.Size(146, 23);
+            this.AddLayerButton.TabIndex = 6;
+            this.AddLayerButton.Text = "Add a layer on the kitbox";
+            this.AddLayerButton.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 681);
+            this.Controls.Add(this.AddLayerButton);
+            this.Controls.Add(this.RemoveLayerButton);
             this.Controls.Add(this.addKitBoxButton);
             this.Controls.Add(this.kitBoxToOrderTabs);
-            this.Controls.Add(this.generalDataPanel);
-            this.Controls.Add(this.specificDataPanel);
             this.Name = "Form1";
             this.Text = "My fck kitbox";
             this.ResumeLayout(false);
@@ -92,6 +95,8 @@
         private OldOrderLayout oldOrderLayout;
         private System.Windows.Forms.TabControl kitBoxToOrderTabs;
         private System.Windows.Forms.Button addKitBoxButton;
+        private System.Windows.Forms.Button RemoveLayerButton;
+        private System.Windows.Forms.Button AddLayerButton;
     }
 }
 

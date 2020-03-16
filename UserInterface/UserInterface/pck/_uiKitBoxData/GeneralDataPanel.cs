@@ -61,14 +61,18 @@ namespace userInterface
         private void SetComboBox()
         {
             List<List<int>> dimensions = Database.FetchAvailableDimension();
-            foreach(int i in dimensions[0])
+            if (!(dimensions[0][0] == -1))
             {
-                this.widthList.Items.Add(i);
+                foreach (int i in dimensions[0])
+                {
+                    this.widthList.Items.Add(i);
+                }
+                foreach (int i in dimensions[1])
+                {
+                    this.depthList.Items.Add(i);
+                }
             }
-            foreach (int i in dimensions[1])
-            {
-                this.depthList.Items.Add(i);
-            }
+            // todo fire a server connection alert
         }
 
         private void MountLayout()

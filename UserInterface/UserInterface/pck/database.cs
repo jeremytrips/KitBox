@@ -73,13 +73,21 @@ namespace userInterface
             MySqlDataReader rdr = Fetch("SELECT * FROM component WHERE reference LIKE \"%Panneau%\"");
             List<int> depth = new List<int>();
             List<int> width = new List<int>();
-            while (rdr.Read())
+            try
             {
-                depth.Add(rdr.GetInt16(4));
-                width.Add(rdr.GetInt16(5));
+                while (rdr.Read())
+                {
+                    depth.Add(rdr.GetInt16(4));
+                    width.Add(rdr.GetInt16(5));
+                }
+                width = width.Distinct().ToList();
+                depth = depth.Distinct().ToList();
+            } 
+            catch
+            {
+                List<int> a = new List<int> { -1 };
+                return new List<List<int>> { a, a };
             }
-            width = width.Distinct().ToList();
-            depth = depth.Distinct().ToList();
             depth.Remove(0);
             width.Remove(0);
             return new List<List<int>> { depth, width };

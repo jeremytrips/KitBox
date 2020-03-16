@@ -19,7 +19,6 @@ namespace userInterface
 
         public OldOrderLayout(EventHandler handler, string hintText) : base()
         {
-            
             this.oldOrderButton.Click += new EventHandler(handler);
             this.displayResearchButton.Click += new EventHandler(this.DisplayResearch);
             this.oldOrderTextBox = new CustomTextBox(hintText);
