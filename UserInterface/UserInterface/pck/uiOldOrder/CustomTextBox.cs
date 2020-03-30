@@ -18,11 +18,6 @@ namespace userInterface
             this.LostFocus += new EventHandler(this.SetText);
         }
 
-        private void Test(object sender, EventArgs e)
-        {
-            Console.WriteLine("yup");
-        }
-
         private void RemoveText(object sender, EventArgs e)
         {
             if(this.Text == this.HintText)

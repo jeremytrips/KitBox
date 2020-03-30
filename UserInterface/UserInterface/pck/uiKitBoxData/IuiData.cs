@@ -8,7 +8,7 @@ namespace userInterface
 {
     interface IUiData
     {
-        Dictionary<String, object> GetData();
+        Dictionary<string, object> GetData();
         void SetData(Dictionary<string, object> dataToSet);
 
     }

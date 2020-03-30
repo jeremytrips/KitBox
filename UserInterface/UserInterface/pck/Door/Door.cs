@@ -11,8 +11,6 @@ namespace userInterface
         protected int width;
         protected string type;
 
-        //public override abstract Dictionary<string, Object> GetDescription();
-        //protected string determiningDimension1 = "width";
-        //protected string determiningDimension2 = "height";
+        public abstract Dictionary<string, Object> GetData();
     }
 }

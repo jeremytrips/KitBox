@@ -11,14 +11,11 @@ namespace userInterface
     {
         private string color;
 
-        public ClassicDoor(float price, int length, string color, int width) /*builder*/
+        public ClassicDoor(string color) /*builder*/
         {
-            this.price = price;
-            this.length = length;
             this.color = color;
-            this.width = width;
+            this.height = height;
             this.type = "ClassicDoor";
-            this.name = "porte";
         }
 
         /*Returns a dictionary with all panel information*/
@@ -26,14 +23,9 @@ namespace userInterface
         {
             Dictionary<string, Object> Description = new Dictionary<string, Object>
             {
-                { "price", this.price },
-                { "length", this.length },
-                { "width", this.width },
+                { "height", this.height},
                 { "color", this.color },
                 { "type", this.type },
-                { "ref", this.name },
-                { "dim1", this.determiningDimension1 },
-                { "dim2", this.determiningDimension2 },
                 { "code", this.code }
             };
             return Description;

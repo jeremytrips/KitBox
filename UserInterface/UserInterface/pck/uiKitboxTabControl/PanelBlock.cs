@@ -15,6 +15,7 @@ namespace userInterface.pck._uiKitboxTabControl
     {
         public PanelBlock(Block toDescribe, int posY)
         {
+            Console.WriteLine("coucou");
             this.MountLayout(posY);
         }
 

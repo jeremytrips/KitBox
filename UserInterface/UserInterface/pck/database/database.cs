@@ -12,7 +12,7 @@ namespace userInterface
 
     public static class Database
     {
-        private static string connectionString = @"server=localhost;user=root;database=kitbox;password=Mgbgt1979";
+        private static string connectionString = @"server=localhost;port=3306;user=root;database=kitbox;password=Mgbgt1979";
         private static MySqlConnection dataBaseConnection;
 
         public static bool LogIn(string email, string password)
@@ -39,6 +39,7 @@ namespace userInterface
         }
         public static MySqlDataReader Fetch(string query)
         {
+            Console.WriteLine(query);
             MySqlConnection dataBaseConnection = new MySqlConnection(connectionString);
             MySqlCommand command = new MySqlCommand(query, dataBaseConnection);
             try
@@ -69,25 +70,28 @@ namespace userInterface
         }
         public static List<List<int>> FetchAvailableDimension()
         {
-            MySqlConnection dataBaseConnection = new MySqlConnection(connectionString);
-            MySqlDataReader rdr = Fetch("SELECT * FROM component WHERE reference LIKE \"%Panneau%\"");
+            MySqlDataReader rdr = Fetch("SELECT * FROM kitbox.component WHERE reference LIKE '%Panneau%'");
             List<int> depth = new List<int>();
             List<int> width = new List<int>();
             try
             {
                 while (rdr.Read())
                 {
-                    depth.Add(rdr.GetInt16(4));
-                    width.Add(rdr.GetInt16(5));
+                    depth.Add(rdr.GetInt16(3));
+                    width.Add(rdr.GetInt16(2));
                 }
                 width = width.Distinct().ToList();
                 depth = depth.Distinct().ToList();
             } 
-            catch
+            catch(Exception e)
             {
+
+                Console.WriteLine("Couldn't read database");
+                Console.WriteLine(e);
                 List<int> a = new List<int> { -1 };
                 return new List<List<int>> { a, a };
             }
+
             depth.Remove(0);
             width.Remove(0);
             return new List<List<int>> { depth, width };

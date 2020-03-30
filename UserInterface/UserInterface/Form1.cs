@@ -19,10 +19,12 @@ namespace userInterface
     {
 
         private List<GeneralDataPanel> kitboxData = new List<GeneralDataPanel> { };
-        private GeneralDataPanel selectedGeneralDataPanel;  
+        private GeneralDataPanel selectedGeneralDataPanel;
+        private List<List<int>> kitboxSize;
 
         public Form1()
         {
+            kitboxSize = Database.FetchAvailableDimension();
             InitializeComponent();
             this.oldOrderLayout = new OldOrderLayout(this.HandleOldOrder, "Enter user name");
             this.Controls.Add(this.oldOrderLayout);
@@ -43,7 +45,7 @@ namespace userInterface
             /*
              * Add a new kitbox
              */
-            GeneralDataPanel generalDataPanel = new GeneralDataPanel();
+            GeneralDataPanel generalDataPanel = new GeneralDataPanel(this.kitboxSize);
             this.kitboxData.Add(generalDataPanel);
             this.selectedGeneralDataPanel = generalDataPanel;
             this.Controls.Add(generalDataPanel);

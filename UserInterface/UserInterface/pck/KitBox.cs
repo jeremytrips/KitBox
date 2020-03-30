@@ -23,14 +23,9 @@ namespace userInterface
             this.selfId = id;
             id++;
         }
-
-        public int Id { get
-            {
-                return this.selfId;
-            }
-        }
-
+        
         public int Width { get => width; set => width = value; }
+
         public int Depth { get => depth; set => depth = value; }
 
         public bool Equals(int i)

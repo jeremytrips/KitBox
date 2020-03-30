@@ -13,29 +13,11 @@ namespace userInterface
 {
     public abstract class Component
     {
-        protected double price;
-        protected int length;
-        protected string name;
+        protected int height;
+        protected string description;
         protected string code;
-        
-        public Component()
-        {
 
-        }
+        public abstract Dictionary<String, Component> getData();
 
-        public Dictionary<String, Component> getDescription()
-        {
-            return null;
-        }
-
-        public string ToListDescription()
-        {
-            return "I'm the description";
-        }
-
-        public override string ToString()
-        {
-            return String.Format("{}", this.price) ;
-        }
     }
 }

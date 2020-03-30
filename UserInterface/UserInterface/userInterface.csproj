@@ -74,36 +74,39 @@
     <Compile Include="pck\Class1.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="pck\Cleat.cs" />
+    <Compile Include="pck\cleat\Cleat.cs" />
     <Compile Include="pck\ClientOrder.cs" />
     <Compile Include="pck\Component.cs" />
-    <Compile Include="pck\database.cs" />
-    <Compile Include="pck\Door.cs" />
+    <Compile Include="pck\database\database.cs" />
+    <Compile Include="pck\Door\Door.cs" />
     <Compile Include="pck\KitBox.cs" />
+    <Compile Include="pck\panel\BackPanel.cs" />
+    <Compile Include="pck\panel\LeftRightPanel.cs" />
+    <Compile Include="pck\panel\TopBottomPanel.cs" />
     <Compile Include="pck\uiOldOrder\CustomTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="pck\_uiKitBoxData\DataPanel.cs">
+    <Compile Include="pck\uiKitBoxData\DataPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="pck\_uiKitBoxData\IUiData.cs" />
-    <Compile Include="pck\_uiKitBoxData\SpecificData.cs">
+    <Compile Include="pck\uiKitBoxData\IUiData.cs" />
+    <Compile Include="pck\uiKitBoxData\SpecificData.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="pck\_uiKitBoxData\GeneralDataPanel.cs">
+    <Compile Include="pck\uiKitBoxData\GeneralDataPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="pck\_uiKitboxTabControl\PanelBlock.cs">
+    <Compile Include="pck\uiKitboxTabControl\PanelBlock.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="pck\_uiKitboxTabControl\KitbocxTab.cs">
+    <Compile Include="pck\uiKitboxTabControl\KitbocxTab.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="pck\uiOldOrder\OldOrderLayout.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="pck\Order.cs" />
-    <Compile Include="pck\Panel.cs" />
+    <Compile Include="pck\panel\Panel.cs" />
     <Compile Include="pck\SupplierOrder.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

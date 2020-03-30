@@ -11,21 +11,20 @@ namespace userInterface
         /*Builder*/
         public Angle(int length, string color)
         {
-            this.length = length;
             this.color = color;
-            this.name = "Cornieres";
+        }
+
+        public override Dictionary<string, Component> getData()
+        {
+            throw new NotImplementedException();
         }
 
         /*Returns a dictionary with all panel information*/
         public Dictionary<string, Object> GetDescription()
         {
             Dictionary<string, Object> Description = new Dictionary<string, Object>();
-            Description.Add("price", this.price);
-            Description.Add("length", this.length);
             Description.Add("color", this.color);
-            Description.Add("ref", this.name);
             Description.Add("code", this.code);
-            Description.Add("dim", this.determiningDimension);
             return Description;
         }
 

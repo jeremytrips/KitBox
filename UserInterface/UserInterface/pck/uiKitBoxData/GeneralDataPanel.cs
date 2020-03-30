@@ -40,13 +40,13 @@ namespace userInterface
         // Tab in the TabBox it is the actual representation of the kibtox on the interface
         private KitBoxTab kitboxTab = new KitBoxTab();
 
-        public GeneralDataPanel() : base()
+        public GeneralDataPanel(List<List<int>> dimensions) : base()
         {
             toRemove++;
             this.MountLayout();
             //this.Controls.Add();
             this.AddLayer();
-            this.SetComboBox();
+            this.SetComboBox(dimensions);
             this.depthList.SelectedIndexChanged += new EventHandler(this.SetDepth);
             this.widthList.SelectedIndexChanged += new EventHandler(this.SetWidth); 
         }
@@ -56,7 +56,6 @@ namespace userInterface
             /*
              * Used to hide the current specific data panel and display the selected one
              */
-            Console.WriteLine(index);
             this.Controls.Remove(this.selectedSpecificDataPanel);
             this.selectedSpecificDataPanel = this.specificDataPanelList[index];
             this.Controls.Add(this.selectedSpecificDataPanel);
@@ -77,11 +76,11 @@ namespace userInterface
         {
             if (this.numberOfBLock < 8)
             {
-                SpecificDataPanel newPanel = new SpecificDataPanel(toRemove, this.specificDataPanelList.Count);
+                SpecificDataPanel newSpecificDataPanel = new SpecificDataPanel(toRemove, this.specificDataPanelList.Count);
                 TestPanel newDisplayPanel = new TestPanel(this.numberOfBLock);
                 newDisplayPanel.Click += new System.EventHandler((object sender, EventArgs e) => this.HandlePanelClick(sender, e, newDisplayPanel.Index));
-                this.specificDataPanelList.Add(newPanel);
-                this.selectedSpecificDataPanel = newPanel;
+                this.specificDataPanelList.Add(newSpecificDataPanel);
+                this.selectedSpecificDataPanel = newSpecificDataPanel;
                 foreach(SpecificDataPanel temp in this.specificDataPanelList)
                 {
                     this.Controls.Remove(temp);
@@ -137,9 +136,8 @@ namespace userInterface
             this.kitbox.Depth = (int)this.depthList.SelectedItem;
         }
 
-        private void SetComboBox()
+        private void SetComboBox(List<List<int>> dimensions)
         {
-            List<List<int>> dimensions = Database.FetchAvailableDimension();
             if (!(dimensions[0][0] == -1))
             {
                 foreach (int i in dimensions[0])
