@@ -86,7 +86,7 @@
     <Compile Include="pck\uiOldOrder\CustomTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="pck\uiKitBoxData\DataPanel.cs">
+    <Compile Include="pck\uiKitBoxData\absDataPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="pck\uiKitBoxData\IUiData.cs" />

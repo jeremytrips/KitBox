@@ -128,7 +128,7 @@ namespace userInterface
 
         private void SetWidth(object sender, EventArgs e)
         {
-            this.kitbox.Width = (int) this.widthList.SelectedItem;
+            this.kitbox.Width = (int)this.widthList.SelectedItem;
         }
 
         private void SetDepth(object sender, EventArgs e)

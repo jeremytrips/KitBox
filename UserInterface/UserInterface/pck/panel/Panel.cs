@@ -17,11 +17,11 @@ namespace userInterface
         {
             Dictionary<string, Object> Description = new Dictionary<string, Object>
             {
-                { "price", this.price },
-                { "length", this.length },
+                //{ "price", this.price },
+                //{ "length", this.length },
                 { "color", this.color },
                 { "code", this.code },
-                { "ref", this.name }
+                //{ "ref", this.name }
             };
             return Description;
         }
