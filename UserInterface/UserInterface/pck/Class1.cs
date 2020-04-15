@@ -9,7 +9,7 @@ namespace userInterface
     class TestPanel : System.Windows.Forms.Panel
     {
         private int index;
-        public TestPanel(int pos_y, Component component) : base()
+        public TestPanel(int pos_y) : base()
         {
             this.index = pos_y;
             this.Size = new System.Drawing.Size(521, 53);

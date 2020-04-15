@@ -1,5 +1,6 @@
 ﻿﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace userInterface
 {
@@ -8,22 +9,8 @@ namespace userInterface
      */
     abstract class Panel : Component
     {
-        private string color;
+        private Color color;
 
-        /*
-         * Returns a dictionary with all panel information
-         */
-        public Dictionary<string, Object> GetDescription()
-        {
-            Dictionary<string, Object> Description = new Dictionary<string, Object>
-            {
-                //{ "price", this.price },
-                //{ "length", this.length },
-                { "color", this.color },
-                { "code", this.code },
-                //{ "ref", this.name }
-            };
-            return Description;
-        }
+        protected Color Color { get => color; set => color = value; }
     }
 }
