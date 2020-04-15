@@ -20,11 +20,14 @@ namespace userInterface
 
         private List<GeneralDataPanel> kitboxData = new List<GeneralDataPanel> { };
         private GeneralDataPanel selectedGeneralDataPanel;
-        private List<List<int>> kitboxSize;
+        private List<List<int>> availableKitboxSize;
+        private List<string> AvailableAngleColor;
 
         public Form1()
         {
-            kitboxSize = Database.FetchAvailableDimension();
+            availableKitboxSize = Database.FetchAvailableDimension();
+            this.AvailableAngleColor = Database.FetchAvailableColor();
+            Console.WriteLine(this.AvailableAngleColor);
             InitializeComponent();
             this.oldOrderLayout = new OldOrderLayout(this.HandleOldOrder, "Enter user name");
             this.Controls.Add(this.oldOrderLayout);
@@ -36,7 +39,6 @@ namespace userInterface
             {
                 // Warning delete actual order
             }
-            Database.Fetch("SELECT * FROM ORDER WHERE ");
             // Handle the fetched order.
         }
 
@@ -45,7 +47,7 @@ namespace userInterface
             /*
              * Add a new kitbox
              */
-            GeneralDataPanel generalDataPanel = new GeneralDataPanel(this.kitboxSize);
+            GeneralDataPanel generalDataPanel = new GeneralDataPanel(this.availableKitboxSize, this.AvailableAngleColor);
             this.kitboxData.Add(generalDataPanel);
             this.selectedGeneralDataPanel = generalDataPanel;
             this.Controls.Add(generalDataPanel);

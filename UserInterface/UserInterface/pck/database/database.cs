@@ -37,7 +37,7 @@ namespace userInterface
             cmd.ExecuteNonQuery();
             dataBaseConnection.Close();
         }
-        public static MySqlDataReader Fetch(string query)
+        private static MySqlDataReader Fetch(string query)
         {
             Console.WriteLine(query);
             MySqlConnection dataBaseConnection = new MySqlConnection(connectionString);
@@ -55,7 +55,7 @@ namespace userInterface
                 //The two most common error numbers when connecting are as follows:
                 //0: Cannot connect to server.
                 //1045: Invalid user name and/or password.
-
+                Console.WriteLine(ex);
                 switch (ex.Number)
                 {
                     case 0:
@@ -95,6 +95,27 @@ namespace userInterface
             depth.Remove(0);
             width.Remove(0);
             return new List<List<int>> { depth, width };
+        }
+        
+        public static List<string> FetchAvailableColor()
+        {
+            MySqlDataReader rdr = Fetch("SELECT DISTINCT color FROM component WHERE reference='Cornieres';");
+            List<string> colorList = new List<string>();
+            try
+            {
+                while (rdr.Read())
+                {
+                    colorList.Add(rdr.GetString(0));
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Couldn't read database");
+                Console.WriteLine(e);
+                colorList.Add("No color");
+                return colorList;
+            }
+            return colorList;
         }
     }
 }

@@ -19,9 +19,11 @@ namespace userInterface
         private Label label1 = new Label();
         private Label label2 = new Label();
         private Label label3 = new Label();
+        private Label label4 = new Label();
 
         private ComboBox depthList = new ComboBox();
         private ComboBox widthList = new ComboBox();
+        private ComboBox colorList = new ComboBox();
 
         // Store the data of each Block of the kitbox.
         private List<SpecificDataPanel> specificDataPanelList = new List<SpecificDataPanel> { };
@@ -40,13 +42,13 @@ namespace userInterface
         // Tab in the TabBox it is the actual representation of the kibtox on the interface
         private KitBoxTab kitboxTab = new KitBoxTab();
 
-        public GeneralDataPanel(List<List<int>> dimensions) : base()
+        public GeneralDataPanel(List<List<int>> dimensions, List<string> AvailableAngleColor) : base()
         {
             toRemove++;
             this.MountLayout();
             //this.Controls.Add();
             this.AddLayer();
-            this.SetComboBox(dimensions);
+            this.SetComboBox(dimensions, AvailableAngleColor);
             this.depthList.SelectedIndexChanged += new EventHandler(this.SetDepth);
             this.widthList.SelectedIndexChanged += new EventHandler(this.SetWidth); 
         }
@@ -136,8 +138,9 @@ namespace userInterface
             this.kitbox.Depth = (int)this.depthList.SelectedItem;
         }
 
-        private void SetComboBox(List<List<int>> dimensions)
+        private void SetComboBox(List<List<int>> dimensions, List<string> AvailableAngleColor)
         {
+            // TODO add color combo box
             if (!(dimensions[0][0] == -1))
             {
                 foreach (int i in dimensions[0])
@@ -147,6 +150,10 @@ namespace userInterface
                 foreach (int i in dimensions[1])
                 {
                     this.depthList.Items.Add(i);
+                }
+                foreach (string color in AvailableAngleColor)
+                {
+                    this.colorList.Items.Add(color);
                 }
             }
             // todo fire a server connection alert
@@ -161,6 +168,8 @@ namespace userInterface
             this.Controls.Add(this.label2);
             this.Controls.Add(this.widthList);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.colorList);
+            this.Controls.Add(this.label4);
             this.BackColor = System.Drawing.Color.AntiqueWhite;
             this.Location = new System.Drawing.Point(30, 100);
             this.Size = new System.Drawing.Size(400, 465);
@@ -170,7 +179,7 @@ namespace userInterface
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
             this.label1.Location = new System.Drawing.Point(98, 0);
             this.label1.Size = new System.Drawing.Size(210, 39);
-            this.label1.Text = "GeneralData";
+            this.label1.Text = "General Data";
 
             // Label 2 mounting
             this.label2.AutoSize = true;
@@ -184,6 +193,12 @@ namespace userInterface
             this.label3.Size = new System.Drawing.Size(69, 13);
             this.label3.Text = "KitBox depth: ";
 
+            // Label 4 mounting
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(27, 114);
+            this.label4.Size = new System.Drawing.Size(69, 13);
+            this.label4.Text = "KitBox angle Color: ";
+
             // width ComboBox mounting
             this.widthList.FormattingEnabled = false;
             this.widthList.Location = new System.Drawing.Point(30, 82);
@@ -193,6 +208,11 @@ namespace userInterface
             this.depthList.FormattingEnabled = true;
             this.depthList.Location = new System.Drawing.Point(239, 82);
             this.depthList.Size = new System.Drawing.Size(121, 21);
+
+            // color ComboBox mounting
+            this.colorList.FormattingEnabled = true;
+            this.colorList.Location = new System.Drawing.Point(30, 130);
+            this.colorList.Size = new System.Drawing.Size(121, 21);
 
         }
     }
