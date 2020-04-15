@@ -1,41 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace userInterface
 {
-    public class Angle : Component
+    public class Angle
     {
-        private string color;
-        private string determiningDimension = "height"; 
+        private readonly Color color;
+        private int height;
 
-        /*Builder*/
-        public Angle(int length, string color)
+        public Angle(Color color, int height)
         {
             this.color = color;
+            this.height = height;
         }
 
-        public override Dictionary<string, Component> getData()
-        {
-            throw new NotImplementedException();
-        }
 
         /*Returns a dictionary with all panel information*/
         public Dictionary<string, Object> GetDescription()
         {
             Dictionary<string, Object> Description = new Dictionary<string, Object>();
             Description.Add("color", this.color);
-            Description.Add("code", this.code);
+            Description.Add("code", this.height);
             return Description;
         }
 
-        /* Setter for angle's length
-         * Height of cupboard might not be available in stock => select another angle
-         */
-        public void SetLength(int newHeight)
-        {
-            Console.WriteLine(String.Format("WARNING : changing the length of the angles from {0} to {1}", this.length, newHeight));
-            this.length = newHeight;
-        }
     }
 }
 

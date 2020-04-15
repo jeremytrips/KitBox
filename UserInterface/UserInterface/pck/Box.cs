@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace userInterface
 {
-    class Box : Block
+    class Layer : Block
     {
         private string pannelsColor;
         private int height;
@@ -14,7 +14,7 @@ namespace userInterface
         private string doorColor;
         private Component[] Component;
 
-        public Box(int[] size)
+        public Layer(int[] size)
         {
             this.width = size[0];
             this.depth = size[1];
@@ -26,30 +26,25 @@ namespace userInterface
             // Todo
         }
 
-        public override Dictionary<string, object> GetDescription()
+        public override double ComputePrice()
         {
-            Dictionary<string, object> a = new Dictionary<string, object>();
-            return a;
+            throw new System.NotImplementedException();
         }
 
-        //public override Dictionary<string, object> GetDescription()
-        //{
-        //    throw new System.NotImplementedException();
-        //}
+        public override Dictionary<string, object> GetDescription()
+        {
+            Dictionary<string, object> a = new Dictionary<string, object>();    
+            return a;
+        }
 
         public Component[] GetParts()
         {
             return this.Component;
         }
-        
-        public double GetPrice()
-        {
-            return -1;
-        }
 
         public override string ToListDescription()
         {
-            return "Description in the Box.cs";
+            return "Description in the Layer.cs";
         }
     }
 }

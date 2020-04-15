@@ -1,27 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Drawing;
+
 
 namespace userInterface
 {
     class KitBox
     {
+        private Color angleColor;
+        private Angle[] angles;
+
+        private Block[] kitBoxComponent;
+
         private static int id = 0;
         private double price;
-        private Box[] kitBoxComponent;
+
         private int selfId;
+
         private int width;
         private int depth;
 
         public KitBox()
         {
-            // to fix
-            //Random a = new Random();
-            //this.price = a.Next();
-            this.selfId = id;
-            id++;
+        }
+
+        public KitBox(List<Block> blockList)
+        {
+            // Recontruct kitbox from order
         }
         
         public int Width { get => width; set => width = value; }
@@ -44,6 +48,17 @@ namespace userInterface
             {
 
             };
+        }
+
+        public double ComputePrice()
+        {
+            double price = 0;
+            foreach (Layer box in this.kitBoxComponent)
+            {
+                price += box.ComputePrice();
+            }
+
+            return price;
         }
     }
 }

@@ -14,17 +14,13 @@ namespace userInterface
 {
     abstract class Block
     {
-        protected double price;
         protected int length;
         protected string name;
         protected string code;
 
         public abstract String ToListDescription();
         public abstract Dictionary<string, object> GetDescription();
-        public double GetPrice()
-        {
-            return this.price;
-        }
+        public abstract double ComputePrice();
         //Component[] GetParts();
     }
 }
