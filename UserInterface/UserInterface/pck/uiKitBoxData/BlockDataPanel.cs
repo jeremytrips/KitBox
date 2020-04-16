@@ -34,8 +34,16 @@ namespace userInterface
             this.blockViewer = new BlockViewer(numberOfPanelList, null);
             this.blockViewer.Click += clickHandler;
             this.availablePanelColor.Items.AddRange(availablePanelColor.ToArray());
-
+            this.availablePanelColor.SelectedIndexChanged += new EventHandler(this.SetColor);
             this.MountLayout();
+        }
+
+        private void SetColor(object sender, EventArgs e)
+        {
+            Color color = Color.FromName(ColorMapper.MapColor((string)this.availablePanelColor.SelectedItem));
+            this.block.Color = color;
+            this.blockViewer.BackColor = Color.FromArgb(125, color);
+
         }
 
         private void MountLayout()

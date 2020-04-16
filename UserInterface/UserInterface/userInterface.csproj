@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="pck\Angle.cs" />
+    <Compile Include="pck\ColorMapper.cs" />
     <Compile Include="pck\Layer.cs" />
     <Compile Include="pck\Block.cs" />
     <Compile Include="pck\uiKitBoxData\BlockViewer.cs">

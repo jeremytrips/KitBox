@@ -51,7 +51,8 @@ namespace userInterface
         private void SetColor(object sender, EventArgs e)
         {
             // TODO: MAPP
-            Color color = Color.Red;
+            Console.WriteLine("in");
+            Color color = Color.FromName(ColorMapper.MapColor((string)this.avaiblableAngleColorList.SelectedItem));
             this.kitbox.AngleColor = color;
             this.kitboxTab.SetBackColor(color);
         }

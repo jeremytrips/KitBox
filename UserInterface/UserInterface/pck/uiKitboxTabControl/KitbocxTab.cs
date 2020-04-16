@@ -44,7 +44,6 @@ namespace userInterface
             this.Size = new System.Drawing.Size(530, 480);
             this.Text = "Kitbox " + id.ToString();
             this.UseVisualStyleBackColor = true;
-            this.BackColor = Color.YellowGreen;
             //this.BackColor = System.Drawing.Color.Aquamarine;
             this.SuspendLayout();
         } 
