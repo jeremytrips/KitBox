@@ -16,8 +16,8 @@ namespace userInterface
 
         public Layer(int[] size)
         {
-            this.width = size[0];
-            this.depth = size[1];
+            //this.width = size[0];
+            //this.depth = size[1];
 
         }
 

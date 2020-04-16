@@ -82,8 +82,8 @@ namespace userInterface
                 }
                 width = width.Distinct().ToList();
                 depth = depth.Distinct().ToList();
-            } 
-            catch(Exception e)
+            }
+            catch (Exception e)
             {
 
                 Console.WriteLine("Couldn't read database");
@@ -96,10 +96,31 @@ namespace userInterface
             width.Remove(0);
             return new List<List<int>> { depth, width };
         }
-        
-        public static List<string> FetchAvailableColor()
+
+        public static List<string> FetchAngleAvailableColor()
         {
             MySqlDataReader rdr = Fetch("SELECT DISTINCT color FROM component WHERE reference='Cornieres';");
+            List<string> colorList = new List<string>();
+            try
+            {
+                while (rdr.Read())
+                {
+                    colorList.Add(rdr.GetString(0));
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Couldn't read database");
+                Console.WriteLine(e);
+                colorList.Add("No color");
+                return colorList;
+            }
+            return colorList;
+        }
+
+        public static List<string> FetchPanelAvailableColor()
+        {
+            MySqlDataReader rdr = Fetch("SELECT DISTINCT color FROM kitbox.component WHERE reference LIKE '%Panneau%';");
             List<string> colorList = new List<string>();
             try
             {

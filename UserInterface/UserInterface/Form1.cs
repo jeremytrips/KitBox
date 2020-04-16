@@ -20,14 +20,17 @@ namespace userInterface
 
         private List<GeneralDataPanel> kitboxData = new List<GeneralDataPanel> { };
         private GeneralDataPanel selectedGeneralDataPanel;
+
+        // Data Fetched int the Database
         private List<List<int>> availableKitboxSize;
-        private List<string> AvailableAngleColor;
+        private List<string> availableAngleColor;
+        private List<string> availablePanelColor;
 
         public Form1()
         {
             availableKitboxSize = Database.FetchAvailableDimension();
-            this.AvailableAngleColor = Database.FetchAvailableColor();
-            Console.WriteLine(this.AvailableAngleColor);
+            this.availableAngleColor = Database.FetchAngleAvailableColor();
+            this.availablePanelColor = Database.FetchPanelAvailableColor();
             InitializeComponent();
             this.oldOrderLayout = new OldOrderLayout(this.HandleOldOrder, "Enter user name");
             this.Controls.Add(this.oldOrderLayout);
@@ -47,7 +50,7 @@ namespace userInterface
             /*
              * Add a new kitbox
              */
-            GeneralDataPanel generalDataPanel = new GeneralDataPanel(this.availableKitboxSize, this.AvailableAngleColor);
+            GeneralDataPanel generalDataPanel = new GeneralDataPanel(this.availableKitboxSize, this.availableAngleColor, this.availablePanelColor);
             this.kitboxData.Add(generalDataPanel);
             this.selectedGeneralDataPanel = generalDataPanel;
             this.Controls.Add(generalDataPanel);
@@ -76,10 +79,11 @@ namespace userInterface
 
         private void HandleOldOrder(object sender, EventArgs e)
         {
-            /* TODO:    - fetch data from the database using the orderToFetch string
+            /* TODO:    
+                        - fetch data from the database using the orderToFetch string
                         - Add a columns name 'order_name' wich will be used to retreive the 
                                 string querry = "SELECT * FROM order"
-                          use user name and fecth a list of ol order to display in a list.
+                        - use user name and fecth a list of old order to display in a list.
                                 string querry = "SELECT * FROM order WHERE "user_id"=id of the user 
              */
             string orderToFetch = this.oldOrderLayout.GetOldOrderName();

@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="userInterface.Layer">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CQAAAAAABAAAAAQAYABAAAAAAAAAgAAAAABAOAAAAAA=</HashCode>
+      <FileName>pck\Layer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userInterface.Angle" Collapsed="true">
+    <Position X="7.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAIAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>pck\Angle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userInterface.BackPanel" Collapsed="true">
+    <Position X="19.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>pck\panel\BackPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userInterface.Block" Collapsed="true">
+    <Position X="12.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIEBAAAAAIAAEAACAAAAAkAAAAAA=</HashCode>
+      <FileName>pck\Block.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userInterface.Cleat" Collapsed="true">
+    <Position X="21.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAARAAAAAAAAAAAAIEAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>pck\cleat\Cleat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userInterface.Component" Collapsed="true">
+    <Position X="21.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAQAIAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>pck\Component.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userInterface.CustomTextBox" Collapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAIIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>pck\uiOldOrder\CustomTextBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userInterface.Database" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAIAAAAAoQAAEAAAAAAAAAABAAAAACAAAAAAA=</HashCode>
+      <FileName>pck\database\database.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userInterface.DataPanel" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>pck\uiKitBoxData\absDataPanel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="userInterface.Door" Collapsed="true">
+    <Position X="23.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAQAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>pck\Door\Door.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userInterface.Form1">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAABAAAAGAAAAAABQCYAAQCACAAAEAAIgAAIRAAAIA=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userInterface.GeneralDataPanel">
+    <Position X="3.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ggAAAAABkgAkABAABABABAQAQAAAAAEAgAoAACAiAAQ=</HashCode>
+      <FileName>pck\uiKitBoxData\GeneralDataPanel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="kitbox" />
+      <Field Name="kitboxTab" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="userInterface.KitBox" Collapsed="true">
+    <Position X="6.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgABAAIAEAgAAAAEwABAAEAAAAAAAAAgAAAAIABAAiA=</HashCode>
+      <FileName>pck\KitBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userInterface.KitBoxTab">
+    <Position X="10" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAIAAAAAAAAAAAAAAgAAAAAAgA=</HashCode>
+      <FileName>pck\uiKitboxTabControl\KitbocxTab.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userInterface.OldOrderLayout" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAgAAAAAAAAAAAgCIAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>pck\uiOldOrder\OldOrderLayout.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userInterface.Panel" Collapsed="true">
+    <Position X="19.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAAAAAA=</HashCode>
+      <FileName>pck\panel\Panel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userInterface.Program">
+    <Position X="18" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userInterface.BlockDataPanel">
+    <Position X="1.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAABEgAAAAAAAEAAAAAAAAAAAAAAAgAAgAAABAA=</HashCode>
+      <FileName>pck\uiKitBoxData\BlockDataPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userInterface.BlockViewer" Collapsed="true">
+    <Position X="15.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAA=</HashCode>
+      <FileName>pck\uiKitBoxData\BlockViewer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="userInterface.IUiData" Collapsed="true">
+    <Position X="13.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>pck\uiKitBoxData\IUiData.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

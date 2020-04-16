@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.Linq;
+using System.Drawing;
 
 /*
  * Todo :   
@@ -13,25 +14,19 @@ namespace userInterface
 {
     class GeneralDataPanel : DataPanel
     {
-
-        static int toRemove = 0;
+        private List<string> availablePanelColorList;
+        private ComboBox avaiblableAngleColorList = new ComboBox();
+        private ComboBox availableDepthList = new ComboBox();
+        private ComboBox availableWidthList = new ComboBox();
 
         private Label label1 = new Label();
         private Label label2 = new Label();
         private Label label3 = new Label();
         private Label label4 = new Label();
 
-        private ComboBox depthList = new ComboBox();
-        private ComboBox widthList = new ComboBox();
-        private ComboBox colorList = new ComboBox();
-
         // Store the data of each Block of the kitbox.
-        private List<SpecificDataPanel> specificDataPanelList = new List<SpecificDataPanel> { };
-        private SpecificDataPanel selectedSpecificDataPanel;
-
-        // Store the graphic representation of each Block.
-        private List<TestPanel> blockList = new List<TestPanel> { };
-        private TestPanel selectedBlock;
+        private List<BlockDataPanel> BlockDataPanelList = new List<BlockDataPanel> { };
+        private BlockDataPanel selectedBlockDataPanel;
 
         // Store the number of block to check the max ammount
         private int numberOfBLock = 0;
@@ -42,15 +37,28 @@ namespace userInterface
         // Tab in the TabBox it is the actual representation of the kibtox on the interface
         private KitBoxTab kitboxTab = new KitBoxTab();
 
-        public GeneralDataPanel(List<List<int>> dimensions, List<string> AvailableAngleColor) : base()
+        public GeneralDataPanel(List<List<int>> dimensions, List<string> availableAngleColor, List<string> availablePanelColor) : base()
         {
-            toRemove++;
+            this.availablePanelColorList = availablePanelColor;
             this.MountLayout();
-            //this.Controls.Add();
             this.AddLayer();
-            this.SetComboBox(dimensions, AvailableAngleColor);
-            this.depthList.SelectedIndexChanged += new EventHandler(this.SetDepth);
-            this.widthList.SelectedIndexChanged += new EventHandler(this.SetWidth); 
+            this.SetComboBox(dimensions, availableAngleColor);
+            this.availableDepthList.SelectedIndexChanged += new EventHandler(this.SetDepth);
+            this.availableWidthList.SelectedIndexChanged += new EventHandler(this.SetWidth);
+            this.avaiblableAngleColorList.SelectedIndexChanged += new EventHandler(this.SetColor);
+        }
+
+        private void SetColor(object sender, EventArgs e)
+        {
+            // TODO: MAPP
+            Color color = Color.Red;
+            this.kitbox.AngleColor = color;
+            this.kitboxTab.SetBackColor(color);
+        }
+
+        private void SetDataPanelColor(Color color)
+        {
+            this.selectedBlockDataPanel.SetBlockViewerColor(color);
         }
 
         public void HandlePanelClick(object sender, EventArgs e, int index)
@@ -58,9 +66,10 @@ namespace userInterface
             /*
              * Used to hide the current specific data panel and display the selected one
              */
-            this.Controls.Remove(this.selectedSpecificDataPanel);
-            this.selectedSpecificDataPanel = this.specificDataPanelList[index];
-            this.Controls.Add(this.selectedSpecificDataPanel);
+            Console.WriteLine(index);
+            this.Controls.Remove(this.selectedBlockDataPanel);
+            this.selectedBlockDataPanel = this.BlockDataPanelList[index];
+            this.Controls.Add(this.selectedBlockDataPanel);
         }
         
         public KitBoxTab GetKitBoxTab()
@@ -78,20 +87,19 @@ namespace userInterface
         {
             if (this.numberOfBLock < 8)
             {
-                SpecificDataPanel newSpecificDataPanel = new SpecificDataPanel(toRemove, this.specificDataPanelList.Count);
-                TestPanel newDisplayPanel = new TestPanel(this.numberOfBLock);
-                newDisplayPanel.Click += new System.EventHandler((object sender, EventArgs e) => this.HandlePanelClick(sender, e, newDisplayPanel.Index));
-                this.specificDataPanelList.Add(newSpecificDataPanel);
-                this.selectedSpecificDataPanel = newSpecificDataPanel;
-                foreach(SpecificDataPanel temp in this.specificDataPanelList)
+                int index = this.BlockDataPanelList.Count;
+                EventHandler blockDisplayClickHandler = new System.EventHandler((object sender, EventArgs e) => this.HandlePanelClick(sender, e, index));
+                BlockDataPanel newBlockDataPanel = new BlockDataPanel(index, this.availablePanelColorList, blockDisplayClickHandler);
+
+                this.BlockDataPanelList.Add(newBlockDataPanel);
+                this.selectedBlockDataPanel = newBlockDataPanel;
+                foreach(BlockDataPanel temp in this.BlockDataPanelList)
                 {
                     this.Controls.Remove(temp);
                 }
-                this.Controls.Add(this.selectedSpecificDataPanel);
+                this.Controls.Add(this.selectedBlockDataPanel);
 
-                this.blockList.Add(newDisplayPanel);
-                this.kitboxTab.Controls.Add(newDisplayPanel);
-                this.selectedBlock = newDisplayPanel;
+                this.kitboxTab.Controls.Add(newBlockDataPanel.GetBlockViewer());
 
                 this.numberOfBLock++;
             }
@@ -105,14 +113,13 @@ namespace userInterface
         {
             if (this.numberOfBLock > 1)
             {
-                this.blockList.Remove(this.selectedBlock);
-                this.kitboxTab.Controls.Remove(this.selectedBlock);
-                this.selectedBlock = this.blockList[this.blockList.Count - 1];
+                this.kitboxTab.Controls.Remove(this.selectedBlockDataPanel.GetBlockViewer());
+                this.selectedBlockDataPanel = this.BlockDataPanelList[this.BlockDataPanelList.Count - 1];
 
-                this.specificDataPanelList.Remove(this.selectedSpecificDataPanel);
-                this.Controls.Remove(this.selectedSpecificDataPanel);
-                this.selectedSpecificDataPanel = this.specificDataPanelList[this.specificDataPanelList.Count - 1];
-                this.Controls.Add(this.selectedSpecificDataPanel);
+                this.BlockDataPanelList.Remove(this.selectedBlockDataPanel);
+                this.Controls.Remove(this.selectedBlockDataPanel);
+                this.selectedBlockDataPanel = this.BlockDataPanelList[this.BlockDataPanelList.Count - 1];
+                this.Controls.Add(this.selectedBlockDataPanel);
 
                 this.numberOfBLock--;
             }
@@ -121,39 +128,39 @@ namespace userInterface
         public override void SetData(Dictionary<string, object> dataToSet)
         {
             // TODO : See the data frame used to retrieve data
-            this.widthList.SelectedItem = (int) dataToSet["width"];
+            this.availableWidthList.SelectedItem = (int) dataToSet["width"];
             this.kitbox.Width = (int) dataToSet["width"];
 
-            this.depthList.SelectedItem = (int)dataToSet["depth"];
+            this.availableDepthList.SelectedItem = (int)dataToSet["depth"];
             this.kitbox.Depth = (int)dataToSet["depth"];
         }
 
         private void SetWidth(object sender, EventArgs e)
         {
-            this.kitbox.Width = (int)this.widthList.SelectedItem;
+            this.kitbox.Width = (int)this.availableWidthList.SelectedItem;
         }
 
         private void SetDepth(object sender, EventArgs e)
         {
-            this.kitbox.Depth = (int)this.depthList.SelectedItem;
+            this.kitbox.Depth = (int)this.availableDepthList.SelectedItem;
         }
 
-        private void SetComboBox(List<List<int>> dimensions, List<string> AvailableAngleColor)
+        private void SetComboBox(List<List<int>> dimensions, List<string> availableAngleColor)
         {
             // TODO add color combo box
             if (!(dimensions[0][0] == -1))
             {
                 foreach (int i in dimensions[0])
                 {
-                    this.widthList.Items.Add(i);
+                    this.availableWidthList.Items.Add(i);
                 }
                 foreach (int i in dimensions[1])
                 {
-                    this.depthList.Items.Add(i);
+                    this.availableDepthList.Items.Add(i);
                 }
-                foreach (string color in AvailableAngleColor)
+                foreach (string color in availableAngleColor)
                 {
-                    this.colorList.Items.Add(color);
+                    this.avaiblableAngleColorList.Items.Add(color);
                 }
             }
             // todo fire a server connection alert
@@ -164,11 +171,11 @@ namespace userInterface
             // Panel mounting
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.depthList);
+            this.Controls.Add(this.availableDepthList);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.widthList);
+            this.Controls.Add(this.availableWidthList);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.colorList);
+            this.Controls.Add(this.avaiblableAngleColorList);
             this.Controls.Add(this.label4);
             this.BackColor = System.Drawing.Color.AntiqueWhite;
             this.Location = new System.Drawing.Point(30, 100);
@@ -200,19 +207,19 @@ namespace userInterface
             this.label4.Text = "KitBox angle Color: ";
 
             // width ComboBox mounting
-            this.widthList.FormattingEnabled = false;
-            this.widthList.Location = new System.Drawing.Point(30, 82);
-            this.widthList.Size = new System.Drawing.Size(121, 21);
+            this.availableWidthList.FormattingEnabled = false;
+            this.availableWidthList.Location = new System.Drawing.Point(30, 82);
+            this.availableWidthList.Size = new System.Drawing.Size(121, 21);
 
             // depth ComBox mounting
-            this.depthList.FormattingEnabled = true;
-            this.depthList.Location = new System.Drawing.Point(239, 82);
-            this.depthList.Size = new System.Drawing.Size(121, 21);
+            this.availableDepthList.FormattingEnabled = true;
+            this.availableDepthList.Location = new System.Drawing.Point(239, 82);
+            this.availableDepthList.Size = new System.Drawing.Size(121, 21);
 
             // color ComboBox mounting
-            this.colorList.FormattingEnabled = true;
-            this.colorList.Location = new System.Drawing.Point(30, 130);
-            this.colorList.Size = new System.Drawing.Size(121, 21);
+            this.avaiblableAngleColorList.FormattingEnabled = true;
+            this.avaiblableAngleColorList.Location = new System.Drawing.Point(30, 130);
+            this.avaiblableAngleColorList.Size = new System.Drawing.Size(121, 21);
 
         }
     }

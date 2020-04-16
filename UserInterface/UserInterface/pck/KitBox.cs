@@ -31,6 +31,7 @@ namespace userInterface
         public int Width { get => width; set => width = value; }
 
         public int Depth { get => depth; set => depth = value; }
+        public Color AngleColor { get => angleColor; set => angleColor = value; }
 
         public bool Equals(int i)
         {

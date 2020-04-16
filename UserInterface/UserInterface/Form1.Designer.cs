@@ -84,7 +84,7 @@
             this.Controls.Add(this.addKitBoxButton);
             this.Controls.Add(this.kitBoxToOrderTabs);
             this.Name = "Form1";
-            this.Text = "My fck kitbox";
+            this.Text = "s";
             this.ResumeLayout(false);
 
         }

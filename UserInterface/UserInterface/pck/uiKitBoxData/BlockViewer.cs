@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace userInterface
 {
-    class TestPanel : System.Windows.Forms.Panel
+    class BlockViewer : System.Windows.Forms.Panel
     {
         private int index;
-        public TestPanel(int pos_y) : base()
+        public BlockViewer(int pos_y, object setDataPanelColor) : base()
         {
             this.index = pos_y;
             this.Size = new System.Drawing.Size(521, 53);
