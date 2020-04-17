@@ -19,8 +19,11 @@ namespace userInterface
         protected string name;
         protected string code;
         private Color color;
+        private int height;
+
 
         public Color Color { get => color; set => color = value; }
+        public int Height { get => height; set => height = value; }
 
         public abstract String ToListDescription();
         public abstract Dictionary<string, object> GetDescription();

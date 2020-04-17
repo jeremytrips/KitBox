@@ -15,7 +15,7 @@ namespace userInterface
     class GeneralDataPanel : DataPanel
     {
         private bool displayDoor = false;
-        private List<List<int>> availableKitboxDimensions; //{depth, height, widthWithDoor, widthWithoutDoor}
+        private List<List<int>> availableKitboxDimensions; //{depth, height, doorWidth, width}
         private List<string> availablePanelColorList;
 
         // Store the data of each Block of the kitbox.
@@ -94,7 +94,7 @@ namespace userInterface
             {
                 int index = this.BlockDataPanelList.Count;
                 EventHandler blockDisplayClickHandler = new System.EventHandler((object sender, EventArgs e) => this.HandlePanelClick(sender, e, index));
-                BlockDataPanel newBlockDataPanel = new BlockDataPanel(index, this.availablePanelColorList, blockDisplayClickHandler);
+                BlockDataPanel newBlockDataPanel = new BlockDataPanel(index, this.availablePanelColorList, this.availableKitboxDimensions[2], blockDisplayClickHandler);
 
                 this.BlockDataPanelList.Add(newBlockDataPanel);
                 this.selectedBlockDataPanel = newBlockDataPanel;
@@ -145,7 +145,7 @@ namespace userInterface
             int width = (int)this.availableWidthList.SelectedItem;
             if (width > 64)
             {
-                // TODO create a layout that allow the user the set if he wan
+                this.selectedBlockDataPanel.DisplayDoorData();
             }
         }
 
@@ -159,11 +159,11 @@ namespace userInterface
             // TODO add color combo box
             if (!(this.availableKitboxDimensions[0][0] == -1))
             {
-                foreach (int i in this.availableKitboxDimensions[1])
+                foreach (int i in this.availableKitboxDimensions[3])
                 {
                     this.availableWidthList.Items.Add(i);
                 }
-                foreach (int i in this.availableKitboxDimensions[3])
+                foreach (int i in this.availableKitboxDimensions[0])
                 {
                     this.availableDepthList.Items.Add(i);
                 }
