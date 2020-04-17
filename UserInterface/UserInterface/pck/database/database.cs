@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 namespace userInterface
 {
 
-    public static class Database
+    public class Database
     {
         private static string connectionString = @"server=localhost;port=3306;user=root;database=kitbox;password=Mgbgt1979";
         private static MySqlConnection dataBaseConnection;
@@ -70,31 +70,40 @@ namespace userInterface
         }
         public static List<List<int>> FetchAvailableDimension()
         {
-            MySqlDataReader rdr = Fetch("SELECT * FROM kitbox.component WHERE reference LIKE '%Panneau%'");
             List<int> depth = new List<int>();
+            List<int> doorWidth = new List<int>();
             List<int> width = new List<int>();
+            List<int> height = new List<int>();
+
+            MySqlDataReader rdr = Fetch("select height from kitbox.component where reference like 'Tasseau';");         // Read height
+            height = ReadInt(rdr);
+            rdr = Fetch("select distinct width from kitbox.component where reference like 'Porte%';");                // Read widthwithdoor
+            doorWidth = ReadInt(rdr);
+            rdr = Fetch("select distinct width from kitbox.component where reference like 'Pann%';");                  // Read width without door
+            width = ReadInt(rdr);
+            rdr = Fetch("select distinct depth from kitbox.component where reference like 'Pann%';");                 // Read depth
+            depth = ReadInt(rdr);  
+            
+            return new List<List<int>> { depth, height, doorWidth, width };
+        }
+
+        public static List<int> ReadInt(MySqlDataReader reader)
+        {
+            List<int> readedData = new List<int>();
             try
             {
-                while (rdr.Read())
+                while (reader.Read())
                 {
-                    depth.Add(rdr.GetInt16(3));
-                    width.Add(rdr.GetInt16(2));
+                    readedData.Add(reader.GetInt16(0));
+                    Console.WriteLine(reader.GetInt16(0));
                 }
-                width = width.Distinct().ToList();
-                depth = depth.Distinct().ToList();
+                readedData.Remove(0);
             }
-            catch (Exception e)
+            catch
             {
 
-                Console.WriteLine("Couldn't read database");
-                Console.WriteLine(e);
-                List<int> a = new List<int> { -1 };
-                return new List<List<int>> { a, a };
             }
-
-            depth.Remove(0);
-            width.Remove(0);
-            return new List<List<int>> { depth, width };
+            return readedData;
         }
 
         public static List<string> FetchAngleAvailableColor()

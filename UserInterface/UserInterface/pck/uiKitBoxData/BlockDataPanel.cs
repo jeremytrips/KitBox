@@ -23,14 +23,16 @@ namespace userInterface
          * 
          */
 
-        private Block block;
+        private Block layer;
         private BlockViewer blockViewer;
         private ComboBox availablePanelColor = new ComboBox();
+        private ComboBox availableDoorHeightLayer = new ComboBox();
+        private ComboBox availableNoDoorHeightLayer = new ComboBox();
 
         public BlockDataPanel(int numberOfPanelList, List<string> availablePanelColor, System.EventHandler clickHandler) : base()
         {
             Console.WriteLine(numberOfPanelList);
-            this.block = new Layer(null);
+            this.layer = new Layer(null);
             this.blockViewer = new BlockViewer(numberOfPanelList, null);
             this.blockViewer.Click += clickHandler;
             this.availablePanelColor.Items.AddRange(availablePanelColor.ToArray());
@@ -41,9 +43,8 @@ namespace userInterface
         private void SetColor(object sender, EventArgs e)
         {
             Color color = Color.FromName(ColorMapper.MapColor((string)this.availablePanelColor.SelectedItem));
-            this.block.Color = color;
+            this.layer.Color = color;
             this.blockViewer.BackColor = Color.FromArgb(125, color);
-
         }
 
         private void MountLayout()
@@ -75,7 +76,7 @@ namespace userInterface
                 color = Color.FromName((string)this.availablePanelColor.SelectedItem);
             }
             color = Color.AliceBlue;
-            this.block.Color = color;
+            this.layer.Color = color;
         }
 
         public override Dictionary<String, object> GetData()

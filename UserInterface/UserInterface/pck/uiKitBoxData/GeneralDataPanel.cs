@@ -14,15 +14,9 @@ namespace userInterface
 {
     class GeneralDataPanel : DataPanel
     {
+        private bool displayDoor = false;
+        private List<List<int>> availableKitboxDimensions; //{depth, height, widthWithDoor, widthWithoutDoor}
         private List<string> availablePanelColorList;
-        private ComboBox avaiblableAngleColorList = new ComboBox();
-        private ComboBox availableDepthList = new ComboBox();
-        private ComboBox availableWidthList = new ComboBox();
-
-        private Label label1 = new Label();
-        private Label label2 = new Label();
-        private Label label3 = new Label();
-        private Label label4 = new Label();
 
         // Store the data of each Block of the kitbox.
         private List<BlockDataPanel> BlockDataPanelList = new List<BlockDataPanel> { };
@@ -37,12 +31,23 @@ namespace userInterface
         // Tab in the TabBox it is the actual representation of the kibtox on the interface
         private KitBoxTab kitboxTab = new KitBoxTab();
 
+        // ui object
+        private ComboBox avaiblableAngleColorList = new ComboBox();
+        private ComboBox availableDepthList = new ComboBox();
+        private ComboBox availableWidthList = new ComboBox();
+
+        private Label label1 = new Label();
+        private Label label2 = new Label();
+        private Label label3 = new Label();
+        private Label label4 = new Label();
+
         public GeneralDataPanel(List<List<int>> dimensions, List<string> availableAngleColor, List<string> availablePanelColor) : base()
         {
+            this.availableKitboxDimensions = dimensions;
             this.availablePanelColorList = availablePanelColor;
             this.MountLayout();
             this.AddLayer();
-            this.SetComboBox(dimensions, availableAngleColor);
+            this.SetComboBox(availableAngleColor);
             this.availableDepthList.SelectedIndexChanged += new EventHandler(this.SetDepth);
             this.availableWidthList.SelectedIndexChanged += new EventHandler(this.SetWidth);
             this.avaiblableAngleColorList.SelectedIndexChanged += new EventHandler(this.SetColor);
@@ -51,7 +56,6 @@ namespace userInterface
         private void SetColor(object sender, EventArgs e)
         {
             // TODO: MAPP
-            Console.WriteLine("in");
             Color color = Color.FromName(ColorMapper.MapColor((string)this.avaiblableAngleColorList.SelectedItem));
             this.kitbox.AngleColor = color;
             this.kitboxTab.SetBackColor(color);
@@ -133,12 +137,16 @@ namespace userInterface
             this.kitbox.Width = (int) dataToSet["width"];
 
             this.availableDepthList.SelectedItem = (int)dataToSet["depth"];
-            this.kitbox.Depth = (int)dataToSet["depth"];
+            this.kitbox.Depth = (int) dataToSet["depth"];
         }
 
         private void SetWidth(object sender, EventArgs e)
         {
-            this.kitbox.Width = (int)this.availableWidthList.SelectedItem;
+            int width = (int)this.availableWidthList.SelectedItem;
+            if (width > 64)
+            {
+                // TODO create a layout that allow the user the set if he wan
+            }
         }
 
         private void SetDepth(object sender, EventArgs e)
@@ -146,16 +154,16 @@ namespace userInterface
             this.kitbox.Depth = (int)this.availableDepthList.SelectedItem;
         }
 
-        private void SetComboBox(List<List<int>> dimensions, List<string> availableAngleColor)
+        private void SetComboBox(List<string> availableAngleColor)
         {
             // TODO add color combo box
-            if (!(dimensions[0][0] == -1))
+            if (!(this.availableKitboxDimensions[0][0] == -1))
             {
-                foreach (int i in dimensions[0])
+                foreach (int i in this.availableKitboxDimensions[1])
                 {
                     this.availableWidthList.Items.Add(i);
                 }
-                foreach (int i in dimensions[1])
+                foreach (int i in this.availableKitboxDimensions[3])
                 {
                     this.availableDepthList.Items.Add(i);
                 }
