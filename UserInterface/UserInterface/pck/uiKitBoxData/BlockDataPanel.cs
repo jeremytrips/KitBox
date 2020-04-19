@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace userInterface
 {
-    class BlockDataPanel: DataPanel
+    class LayerDataPanel: DataPanel
     {
         /*
          * BlockDataPanel 
@@ -23,74 +23,59 @@ namespace userInterface
          * 
          */
 
-        private Block layer;
+        private Layer layer;
         private BlockViewer blockViewer;
 
         //ui 
-        private RadioButtonLayout radioButtonLayout;
-        private ComboBox availablePanelColor = new ComboBox();
+        private RadioButtonLayout availablePanelHeight;
+        private RadioButtonLayout availablePanelColor ;
+        private RadioButtonLayout avaiblableDoorColor;
 
-        public BlockDataPanel(int heightOfBlockViewer, List<string> availablePanelColor, List<int> availableHeight, System.EventHandler clickHandler) : base()
+        private int kitBoxWidth;
+
+        public LayerDataPanel(int heightOfBlockViewer, List<string> availablePanelColor, List<int> availableHeight, List<string> avaiblableDoorColor, System.EventHandler clickHandler) : base()
         {
             this.layer = new Layer(null);
-
             this.blockViewer = new BlockViewer(heightOfBlockViewer, null);
             this.blockViewer.Click += clickHandler;
 
-            this.availablePanelColor.Items.AddRange(availablePanelColor.ToArray());
-            this.availablePanelColor.SelectedIndexChanged += new EventHandler(this.SetColor);
-            this.MountLayout(availableHeight);
+            this.MountLayout(availableHeight, availablePanelColor, avaiblableDoorColor);
         }
 
-        private void SetColor(object sender, EventArgs e)
+        private void SetPanelColor(object sender, EventArgs e)
         {
-            Console.WriteLine("coucou");
-
-            Color color = Color.FromName(ColorMapper.MapColor((string)this.availablePanelColor.SelectedItem));
-            this.layer.Color = color;
+            Color color = Color.FromName(ColorMapper.MapColor(this.availablePanelColor.GetStringChecked()));
+            this.layer.PanelColor = color;
             this.blockViewer.BackColor = Color.FromArgb(125, color);
         }
 
         private void SetHeight(object sender, EventArgs e)
         {
-            Console.WriteLine("coucou");
-            this.layer.Height = this.radioButtonLayout.GetHeight();
+            this.layer.Height = this.availablePanelHeight.GetIntChecked();
+        }
+        private void SetDoorColor(object sender, EventArgs e)
+        {
+            string color = this.avaiblableDoorColor.GetStringChecked();
+            if (color != "Verre")
+            {
+                this.blockViewer.DoorColor = Color.FromName(ColorMapper.MapColor(color));
+                this.layer.DoorColor = Color.FromName(ColorMapper.MapColor(color));
+            }
         }
 
-        private void MountLayout(List<int> availableHeight)
+
+        private void MountLayout(List<int> availablePanelHeight, List<string> availablePanelColor, List<string> avaiblableDoorColor)
         {
-            this.radioButtonLayout = new RadioButtonLayout(null, availableHeight);
-            this.Controls.Add(radioButtonLayout);
+            this.avaiblableDoorColor = new RadioButtonLayout(200, this.SetDoorColor, new List<string>{ "coucou" });     
+            this.availablePanelHeight = new RadioButtonLayout(0,this.SetHeight, availablePanelHeight);
+            this.availablePanelColor = new RadioButtonLayout(100, this.SetPanelColor, availablePanelColor);
+            
+            this.Controls.Add(this.availablePanelHeight);
             this.Controls.Add(this.availablePanelColor);
             // Mounting layout
             this.Location = new System.Drawing.Point(0, 165);
             this.Size = new System.Drawing.Size(400, 300);
             this.BackColor = System.Drawing.Color.Red;
-
-            this.availablePanelColor.FormattingEnabled = true;
-            this.availablePanelColor.Location = new System.Drawing.Point(239, 175);
-            this.availablePanelColor.Size = new System.Drawing.Size(121, 21);
-
-            this.availablePanelColor.SelectedIndexChanged += new EventHandler(this.SetBlockPanelColor);
-        }
-
-        
-
-        private void SetBlockPanelColor(object sender, EventArgs e)
-        {
-            Color color = Color.AliceBlue;
-            if (this.availablePanelColor.SelectedItem.ToString().Contains("Galvani"))
-            {
-                color = Color.FromName("SteelBlue");
-
-            }
-            else
-            // Insert here color that are not in the color map of c#
-            {
-                color = Color.FromName((string)this.availablePanelColor.SelectedItem);
-            }
-            color = Color.AliceBlue;
-            this.layer.Color = color;
         }
 
         public override Dictionary<String, object> GetData()
@@ -120,6 +105,17 @@ namespace userInterface
         internal void DisplayDoorData()
         {
             throw new NotImplementedException();
+        }
+
+        internal void DiplaysDoorLayout(bool v)
+        {
+            if (v)
+            {
+                this.Controls.Add(avaiblableDoorColor);
+            }else
+            {
+                this.Controls.Remove(avaiblableDoorColor);
+            }
         }
     }
 }

@@ -6,12 +6,9 @@ namespace userInterface
 {
     class Layer : Block
     {
-        private string pannelsColor;
-        private int height;
-        private int width;
-        private int depth;
+        private Color panelColor;
         private bool hasDoor;
-        private string doorColor;
+        private Color doorColor;
         private Component[] Component;
 
         public Layer(int[] size)
@@ -20,6 +17,9 @@ namespace userInterface
             //this.depth = size[1];
 
         }
+
+        public Color DoorColor { get => doorColor; set => doorColor = value; }
+        public Color PanelColor { get => panelColor; set => panelColor = value; }
 
         public void Build()
         {

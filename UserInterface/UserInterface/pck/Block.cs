@@ -15,19 +15,15 @@ namespace userInterface
 {
     abstract class Block
     {
-        protected int length;
-        protected string name;
-        protected string code;
-        private Color color;
         private int height;
 
+        private string code;
 
-        public Color Color { get => color; set => color = value; }
-        public int Height { get => height; set => height = value; }
+        public int Height { get => height; set =>height = value;}
+        protected string Code { get => code; set => code = value; }
 
         public abstract String ToListDescription();
         public abstract Dictionary<string, object> GetDescription();
         public abstract double ComputePrice();
-        //Component[] GetParts();
     }
 }

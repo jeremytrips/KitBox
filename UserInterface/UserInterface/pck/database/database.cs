@@ -39,7 +39,6 @@ namespace userInterface
         }
         private static MySqlDataReader Fetch(string query)
         {
-            Console.WriteLine(query);
             MySqlConnection dataBaseConnection = new MySqlConnection(connectionString);
             MySqlCommand command = new MySqlCommand(query, dataBaseConnection);
             try
@@ -95,7 +94,6 @@ namespace userInterface
                 while (reader.Read())
                 {
                     readedData.Add(reader.GetInt16(0));
-                    Console.WriteLine(reader.GetInt16(0));
                 }
                 readedData.Remove(0);
             }
@@ -119,8 +117,6 @@ namespace userInterface
             }
             catch (Exception e)
             {
-                Console.WriteLine("Couldn't read database");
-                Console.WriteLine(e);
                 colorList.Add("No color");
                 return colorList;
             }
@@ -140,8 +136,24 @@ namespace userInterface
             }
             catch (Exception e)
             {
-                Console.WriteLine("Couldn't read database");
-                Console.WriteLine(e);
+                colorList.Add("No color");
+                return colorList;
+            }
+            return colorList;
+        }
+        internal static List<string> FetchDoorPanelAvailableColor()
+        {
+            MySqlDataReader rdr = Fetch("SELECT DISTINCT color FROM component WHERE code LIKE 'POR%';");
+            List<string> colorList = new List<string>();
+            try
+            {
+                while (rdr.Read())
+                {
+                    colorList.Add(rdr.GetString(0));
+                }
+            }
+            catch (Exception e)
+            {
                 colorList.Add("No color");
                 return colorList;
             }

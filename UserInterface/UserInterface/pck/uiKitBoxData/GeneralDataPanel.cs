@@ -17,10 +17,12 @@ namespace userInterface
         private bool displayDoor = false;
         private List<List<int>> availableKitboxDimensions; //{depth, height, doorWidth, width}
         private List<string> availablePanelColorList;
+        private List<string> availableDoorPanelColorList;
+
 
         // Store the data of each Block of the kitbox.
-        private List<BlockDataPanel> BlockDataPanelList = new List<BlockDataPanel> { };
-        private BlockDataPanel selectedBlockDataPanel;
+        private List<LayerDataPanel> BlockDataPanelList = new List<LayerDataPanel> { };
+        private LayerDataPanel selectedBlockDataPanel;
 
         // Store the number of block to check the max ammount
         private int numberOfBLock = 0;
@@ -41,10 +43,11 @@ namespace userInterface
         private Label label3 = new Label();
         private Label label4 = new Label();
 
-        public GeneralDataPanel(List<List<int>> dimensions, List<string> availableAngleColor, List<string> availablePanelColor) : base()
+        public GeneralDataPanel(List<List<int>> dimensions, List<string> availableAngleColor, List<string> availablePanelColor, List<string> availableDoorPanelColor) : base()
         {
             this.availableKitboxDimensions = dimensions;
             this.availablePanelColorList = availablePanelColor;
+            this.availableDoorPanelColorList = availableDoorPanelColor;
             this.MountLayout();
             this.AddLayer();
             this.SetComboBox(availableAngleColor);
@@ -55,7 +58,6 @@ namespace userInterface
 
         private void SetColor(object sender, EventArgs e)
         {
-            // TODO: MAPP
             Color color = Color.FromName(ColorMapper.MapColor((string)this.avaiblableAngleColorList.SelectedItem));
             this.kitbox.AngleColor = color;
             this.kitboxTab.SetBackColor(color);
@@ -71,7 +73,6 @@ namespace userInterface
             /*
              * Used to hide the current specific data panel and display the selected one
              */
-            Console.WriteLine(index);
             this.Controls.Remove(this.selectedBlockDataPanel);
             this.selectedBlockDataPanel = this.BlockDataPanelList[index];
             this.Controls.Add(this.selectedBlockDataPanel);
@@ -94,11 +95,11 @@ namespace userInterface
             {
                 int index = this.BlockDataPanelList.Count;
                 EventHandler blockDisplayClickHandler = new System.EventHandler((object sender, EventArgs e) => this.HandlePanelClick(sender, e, index));
-                BlockDataPanel newBlockDataPanel = new BlockDataPanel(index, this.availablePanelColorList, this.availableKitboxDimensions[2], blockDisplayClickHandler);
+                LayerDataPanel newBlockDataPanel = new LayerDataPanel(index, this.availablePanelColorList, this.availableKitboxDimensions[2], this.availableDoorPanelColorList, blockDisplayClickHandler);
 
                 this.BlockDataPanelList.Add(newBlockDataPanel);
                 this.selectedBlockDataPanel = newBlockDataPanel;
-                foreach(BlockDataPanel temp in this.BlockDataPanelList)
+                foreach(LayerDataPanel temp in this.BlockDataPanelList)
                 {
                     this.Controls.Remove(temp);
                 }
@@ -143,9 +144,10 @@ namespace userInterface
         private void SetWidth(object sender, EventArgs e)
         {
             int width = (int)this.availableWidthList.SelectedItem;
-            if (width > 64)
+            this.kitbox.Width = width;
+            foreach (LayerDataPanel block in this.BlockDataPanelList)
             {
-                this.selectedBlockDataPanel.DisplayDoorData();
+                block.DiplaysDoorLayout(width > 64);
             }
         }
 

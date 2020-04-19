@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,8 @@ namespace userInterface
     class BlockViewer : System.Windows.Forms.Panel
     {
         private int index;
+        private System.Drawing.Color doorColor;
+
         public BlockViewer(int pos_y, object setDataPanelColor) : base()
         {
             this.index = pos_y;
@@ -21,5 +24,6 @@ namespace userInterface
         }
 
         public int Index { get => this.index; }
+        public Color DoorColor {set => doorColor = value; }
     }
 }

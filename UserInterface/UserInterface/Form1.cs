@@ -26,6 +26,7 @@ namespace userInterface
 
         private List<string> availableAngleColor = Database.FetchAngleAvailableColor();
         private List<string> availablePanelColor = Database.FetchPanelAvailableColor();
+        private List<string> availbleDoorPanelColor = Database.FetchDoorPanelAvailableColor();
 
         public Form1()
         {
@@ -48,7 +49,7 @@ namespace userInterface
             /*
              * Add a new kitbox
              */
-            GeneralDataPanel generalDataPanel = new GeneralDataPanel(this.AvailableKitboxDimension, this.availableAngleColor, this.availablePanelColor);
+            GeneralDataPanel generalDataPanel = new GeneralDataPanel(this.AvailableKitboxDimension, this.availableAngleColor, this.availablePanelColor, this.availbleDoorPanelColor);
             this.kitboxData.Add(generalDataPanel);
             this.selectedGeneralDataPanel = generalDataPanel;
             this.Controls.Add(generalDataPanel);
