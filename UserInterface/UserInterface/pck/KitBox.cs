@@ -9,7 +9,7 @@ namespace userInterface
         private Color angleColor;
         private Angle[] angles;
 
-        private Block[] kitBoxComponent;
+        private List<Block> kitBoxComponent = new List<Block> { };
 
         private static int id = 0;
         private double price;
@@ -27,10 +27,38 @@ namespace userInterface
         {
             // Recontruct kitbox from order
         }
-        
-        public int Width { get => width; set => width = value; }
 
-        public int Depth { get => depth; set => depth = value; }
+        public void AddBlock(Block block)
+        {
+            this.kitBoxComponent.Add(block);
+        }
+        
+        public int Width { get => width; set
+            {
+                width = value;
+                try
+                {
+                    foreach (Block block in this.kitBoxComponent)
+                    {
+                        block.Width = value;
+                    }
+                }
+                catch { }
+            }
+        }
+
+        public int Depth { get => depth; set
+            {
+                depth = value;
+                try
+                {
+                    foreach (Block block in this.kitBoxComponent)
+                    {
+                        block.Depth = value;
+                    }
+                } catch { }
+            }
+        }
         public Color AngleColor { get => angleColor; set => angleColor = value; }
 
         public bool Equals(int i)

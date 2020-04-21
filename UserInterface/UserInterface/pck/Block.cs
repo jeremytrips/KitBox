@@ -15,12 +15,15 @@ namespace userInterface
 {
     abstract class Block
     {
-        private int height;
+        protected int height;
+        protected int width;
+        protected int depth;
 
         private string code;
 
         public int Height { get => height; set =>height = value;}
-        protected string Code { get => code; set => code = value; }
+        public int Width { get => width; set => width = value; }
+        public int Depth { get => depth; set => depth = value; }
 
         public abstract String ToListDescription();
         public abstract Dictionary<string, object> GetDescription();

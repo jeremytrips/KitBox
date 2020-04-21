@@ -19,20 +19,24 @@ namespace userInterface
 
         }
 
+        public override string GetCode()
+        {
+            throw new NotImplementedException();
+        }
+
         public override Dictionary<string, Component> getData()
         {
             throw new NotImplementedException();
         }
 
         /*Returns a dictionary with all panel information*/
-        public new Dictionary<string, Object> GetDescription()
+        public Dictionary<string, Object> GetDescription()
         {
             Dictionary<string, Object> Description = new Dictionary<string, Object>
             {
                 { "price", this.price },
                 { "length", this.length },
-                { "ref", this.name },
-                { "code", this.code }
+                { "ref", this.name }
             };
             return Description;
         }

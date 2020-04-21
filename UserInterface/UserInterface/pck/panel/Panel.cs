@@ -10,7 +10,14 @@ namespace userInterface
     abstract class Panel : Component
     {
         private Color color;
+        protected string sColor;
 
-        protected Color Color { get => color; set => color = value; }
+        public Color Color { get => color; set
+            {
+                sColor = ColorMapper.MapColorFrench(value);
+                color = value;
+            }
+        }
+        protected string attribute = "PA";
     }
 }

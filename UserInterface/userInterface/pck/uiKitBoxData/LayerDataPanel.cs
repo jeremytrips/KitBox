@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 /*
  * Todo :   - Fix the set and get data function
- *          - May be set this class as an interface and create a class for every kind of block
+ *          - Handle when door is glass
  * 
  */
 
@@ -27,15 +27,14 @@ namespace userInterface
         private BlockViewer blockViewer;
 
         //ui 
-        private RadioButtonLayout availablePanelHeight;
-        private RadioButtonLayout availablePanelColor ;
-        private RadioButtonLayout avaiblableDoorColor;
+        private RadioButtonLayout<int> availablePanelHeight;
+        private RadioButtonLayout<string> availablePanelColor ;
+        private RadioButtonLayout<string> avaiblableDoorColor;
 
-        private int kitBoxWidth;
 
-        public LayerDataPanel(int heightOfBlockViewer, List<string> availablePanelColor, List<int> availableHeight, List<string> avaiblableDoorColor, System.EventHandler clickHandler) : base()
+        public LayerDataPanel(int heightOfBlockViewer, int width, int depth, List<string> availablePanelColor, List<int> availableHeight, List<string> avaiblableDoorColor, System.EventHandler clickHandler) : base()
         {
-            this.layer = new Layer(null);
+            this.layer = new Layer(width, depth);
             this.blockViewer = new BlockViewer(heightOfBlockViewer, null);
             this.blockViewer.Click += clickHandler;
 
@@ -44,34 +43,52 @@ namespace userInterface
 
         private void SetPanelColor(object sender, EventArgs e)
         {
-            Color color = Color.FromName(ColorMapper.MapColor(this.availablePanelColor.GetStringChecked()));
+            Color color = Color.FromName(ColorMapper.MapColor(this.availablePanelColor.GetChecked()));
             this.layer.PanelColor = color;
             this.blockViewer.BackColor = Color.FromArgb(125, color);
         }
 
-        private void SetHeight(object sender, EventArgs e)
+        private void SetLayerHeight(object sender, EventArgs e)
         {
-            this.layer.Height = this.availablePanelHeight.GetIntChecked();
+            this.layer.Height = Int16.Parse(this.availablePanelHeight.GetChecked());
         }
         private void SetDoorColor(object sender, EventArgs e)
         {
-            string color = this.avaiblableDoorColor.GetStringChecked();
-            if (color != "Verre")
+            string color = this.avaiblableDoorColor.GetChecked();
+            if (color == "No door")
             {
-                this.blockViewer.DoorColor = Color.FromName(ColorMapper.MapColor(color));
-                this.layer.DoorColor = Color.FromName(ColorMapper.MapColor(color));
+                this.layer.HasDoor = false;
+            }
+            else
+            {
+                if (color != "Verre")
+                {
+                    this.blockViewer.DoorColor = Color.FromName(ColorMapper.MapColor(color));
+                    this.layer.DoorColor = Color.FromName(ColorMapper.MapColor(color));
+                }
             }
         }
 
+        public void SetlayerWidth(int width)
+        {
+            this.layer.Width = width;
+        }
+
+        public void SetlayerDepth(int depth)
+        {
+            this.layer.Depth = depth;
+        }
 
         private void MountLayout(List<int> availablePanelHeight, List<string> availablePanelColor, List<string> avaiblableDoorColor)
         {
-            this.avaiblableDoorColor = new RadioButtonLayout(200, this.SetDoorColor, new List<string>{ "coucou" });     
-            this.availablePanelHeight = new RadioButtonLayout(0,this.SetHeight, availablePanelHeight);
-            this.availablePanelColor = new RadioButtonLayout(100, this.SetPanelColor, availablePanelColor);
+            avaiblableDoorColor.Add("No door");
+            this.avaiblableDoorColor = new RadioButtonLayout<string>(200, this.SetDoorColor, avaiblableDoorColor);     
+            this.availablePanelHeight = new RadioButtonLayout<int>(0,this.SetLayerHeight, availablePanelHeight);
+            this.availablePanelColor = new RadioButtonLayout<string>(100, this.SetPanelColor, availablePanelColor);
             
             this.Controls.Add(this.availablePanelHeight);
             this.Controls.Add(this.availablePanelColor);
+
             // Mounting layout
             this.Location = new System.Drawing.Point(0, 165);
             this.Size = new System.Drawing.Size(400, 300);
@@ -102,10 +119,6 @@ namespace userInterface
             return this.blockViewer;
         }
 
-        internal void DisplayDoorData()
-        {
-            throw new NotImplementedException();
-        }
 
         internal void DiplaysDoorLayout(bool v)
         {

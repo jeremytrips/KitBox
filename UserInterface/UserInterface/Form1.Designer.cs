@@ -32,6 +32,7 @@
             this.addKitBoxButton = new System.Windows.Forms.Button();
             this.RemoveLayerButton = new System.Windows.Forms.Button();
             this.AddLayerButton = new System.Windows.Forms.Button();
+            this.order = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // kitBoxToOrderTabs
@@ -74,11 +75,22 @@
             this.AddLayerButton.UseVisualStyleBackColor = true;
             this.AddLayerButton.Click += new System.EventHandler(this.AddLayerButton_Click);
             // 
+            // order
+            // 
+            this.order.Location = new System.Drawing.Point(732, 631);
+            this.order.Name = "order";
+            this.order.Size = new System.Drawing.Size(147, 38);
+            this.order.TabIndex = 7;
+            this.order.Text = "Order kitbox";
+            this.order.UseVisualStyleBackColor = true;
+            this.order.Click += new System.EventHandler(this.order_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 681);
+            this.Controls.Add(this.order);
             this.Controls.Add(this.AddLayerButton);
             this.Controls.Add(this.RemoveLayerButton);
             this.Controls.Add(this.addKitBoxButton);
@@ -96,6 +108,7 @@
         private System.Windows.Forms.Button addKitBoxButton;
         private System.Windows.Forms.Button RemoveLayerButton;
         private System.Windows.Forms.Button AddLayerButton;
+        private System.Windows.Forms.Button order;
     }
 }
 

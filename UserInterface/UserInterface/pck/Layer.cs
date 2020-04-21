@@ -9,21 +9,51 @@ namespace userInterface
         private Color panelColor;
         private bool hasDoor;
         private Color doorColor;
-        private Component[] Component;
+        private BackPanel backPanel = new BackPanel();
+        private LeftRightPanel leftRightPanel = new LeftRightPanel();
+        private TopBottomPanel topBottomPanel = new TopBottomPanel();
 
-        public Layer(int[] size)
+        public Layer(int width, int depth)
         {
-            //this.width = size[0];
-            //this.depth = size[1];
-
+            this.Width = width;
+            this.Depth = depth;
         }
 
         public Color DoorColor { get => doorColor; set => doorColor = value; }
-        public Color PanelColor { get => panelColor; set => panelColor = value; }
+        public Color PanelColor { get => panelColor; set
+            {
+                panelColor = value;
+                backPanel.Color = value;
+                leftRightPanel.Color = value;
+                topBottomPanel.Color = value;
+            }
+        }
 
-        public void Build()
+        public bool HasDoor { get => hasDoor; set => hasDoor = value; }
+
+        public new int Width { get => width; set
+            {
+                this.width = value;
+                this.backPanel.Width = value;
+                this.topBottomPanel.Width = value;
+            }
+
+        }
+
+        public new int Depth
         {
-            // Todo
+            get => this.depth; set
+            {
+                this.depth = value;
+                this.backPanel.Depth = value;
+                this.topBottomPanel.Depth = value;
+            }
+
+        }
+
+
+        public void Build(int width, int depth)
+        {
         }
 
         public override double ComputePrice()
@@ -37,9 +67,13 @@ namespace userInterface
             return a;
         }
 
-        public Component[] GetParts()
+        public Dictionary<string, int> GetParts()
         {
-            return this.Component;
+            
+            return new Dictionary<string, int>
+            {
+
+            };
         }
 
         public override string ToListDescription()

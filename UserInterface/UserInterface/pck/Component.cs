@@ -4,20 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/*
- * TODO : Fix the ToListDescription
-
-*/
 
 namespace userInterface
 {
     public abstract class Component
     {
-        protected int height;
+        private int height;
+        protected int depth;
+        protected int width;
+
+        public int Width { get => width; set => width = value; }
+        public int Depth { get => depth; set => depth = value; }
+        public int Height { get => height; set => height = value; }
+
         protected string description;
-        protected string code;
 
         public abstract Dictionary<String, Component> getData();
+        public abstract string GetCode();
 
     }
 }

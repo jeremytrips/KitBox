@@ -5,16 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace userInterface.pck.panel
+namespace userInterface
 {
     class TopBottomPanel: Panel
     {
-        private int width;
+        const string secAttribute = "H";
 
-        public TopBottomPanel(int width, Color color)
+        public TopBottomPanel()
         {
-            this.width = width;
-            this.Color = color;
+        }
+
+
+        public override string GetCode()
+        {
+            return this.attribute + secAttribute + this.Depth.ToString() + this.width.ToString() + this.sColor;
         }
 
         public override Dictionary<string, Component> getData()

@@ -91,7 +91,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="pck\uiKitBoxData\IUiData.cs" />
-    <Compile Include="pck\uiKitBoxData\BlockDataPanel.cs">
+    <Compile Include="pck\uiKitBoxData\LayerDataPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="pck\uiKitBoxData\GeneralDataPanel.cs">
@@ -114,6 +114,9 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pck\uiRadioButton\CustomRadioButton.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="pck\uiRadioButton\RadioButtonLayout.cs">
       <SubType>Component</SubType>

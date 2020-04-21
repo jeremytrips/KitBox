@@ -9,17 +9,19 @@ namespace userInterface
 {
     class BackPanel : Panel
     {
-        private int width;
+        const string secAttribute = "R";
 
-        public BackPanel(int width, Color color)
+        public BackPanel()
         {
-            this.width = width;
-            this.Color = color;
         }
 
         public int Width { get => width; set => width = value; }
 
-        // public BackPanel(int ) base()
+        public override string GetCode()
+        {
+            return this.attribute + secAttribute +this.Depth.ToString() + this.width.ToString() + this.sColor;
+        }
+
         public override Dictionary<string, Component> getData()
         {
             throw new NotImplementedException();

@@ -51,21 +51,16 @@ namespace userInterface
             this.MountLayout();
             this.AddLayer();
             this.SetComboBox(availableAngleColor);
-            this.availableDepthList.SelectedIndexChanged += new EventHandler(this.SetDepth);
-            this.availableWidthList.SelectedIndexChanged += new EventHandler(this.SetWidth);
-            this.avaiblableAngleColorList.SelectedIndexChanged += new EventHandler(this.SetColor);
+            this.availableDepthList.SelectedIndexChanged += new EventHandler(this.SetKitboxDepth);
+            this.availableWidthList.SelectedIndexChanged += new EventHandler(this.SetKitboxWidth);
+            this.avaiblableAngleColorList.SelectedIndexChanged += new EventHandler(this.SetAngleColor);
         }
 
-        private void SetColor(object sender, EventArgs e)
+        private void SetAngleColor(object sender, EventArgs e)
         {
             Color color = Color.FromName(ColorMapper.MapColor((string)this.avaiblableAngleColorList.SelectedItem));
             this.kitbox.AngleColor = color;
             this.kitboxTab.SetBackColor(color);
-        }
-
-        private void SetDataPanelColor(Color color)
-        {
-            this.selectedBlockDataPanel.SetBlockViewerColor(color);
         }
 
         public void HandlePanelClick(object sender, EventArgs e, int index)
@@ -95,7 +90,7 @@ namespace userInterface
             {
                 int index = this.BlockDataPanelList.Count;
                 EventHandler blockDisplayClickHandler = new System.EventHandler((object sender, EventArgs e) => this.HandlePanelClick(sender, e, index));
-                LayerDataPanel newBlockDataPanel = new LayerDataPanel(index, this.availablePanelColorList, this.availableKitboxDimensions[2], this.availableDoorPanelColorList, blockDisplayClickHandler);
+                LayerDataPanel newBlockDataPanel = new LayerDataPanel(index, this.kitbox.Width, this.kitbox.Depth, this.availablePanelColorList, this.availableKitboxDimensions[2], this.availableDoorPanelColorList, blockDisplayClickHandler);
 
                 this.BlockDataPanelList.Add(newBlockDataPanel);
                 this.selectedBlockDataPanel = newBlockDataPanel;
@@ -141,7 +136,7 @@ namespace userInterface
             this.kitbox.Depth = (int) dataToSet["depth"];
         }
 
-        private void SetWidth(object sender, EventArgs e)
+        private void SetKitboxWidth(object sender, EventArgs e)
         {
             int width = (int)this.availableWidthList.SelectedItem;
             this.kitbox.Width = width;
@@ -151,9 +146,10 @@ namespace userInterface
             }
         }
 
-        private void SetDepth(object sender, EventArgs e)
+        private void SetKitboxDepth(object sender, EventArgs e)
         {
             this.kitbox.Depth = (int)this.availableDepthList.SelectedItem;
+            
         }
 
         private void SetComboBox(List<string> availableAngleColor)

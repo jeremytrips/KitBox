@@ -74,7 +74,6 @@ namespace userInterface
             this.selectedGeneralDataPanel = this.kitboxData[this.kitBoxToOrderTabs.SelectedIndex];
             this.Controls.Add(this.selectedGeneralDataPanel);
         }
-    
 
         private void HandleOldOrder(object sender, EventArgs e)
         {
@@ -104,6 +103,15 @@ namespace userInterface
              */
             this.selectedGeneralDataPanel.AddLayer();
 
+        }
+
+        private void order_Click(object sender, EventArgs e)
+        {
+
+            foreach(GeneralDataPanel panel in this.kitboxData)
+            {
+                
+            }
         }
     }
 }
