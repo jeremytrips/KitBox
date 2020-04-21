@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 
@@ -6,8 +7,8 @@ namespace userInterface
 {
     class KitBox
     {
-        private Color angleColor;
-        private Angle[] angles;
+        private Color angleColor = Color.White;
+        private Angle angle = new Angle();
 
         private List<Block> kitBoxComponent = new List<Block> { };
 
@@ -32,12 +33,18 @@ namespace userInterface
         {
             this.kitBoxComponent.Add(block);
         }
+
+        public void RemoveBlock(Block block)
+        {
+            this.kitBoxComponent.Remove(block);
+        }
         
         public int Width { get => width; set
             {
                 width = value;
                 try
                 {
+
                     foreach (Block block in this.kitBoxComponent)
                     {
                         block.Width = value;
@@ -59,24 +66,18 @@ namespace userInterface
                 } catch { }
             }
         }
-        public Color AngleColor { get => angleColor; set => angleColor = value; }
+        public Color AngleColor
+        {
+            get => angleColor; set
+            {
+                angleColor = value;
+                this.angle.Color = value;
+            }
+        }
 
         public bool Equals(int i)
         {
             return this.selfId == i;
-        }
-
-        public override string ToString()
-        {
-            return this.selfId.ToString();
-        }
-
-        public Dictionary<string, object> GetData()
-        {
-            return new Dictionary<string, object>
-            {
-
-            };
         }
 
         public double ComputePrice()
@@ -86,7 +87,6 @@ namespace userInterface
             {
                 price += box.ComputePrice();
             }
-
             return price;
         }
     }

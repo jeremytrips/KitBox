@@ -9,7 +9,7 @@ namespace userInterface
 {
     public abstract class Component
     {
-        private int height;
+        protected int height;
         protected int depth;
         protected int width;
 
@@ -19,8 +19,9 @@ namespace userInterface
 
         protected string description;
 
-        public abstract Dictionary<String, Component> getData();
+        //public abstract Dictionary<String, Component> getData();
         public abstract string GetCode();
+        public abstract void DebugPrint();
 
     }
 }

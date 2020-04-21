@@ -72,17 +72,21 @@ namespace userInterface
             this.selectedBlockDataPanel = this.BlockDataPanelList[index];
             this.Controls.Add(this.selectedBlockDataPanel);
         }
-        
+
         public KitBoxTab GetKitBoxTab()
         {
             return this.kitboxTab;
         }
 
-        public override Dictionary<string, object> GetData()
+        public KitBox GetKitBox()
         {
-            return this.kitbox.GetData();
-        }
+            foreach(LayerDataPanel dataPanel in this.BlockDataPanelList)
+            {
+                this.kitbox.AddBlock(dataPanel.GetBlock());
+            }
 
+            return this.kitbox;
+        }
 
         public void AddLayer()
         {
@@ -117,6 +121,7 @@ namespace userInterface
                 this.kitboxTab.Controls.Remove(this.selectedBlockDataPanel.GetBlockViewer());
                 this.selectedBlockDataPanel = this.BlockDataPanelList[this.BlockDataPanelList.Count - 1];
 
+                this.kitbox.RemoveBlock(this.selectedBlockDataPanel.GetBlock());
                 this.BlockDataPanelList.Remove(this.selectedBlockDataPanel);
                 this.Controls.Remove(this.selectedBlockDataPanel);
                 this.selectedBlockDataPanel = this.BlockDataPanelList[this.BlockDataPanelList.Count - 1];
@@ -143,13 +148,18 @@ namespace userInterface
             foreach (LayerDataPanel block in this.BlockDataPanelList)
             {
                 block.DiplaysDoorLayout(width > 64);
+                block.SetlayerWidth(width);
             }
         }
 
         private void SetKitboxDepth(object sender, EventArgs e)
         {
-            this.kitbox.Depth = (int)this.availableDepthList.SelectedItem;
-            
+            int depth = (int)this.availableDepthList.SelectedItem;
+            this.kitbox.Depth = depth;
+            foreach (LayerDataPanel block in this.BlockDataPanelList)
+            {
+                block.SetlayerDepth(depth);
+            }
         }
 
         private void SetComboBox(List<string> availableAngleColor)

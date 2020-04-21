@@ -48,9 +48,7 @@ namespace userInterface
                 this.backPanel.Depth = value;
                 this.topBottomPanel.Depth = value;
             }
-
         }
-
 
         public void Build(int width, int depth)
         {
@@ -59,26 +57,6 @@ namespace userInterface
         public override double ComputePrice()
         {
             throw new System.NotImplementedException();
-        }
-
-        public override Dictionary<string, object> GetDescription()
-        {
-            Dictionary<string, object> a = new Dictionary<string, object>();    
-            return a;
-        }
-
-        public Dictionary<string, int> GetParts()
-        {
-            
-            return new Dictionary<string, int>
-            {
-
-            };
-        }
-
-        public override string ToListDescription()
-        {
-            return "Description in the Layer.cs";
         }
     }
 }

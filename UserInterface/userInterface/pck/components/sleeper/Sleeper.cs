@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace userInterface
 {
-    public abstract class DataPanel : System.Windows.Forms.Panel
+    // Sleper is the best traduction I've found for "Travese"
+    abstract class Sleeper:Component
     {
-        public abstract void SetData(Dictionary<string, object> dataToSet);
+        protected string attribute = "TRF";
     }
 }

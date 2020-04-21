@@ -47,10 +47,5 @@ namespace userInterface
             //this.BackColor = System.Drawing.Color.Aquamarine;
             this.SuspendLayout();
         } 
-
-        public override string ToString()
-        {
-            return "kitbox toString";
-        }
     }
 }

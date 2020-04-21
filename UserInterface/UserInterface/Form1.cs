@@ -107,10 +107,17 @@ namespace userInterface
 
         private void order_Click(object sender, EventArgs e)
         {
-
-            foreach(GeneralDataPanel panel in this.kitboxData)
+            List<KitBox> kitboxes = new List<KitBox> { };
+            foreach (GeneralDataPanel panel in this.kitboxData)
             {
-                
+                KitBox a = panel.GetKitBox();
+                foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(a))
+                {
+                    string name = descriptor.Name;
+                    object value = descriptor.GetValue(a);
+                    Console.WriteLine("{0}={1}", name, value);
+                }
+                kitboxes.Add(a);
             }
         }
     }

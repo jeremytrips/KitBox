@@ -18,12 +18,17 @@ namespace userInterface
 
         public override string GetCode()
         {
-            return this.attribute + secAttribute + this.Depth.ToString() + this.width.ToString() + this.sColor;
+            return this.attribute + secAttribute + this.Depth.ToString() + this.width.ToString() + ColorMapper.MapPrefix(this.color);
         }
 
-        public override Dictionary<string, Component> getData()
+        public override void DebugPrint()
         {
-            throw new NotImplementedException();
+            Console.WriteLine(this.GetCode());
         }
+
+        //public override Dictionary<string, Component> getData()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

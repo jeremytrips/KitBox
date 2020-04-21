@@ -15,16 +15,21 @@ namespace userInterface
         {
         }
 
-        public int Width { get => width; set => width = value; }
+        //public int Width { get => width; set => width = value; }
 
         public override string GetCode()
         {
             return this.attribute + secAttribute +this.Depth.ToString() + this.width.ToString() + this.sColor;
         }
 
-        public override Dictionary<string, Component> getData()
+        public override void DebugPrint()
         {
-            throw new NotImplementedException();
+            Console.WriteLine(this.GetCode());
         }
+
+        //public override Dictionary<string, Component> getData()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

@@ -35,7 +35,7 @@ namespace userInterface
         public LayerDataPanel(int heightOfBlockViewer, int width, int depth, List<string> availablePanelColor, List<int> availableHeight, List<string> avaiblableDoorColor, System.EventHandler clickHandler) : base()
         {
             this.layer = new Layer(width, depth);
-            this.blockViewer = new BlockViewer(heightOfBlockViewer, null);
+            this.blockViewer = new BlockViewer(heightOfBlockViewer);
             this.blockViewer.Click += clickHandler;
 
             this.MountLayout(availableHeight, availablePanelColor, avaiblableDoorColor);
@@ -44,13 +44,16 @@ namespace userInterface
         private void SetPanelColor(object sender, EventArgs e)
         {
             Color color = Color.FromName(ColorMapper.MapColor(this.availablePanelColor.GetChecked()));
+            this.blockViewer.PanelColor = color;
             this.layer.PanelColor = color;
             this.blockViewer.BackColor = Color.FromArgb(125, color);
         }
 
         private void SetLayerHeight(object sender, EventArgs e)
         {
-            this.layer.Height = Int16.Parse(this.availablePanelHeight.GetChecked());
+            int height = Int16.Parse(this.availablePanelHeight.GetChecked());
+            this.layer.Height = height;
+            this.blockViewer.LayerHeight = height;
         }
         private void SetDoorColor(object sender, EventArgs e)
         {
@@ -71,11 +74,13 @@ namespace userInterface
 
         public void SetlayerWidth(int width)
         {
+            this.blockViewer.LayerWidth = width;
             this.layer.Width = width;
         }
 
         public void SetlayerDepth(int depth)
         {
+            this.blockViewer.LayerDepth = depth;
             this.layer.Depth = depth;
         }
 
@@ -95,12 +100,9 @@ namespace userInterface
             this.BackColor = System.Drawing.Color.Red;
         }
 
-        public override Dictionary<String, object> GetData()
+        public Block GetBlock()
         {
-            return new Dictionary<String, object>
-            {
-                
-            };
+            return this.layer;
         }
 
         internal void SetBlockViewerColor(Color color)

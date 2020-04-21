@@ -19,11 +19,20 @@ namespace userInterface
 
         static private Dictionary<string, string> reverseColorMapper = new Dictionary<string, string>
             {
-                { "white", "Blanc" },
+                { "White", "Blanc" },
                 { "Brown", "Brun"  },
                 { "LightSteelBlue " , "Galvanise"},
                 { "black" , "Noir" }
             };
+
+        static private Dictionary<string, string> prefixMapper = new Dictionary<string, string>
+            {
+                { "White", "BL" },
+                { "Brown", "BR"  },
+                { "LightSteelBlue " , "GL"},
+                { "black" , "NR" }
+            };
+
 
         public static string MapColor(string color)
         {
@@ -32,7 +41,13 @@ namespace userInterface
 
         public static string MapColorFrench(Color color)
         {
+            Console.WriteLine(color.Name);
             return reverseColorMapper[color.Name];
+        }
+
+        public static string MapPrefix(Color color)
+        {
+            return prefixMapper[color.Name];
         }
     }
 }
