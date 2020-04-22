@@ -53,6 +53,8 @@ namespace userInterface
             }
         }
 
+        public abstract void GetCodes();
+
         public abstract double ComputePrice();
     }
 }

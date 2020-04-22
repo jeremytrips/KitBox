@@ -11,13 +11,21 @@ namespace userInterface
     class ClassicDoor : Door
     {
         private Color color;
+        private Cup cup = new Cup();
 
-        public ClassicDoor()
-        {}
+        public ClassicDoor(Color doorColor)
+        {
+            this.color = doorColor;
+        }   
 
         public override void DebugPrint()
         {
             this.GetCode();
+        }
+
+        public string GetCupCode()
+        {
+            return this.cup.GetCode();
         }
 
         public override string GetCode()

@@ -15,8 +15,6 @@ namespace userInterface
         {
         }
 
-        //public int Width { get => width; set => width = value; }
-
         public override string GetCode()
         {
             return this.attribute + secAttribute +this.Depth.ToString() + this.width.ToString() + this.sColor;

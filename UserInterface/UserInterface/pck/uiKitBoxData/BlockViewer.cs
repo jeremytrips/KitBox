@@ -42,7 +42,6 @@ namespace userInterface
 
         public Color PanelColor {set{
                 panelColor = value;
-                Console.WriteLine(value.Name);
                 this.panelColorIndicator.Text = value.Name;
             }
         }
@@ -56,7 +55,6 @@ namespace userInterface
         public int LayerHeight {set
             {
                 layerHeight = value;
-                Console.WriteLine(this.Size);
                 this.HeightIndicator.Text = value.ToString();
             }
         }

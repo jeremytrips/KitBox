@@ -7,10 +7,10 @@ namespace userInterface
 {
     class KitBox
     {
-        private Color angleColor = Color.White;
+        
         private Angle angle = new Angle();
 
-        private List<Block> kitBoxComponent = new List<Block> { };
+        private List<Block> kitBoxBlock = new List<Block> { };
 
         private static int id = 0;
         private double price;
@@ -19,9 +19,20 @@ namespace userInterface
 
         private int width;
         private int depth;
+        private int height;
 
         public KitBox()
         {
+        }
+
+        private void ComputeHeight()
+        {
+            int height = 0;
+            foreach(Block block in this.kitBoxBlock)
+            {
+                height += block.Height + 2 * 2;
+            }
+            this.height = height;
         }
 
         public KitBox(List<Block> blockList)
@@ -31,46 +42,29 @@ namespace userInterface
 
         public void AddBlock(Block block)
         {
-            this.kitBoxComponent.Add(block);
+            this.kitBoxBlock.Add(block);
+            this.ComputeHeight();
         }
 
         public void RemoveBlock(Block block)
         {
-            this.kitBoxComponent.Remove(block);
+            this.kitBoxBlock.Remove(block);
+            this.ComputeHeight();
         }
         
-        public int Width { get => width; set
-            {
-                width = value;
-                try
-                {
-
-                    foreach (Block block in this.kitBoxComponent)
-                    {
-                        block.Width = value;
-                    }
-                }
-                catch { }
-            }
+        public void Clear()
+        {
+            this.kitBoxBlock.Clear();
         }
 
-        public int Depth { get => depth; set
-            {
-                depth = value;
-                try
-                {
-                    foreach (Block block in this.kitBoxComponent)
-                    {
-                        block.Depth = value;
-                    }
-                } catch { }
-            }
-        }
+        public int Width { get => width; set => this.width = value;  }
+
+        public int Depth { get => depth; set => this.depth = value; }
+
         public Color AngleColor
         {
-            get => angleColor; set
+            set
             {
-                angleColor = value;
                 this.angle.Color = value;
             }
         }
@@ -83,7 +77,7 @@ namespace userInterface
         public double ComputePrice()
         {
             double price = 0;
-            foreach (Layer box in this.kitBoxComponent)
+            foreach (Layer box in this.kitBoxBlock)
             {
                 price += box.ComputePrice();
             }

@@ -31,14 +31,13 @@ namespace userInterface
         private RadioButtonLayout<string> availablePanelColor ;
         private RadioButtonLayout<string> avaiblableDoorColor;
 
-
         public LayerDataPanel(int heightOfBlockViewer, int width, int depth, List<string> availablePanelColor, List<int> availableHeight, List<string> avaiblableDoorColor, System.EventHandler clickHandler) : base()
         {
+            this.MountLayout(availableHeight, availablePanelColor, avaiblableDoorColor);
+
             this.layer = new Layer(width, depth);
             this.blockViewer = new BlockViewer(heightOfBlockViewer);
             this.blockViewer.Click += clickHandler;
-
-            this.MountLayout(availableHeight, availablePanelColor, avaiblableDoorColor);
         }
 
         private void SetPanelColor(object sender, EventArgs e)
@@ -60,14 +59,17 @@ namespace userInterface
             string color = this.avaiblableDoorColor.GetChecked();
             if (color == "No door")
             {
-                this.layer.HasDoor = false;
+                this.layer.DoorType = null;
             }
             else
             {
                 if (color != "Verre")
                 {
+                    this.layer.DoorType = new ClassicDoor(Color.FromName(ColorMapper.MapColor(color)));
                     this.blockViewer.DoorColor = Color.FromName(ColorMapper.MapColor(color));
-                    this.layer.DoorColor = Color.FromName(ColorMapper.MapColor(color));
+                } else
+                {
+                    this.layer.DoorType = new GlassDoor();
                 }
             }
         }
@@ -86,11 +88,11 @@ namespace userInterface
 
         private void MountLayout(List<int> availablePanelHeight, List<string> availablePanelColor, List<string> avaiblableDoorColor)
         {
-            avaiblableDoorColor.Add("No door");
-            this.avaiblableDoorColor = new RadioButtonLayout<string>(200, this.SetDoorColor, avaiblableDoorColor);     
+            avaiblableDoorColor.Add("No door");  
             this.availablePanelHeight = new RadioButtonLayout<int>(0,this.SetLayerHeight, availablePanelHeight);
             this.availablePanelColor = new RadioButtonLayout<string>(100, this.SetPanelColor, availablePanelColor);
-            
+            this.avaiblableDoorColor = new RadioButtonLayout<string>(200, this.SetDoorColor, avaiblableDoorColor);
+
             this.Controls.Add(this.availablePanelHeight);
             this.Controls.Add(this.availablePanelColor);
 
@@ -122,14 +124,11 @@ namespace userInterface
         }
 
 
-        internal void DiplaysDoorLayout(bool v)
+        public void DisplayDoorLayout(bool v)
         {
             if (v)
             {
-                this.Controls.Add(avaiblableDoorColor);
-            }else
-            {
-                this.Controls.Remove(avaiblableDoorColor);
+                this.Controls.Add(this.avaiblableDoorColor);
             }
         }
     }

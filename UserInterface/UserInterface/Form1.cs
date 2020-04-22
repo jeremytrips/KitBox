@@ -111,6 +111,7 @@ namespace userInterface
             foreach (GeneralDataPanel panel in this.kitboxData)
             {
                 KitBox a = panel.GetKitBox();
+                
                 foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(a))
                 {
                     string name = descriptor.Name;
@@ -118,6 +119,7 @@ namespace userInterface
                     Console.WriteLine("{0}={1}", name, value);
                 }
                 kitboxes.Add(a);
+                panel.ClearKitbox();
             }
         }
     }

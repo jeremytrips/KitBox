@@ -6,9 +6,7 @@ namespace userInterface
 {
     class Layer : Block
     {
-        private Color panelColor;
-        private bool hasDoor;
-        private Color doorColor;
+        private Door doorType;
         private BackPanel backPanel = new BackPanel();
         private LeftRightPanel leftRightPanel = new LeftRightPanel();
         private TopBottomPanel topBottomPanel = new TopBottomPanel();
@@ -19,20 +17,30 @@ namespace userInterface
             this.Depth = depth;
         }
 
-        public Color DoorColor { get => doorColor; set => doorColor = value; }
-        public Color PanelColor { get => panelColor; set
+        public Color PanelColor {
+            set
             {
-                panelColor = value;
                 backPanel.Color = value;
                 leftRightPanel.Color = value;
                 topBottomPanel.Color = value;
             }
         }
 
-        public bool HasDoor { get => hasDoor; set => hasDoor = value; }
+        public new int Height
+        {
+            get => this.height;
+            set
+            {
+                base.Height = value;
+                this.backPanel.Height = value;
+                this.leftRightPanel.Height = value;
+            }
+
+        }
 
         public new int Width { get => width; set
             {
+                base.Width = value;
                 this.width = value;
                 this.backPanel.Width = value;
                 this.topBottomPanel.Width = value;
@@ -44,19 +52,29 @@ namespace userInterface
         {
             get => this.depth; set
             {
+                base.Depth = value;
                 this.depth = value;
-                this.backPanel.Depth = value;
                 this.topBottomPanel.Depth = value;
+                this.leftRightPanel.Depth = value;
             }
         }
 
-        public void Build(int width, int depth)
-        {
-        }
+        internal Door DoorType { get => doorType; set => doorType = value; }
 
         public override double ComputePrice()
         {
             throw new System.NotImplementedException();
+        }
+
+        public override void GetCodes()
+        {
+            List<string> codes = new List<string> { };
+            codes.Add(this.backPanel.GetCode());
+            codes.Add(this.leftRightPanel.GetCode());
+            codes.Add(this.topBottomPanel.GetCode());
+            codes.Add(this.cleat.GetCode());
+            codes.Add(this.doorType.GetCode());
+
         }
     }
 }

@@ -17,7 +17,7 @@ namespace userInterface
 
         public override string GetCode()
         {
-            return attribute + this.height.ToString();
+            return attribute + (this.height - 5).ToString();
         }
 
         public override void DebugPrint()

@@ -41,7 +41,6 @@ namespace userInterface
         {
             this.Location = new System.Drawing.Point(0, y);
             this.Size = new System.Drawing.Size(400, 100);
-            Console.WriteLine(rnd.Next(256).ToString() + " " + rnd.Next(256).ToString() + " " + rnd.Next(256).ToString());
             this.BackColor = System.Drawing.Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
         }
 

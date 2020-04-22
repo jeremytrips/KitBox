@@ -23,7 +23,7 @@ namespace userInterface.pck._uiKitboxTabControl
         {
             // Mounting self layout
             this.Location = new System.Drawing.Point(0, 0);
-            this.Size = new System.Drawing.Size(529, 60);
+            this.Size = new System.Drawing.Size(530, 60);
         }
     }
 }

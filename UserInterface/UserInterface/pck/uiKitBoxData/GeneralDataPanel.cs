@@ -14,10 +14,10 @@ namespace userInterface
 {
     class GeneralDataPanel : DataPanel
     {
-        private bool displayDoor = false;
         private List<List<int>> availableKitboxDimensions; //{depth, height, doorWidth, width}
         private List<string> availablePanelColorList;
         private List<string> availableDoorPanelColorList;
+        private List<string> availableAngleColor;
 
 
         // Store the data of each Block of the kitbox.
@@ -42,18 +42,19 @@ namespace userInterface
         private Label label2 = new Label();
         private Label label3 = new Label();
         private Label label4 = new Label();
+        private Button saveDimensionButton = new Button();
 
         public GeneralDataPanel(List<List<int>> dimensions, List<string> availableAngleColor, List<string> availablePanelColor, List<string> availableDoorPanelColor) : base()
         {
             this.availableKitboxDimensions = dimensions;
             this.availablePanelColorList = availablePanelColor;
             this.availableDoorPanelColorList = availableDoorPanelColor;
+            this.availableAngleColor = availableAngleColor;
+
             this.MountLayout();
-            this.AddLayer();
-            this.SetComboBox(availableAngleColor);
-            this.availableDepthList.SelectedIndexChanged += new EventHandler(this.SetKitboxDepth);
-            this.availableWidthList.SelectedIndexChanged += new EventHandler(this.SetKitboxWidth);
+            this.SetComboBox();
             this.avaiblableAngleColorList.SelectedIndexChanged += new EventHandler(this.SetAngleColor);
+
         }
 
         private void SetAngleColor(object sender, EventArgs e)
@@ -95,6 +96,8 @@ namespace userInterface
                 int index = this.BlockDataPanelList.Count;
                 EventHandler blockDisplayClickHandler = new System.EventHandler((object sender, EventArgs e) => this.HandlePanelClick(sender, e, index));
                 LayerDataPanel newBlockDataPanel = new LayerDataPanel(index, this.kitbox.Width, this.kitbox.Depth, this.availablePanelColorList, this.availableKitboxDimensions[2], this.availableDoorPanelColorList, blockDisplayClickHandler);
+
+                newBlockDataPanel.DisplayDoorLayout(this.kitbox.Width > 64);
 
                 this.BlockDataPanelList.Add(newBlockDataPanel);
                 this.selectedBlockDataPanel = newBlockDataPanel;
@@ -141,28 +144,23 @@ namespace userInterface
             this.kitbox.Depth = (int) dataToSet["depth"];
         }
 
-        private void SetKitboxWidth(object sender, EventArgs e)
-        {
-            int width = (int)this.availableWidthList.SelectedItem;
-            this.kitbox.Width = width;
-            foreach (LayerDataPanel block in this.BlockDataPanelList)
-            {
-                block.DiplaysDoorLayout(width > 64);
-                block.SetlayerWidth(width);
-            }
-        }
-
-        private void SetKitboxDepth(object sender, EventArgs e)
+        private void SaveDimension(object sender, EventArgs e)
         {
             int depth = (int)this.availableDepthList.SelectedItem;
+            int width = (int)this.availableWidthList.SelectedItem;
+
+            this.kitbox.Width = width;
             this.kitbox.Depth = depth;
-            foreach (LayerDataPanel block in this.BlockDataPanelList)
-            {
-                block.SetlayerDepth(depth);
-            }
+            
+            this.AddLayer();
         }
 
-        private void SetComboBox(List<string> availableAngleColor)
+        public void ClearKitbox()
+        {
+            this.kitbox.Clear();
+        }
+
+        private void SetComboBox()
         {
             // TODO add color combo box
             if (!(this.availableKitboxDimensions[0][0] == -1))
@@ -171,14 +169,17 @@ namespace userInterface
                 {
                     this.availableWidthList.Items.Add(i);
                 }
+                this.availableWidthList.SelectedIndex = 0;
                 foreach (int i in this.availableKitboxDimensions[0])
                 {
                     this.availableDepthList.Items.Add(i);
                 }
-                foreach (string color in availableAngleColor)
+                this.availableDepthList.SelectedIndex = 0;
+                foreach (string color in this.availableAngleColor)
                 {
                     this.avaiblableAngleColorList.Items.Add(color);
                 }
+                this.avaiblableAngleColorList.SelectedIndex = 0;
             }
             // todo fire a server connection alert
         }
@@ -194,6 +195,7 @@ namespace userInterface
             this.Controls.Add(this.label1);
             this.Controls.Add(this.avaiblableAngleColorList);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.saveDimensionButton);
             this.BackColor = System.Drawing.Color.AntiqueWhite;
             this.Location = new System.Drawing.Point(30, 100);
             this.Size = new System.Drawing.Size(400, 465);
@@ -222,6 +224,12 @@ namespace userInterface
             this.label4.Location = new System.Drawing.Point(27, 114);
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.Text = "KitBox angle Color: ";
+
+            // Save button mounting
+            this.saveDimensionButton.Location = new Point(239, 130);
+            this.saveDimensionButton.Size = new Size(124, 21);
+            this.saveDimensionButton.Text = "Set dimensions";
+            this.saveDimensionButton.Click += new EventHandler(this.SaveDimension);
 
             // width ComboBox mounting
             this.availableWidthList.FormattingEnabled = false;
