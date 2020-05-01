@@ -76,6 +76,23 @@
     <Compile Include="pck\components\cup\Cup.cs" />
     <Compile Include="pck\components\Door\ClassicDoor.cs" />
     <Compile Include="pck\components\Door\GlassDoor.cs" />
+    <Compile Include="pck\uiOrder\BackOrderAlert.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pck\uiOrder\ConfirOrderLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pck\uiOrder\DisplayOrderLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pck\uiOrder\InStockPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pck\uiOrder\UserDataLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pck\user\User.cs" />
+    <Compile Include="pck\utils\WidthMapper.cs" />
     <Compile Include="pck\utils\ColorMapper.cs" />
     <Compile Include="pck\kitboxblock\Layer.cs" />
     <Compile Include="pck\kitboxblock\Block.cs" />
@@ -128,6 +145,7 @@
     <Compile Include="pck\uiRadioButton\RadioButtonLayout.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="pck\utils\Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -143,6 +161,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

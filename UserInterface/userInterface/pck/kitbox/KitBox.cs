@@ -21,6 +21,8 @@ namespace userInterface
         private int depth;
         private int height;
 
+        private List<int> availableAngleHeight;
+
         public KitBox()
         {
         }
@@ -33,6 +35,22 @@ namespace userInterface
                 height += block.Height + 2 * 2;
             }
             this.height = height;
+            if (this.availableAngleHeight.Contains(this.height))
+            {
+                this.angle.Height = this.height;
+                this.angle.Cutted = false;  
+            } else
+            {
+                foreach(int x in this.availableAngleHeight)
+                {
+                    if(x>this.height)
+                    {
+                        this.angle.Height = x;
+                        this.angle.Cutted = true;
+                        break;
+                    }
+                }
+            }
         }
 
         public KitBox(List<Block> blockList)
@@ -69,6 +87,14 @@ namespace userInterface
             }
         }
 
+        public List<int> AvailableAngleHeight
+        {
+            get => availableAngleHeight; set
+            {
+                value.Sort();
+                availableAngleHeight = value;
+            }
+        }
         public bool Equals(int i)
         {
             return this.selfId == i;
@@ -82,6 +108,16 @@ namespace userInterface
                 price += box.ComputePrice();
             }
             return price;
+        }
+
+        public List<List<string>> GetCodes()
+        {
+            List<List<string>> bill =  new List<List<string>> { };
+            foreach(Block block in this.kitBoxBlock)
+            {
+                bill.Add(block.GetCodes());
+            }
+            return bill;
         }
     }
 }

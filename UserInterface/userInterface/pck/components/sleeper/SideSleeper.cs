@@ -8,6 +8,7 @@ namespace userInterface
 {
     class SideSleeper : Sleeper
     {
+        private readonly string secAttribue = "G";
         public SideSleeper()
         {
         }
@@ -19,7 +20,7 @@ namespace userInterface
 
         public override string GetCode()
         {
-            return this.attribute + this.depth;
+            return this.attribute + this.secAttribue + this.depth;
         }
     }
 }

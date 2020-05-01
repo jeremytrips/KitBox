@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
-abstract class Order
+
+namespace userInterface
 {
-	public Order()
-	{
-
+	abstract class Order
+	{	
+		protected Dictionary<string, int> orderedComponents = new Dictionary<string, int> { };	
 	}
 }

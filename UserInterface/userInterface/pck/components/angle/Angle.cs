@@ -6,11 +6,12 @@ namespace userInterface
 {
     public class Angle: Component 
     {
-        private Color color;
-        private bool cutted;
+        private Color color = Color.White;
+        private bool cutted = false;
         protected string attribute = "COR";
 
         public Color Color { get => color; set => color = value; }
+        public bool Cutted { get => cutted; set => cutted = value; }
 
         public Angle()
         {
@@ -18,7 +19,7 @@ namespace userInterface
 
         public override string GetCode()
         {
-            string dec = this.cutted ? "DEC" : "";
+            string dec = this.Cutted ? "DEC" : "";
             return this.attribute + this.height.ToString() + ColorMapper.MapPrefix(this.Color) + dec;
 
         }
@@ -27,17 +28,6 @@ namespace userInterface
         {
             this.GetCode();
         }
-
-
-        /*Returns a dictionary with all panel information*/
-        public Dictionary<string, Object> GetDescription()
-        {
-            Dictionary<string, Object> Description = new Dictionary<string, Object>();
-            Description.Add("color", this.Color);
-            Description.Add("code", this.height);
-            return Description;
-        }
-
     }
 }
 

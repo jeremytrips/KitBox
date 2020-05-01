@@ -9,7 +9,7 @@ namespace userInterface
      */
     abstract class Panel : Component
     {
-        protected Color color;
+        protected Color color = Color.White;
         protected string sColor;
 
         public Color Color { get => color; set

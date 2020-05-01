@@ -10,7 +10,7 @@ namespace userInterface
     /*Inheritance of the abstract class door, the classic door*/
     class ClassicDoor : Door
     {
-        private Color color;
+        private Color color = Color.White;
         private Cup cup = new Cup();
 
         public ClassicDoor(Color doorColor)
@@ -30,7 +30,7 @@ namespace userInterface
 
         public override string GetCode()
         {
-            return this.attribute + this.height.ToString() + this.width.ToString() + ColorMapper.MapPrefix(this.color) ; 
+            return this.attribute + this.height.ToString() + WidthMapper.MapDoorWidth(this.width) + ColorMapper.MapPrefix(this.color) ; 
         }
     }
 }

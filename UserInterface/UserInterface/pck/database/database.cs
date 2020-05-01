@@ -13,30 +13,7 @@ namespace userInterface
     public class Database
     {
         private static string connectionString = @"server=localhost;port=3306;user=root;database=kitbox;password=Mgbgt1979";
-        private static MySqlConnection dataBaseConnection;
 
-        public static bool LogIn(string email, string password)
-        {
-            String query = string.Format("SELECT * FROM kitbox.user WHERE email='{0}'", email);
-            MySqlCommand command = new MySqlCommand(query, dataBaseConnection);
-
-            dataBaseConnection.Open();
-            MySqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-
-            bool login = reader["password"].Equals(password);
-
-            dataBaseConnection.Close();
-            return login;
-        }
-
-        public static void Insert(String query)
-        {
-            MySqlCommand cmd = new MySqlCommand(query, dataBaseConnection);
-            dataBaseConnection.Open();
-            cmd.ExecuteNonQuery();
-            dataBaseConnection.Close();
-        }
         private static MySqlDataReader Fetch(string query)
         {
             MySqlConnection dataBaseConnection = new MySqlConnection(connectionString);
@@ -67,6 +44,18 @@ namespace userInterface
                 return null;
             }
         }
+
+        internal static List<int> FetchAvailableAngleHeight()
+        {
+            List<int> list = new List<int> { };
+            MySqlDataReader rdr = Fetch(" select distinct height from kitbox.component where reference like 'Corni %';");
+            while(rdr.Read())
+            {
+                list.Add(rdr.GetInt16(0));
+            }
+            return list;
+        }
+
         public static List<List<int>> FetchAvailableDimension()
         {
             List<int> depth = new List<int>();
@@ -141,6 +130,12 @@ namespace userInterface
             }
             return colorList;
         }
+
+        internal static void HandleOrder()
+        {
+            throw new NotImplementedException();
+        }
+
         internal static List<string> FetchDoorPanelAvailableColor()
         {
             MySqlDataReader rdr = Fetch("SELECT DISTINCT color FROM component WHERE code LIKE 'POR%';");
@@ -158,6 +153,34 @@ namespace userInterface
                 return colorList;
             }
             return colorList;
+        }
+
+        public static List<List<object>> HandleOrder(Dictionary<string, int> data)
+        {
+            List<List<object>> a = new List<List<object>> { };
+            // List(code, reference, disponibilité, prix/u, qté, prix total
+            foreach (string component in data.Keys)
+            {
+                MySqlDataReader rdr = Fetch(String.Format("SELECT reference, stock_min_required, number_by_box, stock, price FROM kitbox.component WHERE code LIKE '{0}';", component));
+                List<object> orderEntry = new List<object> { };
+                while (rdr.Read())
+                {
+                    orderEntry.Add(component);                                                 // Code
+                    orderEntry.Add(rdr.GetString(0));                                          // Reference
+                    orderEntry.Add(data[component] * rdr.GetInt16(2) < rdr.GetInt16(3));       // Availability
+                    orderEntry.Add(rdr.GetFloat(4));                                           // Unit price
+                    orderEntry.Add(data[component] * rdr.GetInt16(2));                         // Unit needed
+                    orderEntry.Add(data[component] * rdr.GetInt16(2) * rdr.GetFloat(4));       // Total price
+                }
+                a.Add(orderEntry);
+            }
+            return a;
+        }
+
+        public static void HandleOrder(List<List<object>> order, bool saveOrder)
+        {
+            DateTime date = DateTime.Now;
+
         }
     }
 }

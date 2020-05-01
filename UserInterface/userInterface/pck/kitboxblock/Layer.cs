@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -6,7 +6,8 @@ namespace userInterface
 {
     class Layer : Block
     {
-        private Door doorType;
+        private Door doorType = new ClassicDoor(Color.White);
+        private Cup cup = new Cup();
         private BackPanel backPanel = new BackPanel();
         private LeftRightPanel leftRightPanel = new LeftRightPanel();
         private TopBottomPanel topBottomPanel = new TopBottomPanel();
@@ -59,22 +60,38 @@ namespace userInterface
             }
         }
 
-        internal Door DoorType { get => doorType; set => doorType = value; }
+        internal Door DoorType
+        {
+            get => doorType; set
+            {
+                doorType = value;
+                if (value != null) {
+                    this.doorType.Width = this.width;
+                    this.doorType.Height = this.height;
+                }
+            }
+        }
 
         public override double ComputePrice()
         {
             throw new System.NotImplementedException();
         }
 
-        public override void GetCodes()
+        public override List<string> GetCodes()
         {
             List<string> codes = new List<string> { };
             codes.Add(this.backPanel.GetCode());
             codes.Add(this.leftRightPanel.GetCode());
             codes.Add(this.topBottomPanel.GetCode());
             codes.Add(this.cleat.GetCode());
-            codes.Add(this.doorType.GetCode());
-
+            if(this.doorType != null) { 
+                codes.Add(this.doorType.GetCode());
+                codes.Add(this.cup.GetCode());
+            }
+            codes.Add(this.frontSleeper.GetCode());
+            codes.Add(this.sideSleeper.GetCode());
+            codes.Add(this.backSleeper.GetCode());
+            return codes;
         }
     }
 }

@@ -24,22 +24,5 @@ namespace userInterface
         {
             Console.WriteLine(this.GetCode());
         }
-
-        //public override Dictionary<string, Component> getData()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        /*Returns a dictionary with all panel information*/
-        //public Dictionary<string, Object> GetDescription()
-        //{
-        //    Dictionary<string, Object> Description = new Dictionary<string, Object>
-        //    {
-        //        { "price", this.price },
-        //        { "length", this.length },
-        //        { "ref", this.name }
-        //    };
-        //    return Description;
-        //}
     }
 }

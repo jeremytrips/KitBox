@@ -17,7 +17,7 @@ namespace userInterface
 {
     public partial class Form1 : Form
     {
-
+        private ConfirmOrderLayout confirmOrderLayout = new ConfirmOrderLayout();
         private List<GeneralDataPanel> kitboxData = new List<GeneralDataPanel> { };
         private GeneralDataPanel selectedGeneralDataPanel;
 
@@ -27,6 +27,7 @@ namespace userInterface
         private List<string> availableAngleColor = Database.FetchAngleAvailableColor();
         private List<string> availablePanelColor = Database.FetchPanelAvailableColor();
         private List<string> availbleDoorPanelColor = Database.FetchDoorPanelAvailableColor();
+        private List<int> availableAngleHeight = Database.FetchAvailableAngleHeight();
 
         public Form1()
         {
@@ -49,7 +50,7 @@ namespace userInterface
             /*
              * Add a new kitbox
              */
-            GeneralDataPanel generalDataPanel = new GeneralDataPanel(this.AvailableKitboxDimension, this.availableAngleColor, this.availablePanelColor, this.availbleDoorPanelColor);
+            GeneralDataPanel generalDataPanel = new GeneralDataPanel(this.AvailableKitboxDimension, this.availableAngleHeight, this.availableAngleColor, this.availablePanelColor, this.availbleDoorPanelColor);
             this.kitboxData.Add(generalDataPanel);
             this.selectedGeneralDataPanel = generalDataPanel;
             this.Controls.Add(generalDataPanel);
@@ -102,25 +103,26 @@ namespace userInterface
              * Add a layer in the current selected kitbox.
              */
             this.selectedGeneralDataPanel.AddLayer();
-
         }
 
         private void order_Click(object sender, EventArgs e)
         {
-            List<KitBox> kitboxes = new List<KitBox> { };
+            // KITBOXLIS<COMPONENTLIS<code, number>>>
+            List<List<List<string>>> bill = new List<List<List<string>>> { };
             foreach (GeneralDataPanel panel in this.kitboxData)
             {
-                KitBox a = panel.GetKitBox();
-                
-                foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(a))
-                {
-                    string name = descriptor.Name;
-                    object value = descriptor.GetValue(a);
-                    Console.WriteLine("{0}={1}", name, value);
-                }
-                kitboxes.Add(a);
+                KitBox kitBox = panel.GetKitBox();
+                bill.Add(kitBox.GetCodes());
                 panel.ClearKitbox();
             }
+
+            Dictionary<string, int> clearedBill = Utils.ClearBill(bill);
+
+            List<List<object>> lists = Database.HandleOrder(clearedBill);
+            this.confirmOrderLayout.Data = lists;
+
+            this.Controls.Add(this.confirmOrderLayout);
+            this.confirmOrderLayout.BringToFront();
         }
     }
-}
+} 

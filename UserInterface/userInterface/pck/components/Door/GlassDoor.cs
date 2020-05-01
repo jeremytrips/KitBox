@@ -17,7 +17,7 @@ namespace userInterface
 
         public override string GetCode()
         {
-            return this.attribute + this.height + this.width + "VE";
+            return this.attribute + this.height + WidthMapper.MapDoorWidth(this.width) + "VE";
         }
     }
 }

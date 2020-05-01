@@ -44,12 +44,13 @@ namespace userInterface
         private Label label4 = new Label();
         private Button saveDimensionButton = new Button();
 
-        public GeneralDataPanel(List<List<int>> dimensions, List<string> availableAngleColor, List<string> availablePanelColor, List<string> availableDoorPanelColor) : base()
+        public GeneralDataPanel(List<List<int>> dimensions, List<int>availableAngleHeight, List<string> availableAngleColor, List<string> availablePanelColor, List<string> availableDoorPanelColor) : base()
         {
             this.availableKitboxDimensions = dimensions;
             this.availablePanelColorList = availablePanelColor;
             this.availableDoorPanelColorList = availableDoorPanelColor;
             this.availableAngleColor = availableAngleColor;
+            this.kitbox.AvailableAngleHeight = availableAngleHeight;
 
             this.MountLayout();
             this.SetComboBox();

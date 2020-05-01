@@ -41,7 +41,6 @@ namespace userInterface
 
         public static string MapColorFrench(Color color)
         {
-            Console.WriteLine(color.Name);
             return reverseColorMapper[color.Name];
         }
 

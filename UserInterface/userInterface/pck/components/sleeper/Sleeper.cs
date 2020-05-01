@@ -9,6 +9,6 @@ namespace userInterface
     // Sleper is the best traduction I've found for "Travese"
     abstract class Sleeper:Component
     {
-        protected string attribute = "TRF";
+        protected string attribute = "TR";
     }
 }
