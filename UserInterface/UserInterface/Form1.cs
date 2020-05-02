@@ -13,7 +13,7 @@ namespace userInterface
 {
     public partial class Form1 : Form
     {
-        private ConfirmOrderLayout confirmOrderLayout = new ConfirmOrderLayout();
+        private ConfirmOrderLayout confirmOrderLayout;
         private List<GeneralDataPanel> kitboxData = new List<GeneralDataPanel> { };
         private GeneralDataPanel selectedGeneralDataPanel;
 
@@ -30,6 +30,8 @@ namespace userInterface
             InitializeComponent();
             this.oldOrderLayout = new OldOrderLayout(this.HandleOldOrder, "Enter user name");
             this.Controls.Add(this.oldOrderLayout);
+            this.confirmOrderLayout = new ConfirmOrderLayout(this.ResetApp);
+            this.AddKitbox_Click(null, null);
         }
 
         private void OldOrderButton_Click(object sender, EventArgs e)
@@ -60,16 +62,19 @@ namespace userInterface
             /*
              * Used to remove current KitBox data layout and display the selected one.
              */
-            foreach (GeneralDataPanel kitBox in this.kitboxData)
+            try
             {
-                try
+                foreach (GeneralDataPanel kitBox in this.kitboxData)
                 {
                     this.Controls.Remove(kitBox);
                 }
-                catch { }
+                this.selectedGeneralDataPanel = this.kitboxData[this.kitBoxToOrderTabs.SelectedIndex];
+                this.Controls.Add(this.selectedGeneralDataPanel);
             }
-            this.selectedGeneralDataPanel = this.kitboxData[this.kitBoxToOrderTabs.SelectedIndex];
-            this.Controls.Add(this.selectedGeneralDataPanel);
+            catch (ArgumentOutOfRangeException)
+            {
+
+            }
         }
 
         private void HandleOldOrder(object sender, EventArgs e)
@@ -114,12 +119,23 @@ namespace userInterface
             }
 
             order.ClearedBill = Utils.ClearBill(bill);
-
-
             this.confirmOrderLayout.Order = order;
 
             this.Controls.Add(this.confirmOrderLayout);
             this.confirmOrderLayout.BringToFront();
+        }
+
+        private void ResetApp()
+        {
+            foreach(GeneralDataPanel gdp in this.kitboxData)
+            {
+                gdp.Clear();
+                this.Controls.Remove(gdp);
+            }
+            kitboxData.Clear();
+            selectedGeneralDataPanel = null;
+
+            this.kitBoxToOrderTabs.TabPages.Clear();
         }
     }
 } 

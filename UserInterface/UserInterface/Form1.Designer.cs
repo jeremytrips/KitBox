@@ -33,6 +33,7 @@
             this.RemoveLayerButton = new System.Windows.Forms.Button();
             this.AddLayerButton = new System.Windows.Forms.Button();
             this.order = new System.Windows.Forms.Button();
+            this.reset = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // kitBoxToOrderTabs
@@ -85,11 +86,21 @@
             this.order.UseVisualStyleBackColor = true;
             this.order.Click += new System.EventHandler(this.order_Click);
             // 
+            // reset
+            // 
+            this.reset.Location = new System.Drawing.Point(932, 3);
+            this.reset.Name = "reset";
+            this.reset.Size = new System.Drawing.Size(75, 23);
+            this.reset.TabIndex = 8;
+            this.reset.Text = "temp";
+            this.reset.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 681);
+            this.Controls.Add(this.reset);
             this.Controls.Add(this.order);
             this.Controls.Add(this.AddLayerButton);
             this.Controls.Add(this.RemoveLayerButton);
@@ -109,6 +120,7 @@
         private System.Windows.Forms.Button RemoveLayerButton;
         private System.Windows.Forms.Button AddLayerButton;
         private System.Windows.Forms.Button order;
+        private System.Windows.Forms.Button reset;
     }
 }
 

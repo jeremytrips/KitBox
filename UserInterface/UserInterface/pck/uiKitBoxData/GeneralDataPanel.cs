@@ -5,11 +5,6 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Drawing;
 
-/*
- * Todo :   
- * 
- */
-
 namespace userInterface
 {
     class GeneralDataPanel : DataPanel
@@ -19,19 +14,18 @@ namespace userInterface
         private List<string> availableDoorPanelColorList;
         private List<string> availableAngleColor;
 
-
         // Store the data of each Block of the kitbox.
-        private List<LayerDataPanel> BlockDataPanelList = new List<LayerDataPanel> { };
+        private List<LayerDataPanel> BlockDataPanelList;
         private LayerDataPanel selectedBlockDataPanel;
 
         // Store the number of block to check the max ammount
         private int numberOfBLock = 0;
 
         // Kitbox that is currently create by the user.
-        private KitBox kitbox = new KitBox();
+        private KitBox kitbox ;
 
         // Tab in the TabBox it is the actual representation of the kibtox on the interface
-        private KitBoxTab kitboxTab = new KitBoxTab();
+        private KitBoxTab kitboxTab;
 
         // ui object
         private ComboBox avaiblableAngleColorList = new ComboBox();
@@ -46,16 +40,18 @@ namespace userInterface
 
         public GeneralDataPanel(List<List<int>> dimensions, List<int>availableAngleHeight, List<string> availableAngleColor, List<string> availablePanelColor, List<string> availableDoorPanelColor) : base()
         {
+            this.avaiblableAngleColorList.SelectedIndexChanged += new EventHandler(this.SetAngleColor);
+            this.kitbox = new KitBox();
+            this.kitboxTab = new KitBoxTab();
+            this.BlockDataPanelList = new List<LayerDataPanel> { };
+
             this.availableKitboxDimensions = dimensions;
             this.availablePanelColorList = availablePanelColor;
             this.availableDoorPanelColorList = availableDoorPanelColor;
             this.availableAngleColor = availableAngleColor;
-            this.kitbox.AvailableAngleHeight = availableAngleHeight;
-
+            this.kitbox.AvailableAngleHeight = availableAngleHeight; 
             this.MountLayout();
             this.SetComboBox();
-            this.avaiblableAngleColorList.SelectedIndexChanged += new EventHandler(this.SetAngleColor);
-
         }
 
         private void SetAngleColor(object sender, EventArgs e)
@@ -116,6 +112,18 @@ namespace userInterface
             {
                 MessageBox.Show("You can't add more than 8 layer to your kitbox", "Warning");
             }
+        }
+
+        internal void Clear()
+        { 
+            foreach(LayerDataPanel ldp in this.BlockDataPanelList)
+            {
+                this.Controls.Remove(ldp);
+            }
+            this.kitboxTab.Controls.Clear();
+            this.BlockDataPanelList.Clear();
+            this.selectedBlockDataPanel = null;
+            this.kitboxTab.ClearId();
         }
 
         public void RemoveLayer()

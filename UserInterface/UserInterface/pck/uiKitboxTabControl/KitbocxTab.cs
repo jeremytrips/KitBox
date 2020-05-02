@@ -11,19 +11,17 @@ namespace userInterface
 {
     class KitBoxTab : TabPage
     {
-        static int id = 0;    
-
-        //public KitBoxTab(KitBox kitbox)
-        //{
-        //    id++;
-        //    this.KitBox = kitbox;
-        //    this.MountTab();
-        //}
+        static int id = 0; 
 
         public KitBoxTab()
         {
             id++;
             this.MountTab();
+        }
+
+        public void ClearId()
+        {
+            id = 0;
         }
 
         public void SetBackColor(Color color)

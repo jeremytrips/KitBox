@@ -13,6 +13,7 @@ namespace userInterface
         DisplayOrderLayout displayOrderLayout = new DisplayOrderLayout();
         Button continueButton = new Button();
         ClientOrder order;
+        private Action resetApp;
 
         public ClientOrder Order
         {
@@ -22,10 +23,16 @@ namespace userInterface
             }
         }
 
-        public ConfirmOrderLayout() 
+        public ConfirmOrderLayout(Action resetApp) 
         {
             this.MountLayout();
             this.Controls.Add(userDatalayout);
+            this.resetApp = resetApp;
+        }
+
+        public ConfirmOrderLayout()
+        {
+            
         }
 
         private void SwitchLayout(object sender, EventArgs e)
@@ -48,6 +55,7 @@ namespace userInterface
             DialogResult result = MessageBox.Show(message, caption, button);
             this.order.SaveOrder();
             this.Parent.Controls.Remove(this);
+            this.resetApp();
         }
 
         private void MountLayout()
