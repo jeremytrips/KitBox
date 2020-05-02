@@ -11,24 +11,27 @@ namespace userInterface
     {
         UserDataLayout userDatalayout = new UserDataLayout();
         DisplayOrderLayout displayOrderLayout = new DisplayOrderLayout();
-        System.Windows.Forms.Button continueButton = new System.Windows.Forms.Button();
+        Button continueButton = new Button();
+        ClientOrder order;
 
-        public List<List<object>> Data {set
+        public ClientOrder Order
+        {
+            set
             {
-                this.displayOrderLayout.Data = value;
+                order = value;
             }
         }
 
         public ConfirmOrderLayout() 
         {
-
             this.MountLayout();
             this.Controls.Add(userDatalayout);
         }
 
         private void SwitchLayout(object sender, EventArgs e)
         {
-            this.displayOrderLayout.User = this.userDatalayout.SaveUserData();
+            this.order.User = this.userDatalayout.SaveUserData();
+            this.displayOrderLayout.Order = this.order;
             this.Controls.Remove(this.userDatalayout);
             this.Controls.Add(this.displayOrderLayout);
             this.displayOrderLayout.SendToBack();
@@ -43,7 +46,7 @@ namespace userInterface
             string caption = "Kitbox payement";
             MessageBoxButtons button = MessageBoxButtons.OK;
             DialogResult result = MessageBox.Show(message, caption, button);
-            
+            this.order.SaveOrder();
             this.Parent.Controls.Remove(this);
         }
 

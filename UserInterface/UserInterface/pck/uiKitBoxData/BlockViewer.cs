@@ -75,12 +75,6 @@ namespace userInterface
             }
         }
 
-        public void setNoColorColor(string noColor)
-        {
-            // Sometimes selected color are not really color so we need to pass string to set the selected door
-            // TODO
-        }
-
         private void MountLayout(int pos_y)
         {
             this.index = pos_y;

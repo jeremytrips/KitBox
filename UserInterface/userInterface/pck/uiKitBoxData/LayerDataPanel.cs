@@ -6,12 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-/*
- * Todo :   - Fix the set and get data function
- *          - Handle when door is glass
- * 
- */
-
 namespace userInterface
 {
     class LayerDataPanel: DataPanel

@@ -13,7 +13,6 @@ namespace userInterface
         private List<Block> kitBoxBlock = new List<Block> { };
 
         private static int id = 0;
-        private double price;
 
         private int selfId;
 

@@ -8,20 +8,22 @@ use kitbox ;
 
 DROP TABLE IF EXISTS `client_order`;
 CREATE TABLE `client_order` (
-	`id_order` INT NOT NULL AUTO_INCREMENT,
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`id_order` INT NOT NULL,
 	`date` DATE NOT NULL,
-	`price` INT NOT NULL,
+	`price` FLOAT NOT NULL,
 	`already_paid` INT NOT NULL,
-	`order_name` varchar(25) NOT NULL,
-	PRIMARY KEY (`id_order`)
+	`order_name` varchar(25) NOT NULL UNIQUE,
+	PRIMARY KEY (`id`)
 );
 
 DROP TABLE IF EXISTS `client_order_component`;
 CREATE TABLE `client_order_component` (
-	`id_order` INT NOT NULL AUTO_INCREMENT,
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`id_order` INT NOT NULL,
 	`code` varchar(15) NOT NULL,
 	`quantity` INT NOT NULL,
-	PRIMARY KEY (`id_order`)
+	PRIMARY KEY (`id`)
 );
 
 DROP TABLE IF EXISTS `component`;
@@ -70,18 +72,6 @@ CREATE TABLE `price` (
 	`delivery_delay` INT NOT NULL,
 	`price` FLOAT NOT NULL
 );
-
-ALTER TABLE `client_order_component` ADD CONSTRAINT `client_order_component_fk0` FOREIGN KEY (`id_order`) REFERENCES `client_order`(`id_order`);
-
-ALTER TABLE `client_order_component` ADD CONSTRAINT `client_order_component_fk1` FOREIGN KEY (`code`) REFERENCES `component`(`code`);
-
-ALTER TABLE `supplier_order_component` ADD CONSTRAINT `supplier_order_component_fk0` FOREIGN KEY (`id_order`) REFERENCES `supplier_order`(`id_order`);
-
-ALTER TABLE `supplier_order_component` ADD CONSTRAINT `supplier_order_component_fk1` FOREIGN KEY (`component_code`) REFERENCES `component`(`code`);
-
-ALTER TABLE `supplier_order` ADD CONSTRAINT `supplier_order_fk0` FOREIGN KEY (`id_supplier`) REFERENCES `supplier`(`id_supplier`);
-
-ALTER TABLE `price` ADD CONSTRAINT `price_fk0` FOREIGN KEY (`id_supplier`) REFERENCES `supplier`(`id_supplier`);
 
 insert into kitbox.supplier(id_supplier, name, address) values
 (1, "TRABELBO SA ", "Les Artisans du Bois Parc industriel 9 6124 MARBEHAN"),

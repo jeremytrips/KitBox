@@ -163,7 +163,6 @@ namespace userInterface
 
         private void SetComboBox()
         {
-            // TODO add color combo box
             if (!(this.availableKitboxDimensions[0][0] == -1))
             {
                 foreach (int i in this.availableKitboxDimensions[3])
@@ -182,7 +181,6 @@ namespace userInterface
                 }
                 this.avaiblableAngleColorList.SelectedIndex = 0;
             }
-            // todo fire a server connection alert
         }
 
         private void MountLayout()

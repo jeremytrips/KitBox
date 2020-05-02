@@ -13,7 +13,7 @@ namespace userInterface
         private string phoneNumber;
 
         private bool saveOrder;
-        private string orderName;
+        private string orderName = "no_name";
 
         public User(string name, string address, string phoneNumber, bool saveOrder, string orderName) 
         {
@@ -21,8 +21,10 @@ namespace userInterface
             this.address = address;
             this.phoneNumber = phoneNumber;
             this.saveOrder = saveOrder;
-            this.orderName = orderName;
+            this.OrderName = orderName;
         }
+
+        public string OrderName { get => orderName; set => orderName = value; }
 
         public Dictionary<string, string> DescribeUser()
         {
@@ -34,7 +36,7 @@ namespace userInterface
             };
             if (this.saveOrder)
             {
-                a.Add("Order Name", this.orderName);
+                a.Add("Order Name", this.OrderName);
             }
             return a;
                 

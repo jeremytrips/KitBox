@@ -6,10 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using userInterface;
 
-/*
- * TODO :   - Remember how to impose a child class to have a certain function (ToListDescription)
- *          - Create a widget class to properly display block
- */
 
 namespace userInterface
 {

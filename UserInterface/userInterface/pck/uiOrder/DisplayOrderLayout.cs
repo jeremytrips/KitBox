@@ -9,8 +9,8 @@ namespace userInterface
 {
     class DisplayOrderLayout:System.Windows.Forms.Panel
     {
-        private User user;
-        private List<List<object>> data;
+        private ClientOrder order;
+        private List<List<object>> billDescription;
         private float totalPrice = 0F;
 
         private Label label3;
@@ -30,32 +30,21 @@ namespace userInterface
             this.MountLayout();
         }
 
-        public List<List<object>> Data { get => data;
-            set
-            {
-                this.data = value;
-                this.FillData();
-                this.ChechAvailability();
-            }
-        }
-
-        private void ChechAvailability()
+        public ClientOrder Order
         {
-            foreach (List<object> l in this.data)
+            get => order; set
             {
-                if (l.Contains(false))
-                {
-                    this.Controls.Remove(this.inStockPanel);
-                    this.Controls.Add(this.backOrderAlert);
-                    break;
-                }
+                order = value;
+                this.billDescription = value.BillDescription;
+                this.FillData();
+                this.FillUserData();
             }
         }
 
         private void FillData()
         {
             int index = 0;
-            foreach (List<object> l in this.data)
+            foreach (List<object> l in this.billDescription)
             {
                 index = this.displayOrderPanel.RowCount;
                 this.displayOrderPanel.RowCount++;
@@ -71,6 +60,7 @@ namespace userInterface
             this.displayOrderPanel.RowCount++;
             this.displayOrderPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             this.displayOrderPanel.Controls.Add(StringToForms("Total price"), 4, index+1);
+            this.order.Price = Math.Round(this.totalPrice, 2);
             this.displayOrderPanel.Controls.Add(StringToForms(Math.Round(this.totalPrice, 2).ToString()), 5, index + 1);
         }
 
@@ -84,18 +74,10 @@ namespace userInterface
             };
         }
 
-        internal User User
-        {
-            set
-            {
-                user = value;
-                this.FillUserData();
-            }
-        }
 
         private void FillUserData()
         {
-            foreach(KeyValuePair<string, string> keyValue in this.user.DescribeUser())
+            foreach(KeyValuePair<string, string> keyValue in this.order.User.DescribeUser())
             {
                 int index = this.displayUserPanel.RowCount;
                 this.displayUserPanel.RowCount++;

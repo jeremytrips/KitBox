@@ -6,10 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-/*
- * TODO :   - Fix the tostring method
- *          - Find a way to add any child class of Block child class in AddBlock
- */
 
 namespace userInterface
 {

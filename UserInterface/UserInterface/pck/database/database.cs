@@ -177,10 +177,61 @@ namespace userInterface
             return a;
         }
 
-        public static void HandleOrder(List<List<object>> order, bool saveOrder)
+        public static int GetNumberOfOrder()
         {
-            DateTime date = DateTime.Now;
-
+            int i = 0;
+            MySqlDataReader rdr = Fetch("SELECT COUNT(*) FROM kitbox.client_order;");
+            while(rdr.Read())
+            {
+                i = rdr.GetInt16(0);
+            }
+            return i;
         }
+
+        public static void CreateOrder(int id, DateTime date, double price, double alreadyPaid, string orderName)
+        {
+            MySqlConnection dataBaseConnection = new MySqlConnection(connectionString);
+            string query = "INSERT INTO client_order(id_order, date, price, already_paid, order_name) VALUES" +
+                                    "(?id_order, ?date, ?price, ?already_paid, ?order_name);";
+            MySqlCommand command = new MySqlCommand(query, dataBaseConnection);
+            try
+            {
+                dataBaseConnection.Open();
+                command.Parameters.Add("?id_order", MySqlDbType.Int32).Value = id;
+                command.Parameters.Add("?date", MySqlDbType.Date).Value = date;
+                command.Parameters.Add("?price", MySqlDbType.Float).Value = price;
+                command.Parameters.Add("?already_paid", MySqlDbType.Float).Value = alreadyPaid;
+                command.Parameters.Add("?order_name", MySqlDbType.VarChar).Value = orderName;
+                command.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex);
+                Console.WriteLine("Can't connect to mysql");
+            }
+        }
+
+        public static void SaveOrder(KeyValuePair<string, int> keyValue, int order_id)
+        {
+            MySqlConnection dataBaseConnection = new MySqlConnection(connectionString);
+            string query = "INSERT INTO kitbox.client_order_component (id_order, code, quantity)" +
+                           "VALUE(?order_id, ?code, ?quantity)";
+            MySqlCommand command = new MySqlCommand(query, dataBaseConnection);
+            try
+            {
+                dataBaseConnection.Open();
+                command.Parameters.Add("?order_id", MySqlDbType.Int32).Value = order_id;
+                command.Parameters.Add("?code", MySqlDbType.VarChar).Value = keyValue.Key;
+                command.Parameters.Add("?quantity", MySqlDbType.Int32).Value = keyValue.Value;
+                command.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex);
+                Console.WriteLine("Can't connect to mysql");
+            }
+        }
+
+        
     }
 }

@@ -8,10 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-/*
- * TODO:    - handleOldOrder function
- *          - 
- */
 
 namespace userInterface
 {
@@ -107,7 +103,8 @@ namespace userInterface
 
         private void order_Click(object sender, EventArgs e)
         {
-            // KITBOXLIS<COMPONENTLIS<code, number>>>
+            ClientOrder order = new ClientOrder();
+            // KITBOXLIS<COMPONENTLIS<code>>>
             List<List<List<string>>> bill = new List<List<List<string>>> { };
             foreach (GeneralDataPanel panel in this.kitboxData)
             {
@@ -116,10 +113,10 @@ namespace userInterface
                 panel.ClearKitbox();
             }
 
-            Dictionary<string, int> clearedBill = Utils.ClearBill(bill);
+            order.ClearedBill = Utils.ClearBill(bill);
 
-            List<List<object>> lists = Database.HandleOrder(clearedBill);
-            this.confirmOrderLayout.Data = lists;
+
+            this.confirmOrderLayout.Order = order;
 
             this.Controls.Add(this.confirmOrderLayout);
             this.confirmOrderLayout.BringToFront();

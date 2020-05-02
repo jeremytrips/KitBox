@@ -5,10 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-/*
- * TODO :  
- */
 namespace userInterface
 {
     class OldOrderLayout : FlowLayoutPanel
