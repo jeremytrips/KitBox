@@ -37,14 +37,23 @@ namespace userInterface
 
         private void SwitchLayout(object sender, EventArgs e)
         {
-            this.order.User = this.userDatalayout.SaveUserData();
-            this.displayOrderLayout.Order = this.order;
-            this.Controls.Remove(this.userDatalayout);
-            this.Controls.Add(this.displayOrderLayout);
-            this.displayOrderLayout.SendToBack();
-            this.continueButton.Click -= this.SwitchLayout;
-            this.continueButton.Click += new EventHandler(this.ConfirmOrder);
-            this.continueButton.Text = "Continue and Pay";
+            if (this.userDatalayout.SaveUserData())
+            {
+                this.order.User = this.userDatalayout.User;
+                this.displayOrderLayout.Order = this.order;
+                this.Controls.Remove(this.userDatalayout);
+                this.Controls.Add(this.displayOrderLayout);
+                this.displayOrderLayout.SendToBack();
+                this.continueButton.Click -= this.SwitchLayout;
+                this.continueButton.Click += new EventHandler(this.ConfirmOrder);
+                this.continueButton.Text = "Continue and Pay";
+            } else
+            {
+                string message = "Please fill at least your name, address and phone number.";
+                string caption = "Kitbox warning";
+                MessageBoxButtons button = MessageBoxButtons.OK;
+                DialogResult result = MessageBox.Show(message, caption, button);
+            }
         }
 
         private void ConfirmOrder(object sender, EventArgs e)

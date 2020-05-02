@@ -13,7 +13,7 @@ namespace userInterface
         /*
          * BlockDataPanel 
          * =================
-         * Simple layout that display the selecter layer data ( color, door, height, ...)
+         * Simple layout that display the selected layer data ( color, door, height, ...)
          * 
          */
 
@@ -105,11 +105,6 @@ namespace userInterface
         {
             this.blockViewer.BackColor = color;
 
-        }
-
-        public override void SetData(Dictionary<string, object> dataToSet)
-        {
-            return;
         }
 
         public BlockViewer GetBlockViewer()

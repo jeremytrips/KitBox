@@ -52,11 +52,6 @@ namespace userInterface
             }
         }
 
-        public KitBox(List<Block> blockList)
-        {
-            // Recontruct kitbox from order
-        }
-
         public void AddBlock(Block block)
         {
             this.kitBoxBlock.Add(block);

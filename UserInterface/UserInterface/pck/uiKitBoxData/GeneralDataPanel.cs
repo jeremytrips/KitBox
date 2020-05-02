@@ -38,6 +38,8 @@ namespace userInterface
         private Label label4 = new Label();
         private Button saveDimensionButton = new Button();
 
+        public int LayerCount { get => this.numberOfBLock; }
+
         public GeneralDataPanel(List<List<int>> dimensions, List<int>availableAngleHeight, List<string> availableAngleColor, List<string> availablePanelColor, List<string> availableDoorPanelColor) : base()
         {
             this.avaiblableAngleColorList.SelectedIndexChanged += new EventHandler(this.SetAngleColor);
@@ -143,16 +145,6 @@ namespace userInterface
             }
         }
 
-        public override void SetData(Dictionary<string, object> dataToSet)
-        {
-            // TODO : See the data frame used to retrieve data
-            this.availableWidthList.SelectedItem = (int) dataToSet["width"];
-            this.kitbox.Width = (int) dataToSet["width"];
-
-            this.availableDepthList.SelectedItem = (int)dataToSet["depth"];
-            this.kitbox.Depth = (int) dataToSet["depth"];
-        }
-
         private void SaveDimension(object sender, EventArgs e)
         {
             int depth = (int)this.availableDepthList.SelectedItem;
@@ -162,6 +154,11 @@ namespace userInterface
             this.kitbox.Depth = depth;
             
             this.AddLayer();
+            this.Controls.Remove(this.saveDimensionButton);
+            this.avaiblableAngleColorList.Enabled = false;
+            this.availableDepthList.Enabled = false;
+            this.availableWidthList.Enabled = false;
+
         }
 
         public void ClearKitbox()

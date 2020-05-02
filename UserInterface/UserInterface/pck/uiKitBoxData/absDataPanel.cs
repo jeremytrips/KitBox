@@ -8,6 +8,6 @@ namespace userInterface
 {
     public abstract class DataPanel : System.Windows.Forms.Panel
     {
-        public abstract void SetData(Dictionary<string, object> dataToSet);
+        
     }
 }

@@ -20,16 +20,40 @@ namespace userInterface
         private Label label4;
         private TextBox addressInput;
         private Label label3;
+        private List<TextBox> textinputs;
+
+        User user;
 
         public UserDataLayout()
         {
             this.MountLayout();
+            this.textinputs = new List<TextBox>
+            {
+                this.nameInput,
+                this.phoneNumberInput,
+                this.addressInput
+            };
         }
 
-        public User SaveUserData()
+        internal User User { get => user; set => user = value; }
+
+        public bool SaveUserData()
         {
-            User user = new User(this.nameInput.Text, this.addressInput.Text, this.phoneNumberInput.Text, this.checkBox1.Checked, this.textBox1.Text);
-            return user;
+            bool i = true;
+            foreach (TextBox tb in this.textinputs)
+            {
+                if (tb.Text == "")
+                {
+                    i = false;
+                    break;
+                }
+            }
+            if (i) {
+                this.user = new User(this.nameInput.Text, this.addressInput.Text, this.phoneNumberInput.Text, this.checkBox1.Checked, this.textBox1.Text);
+                return true;
+            }
+            return false;
+
         }
 
         private void MountLayout()

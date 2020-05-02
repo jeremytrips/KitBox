@@ -34,13 +34,26 @@ namespace userInterface
             this.AddKitbox_Click(null, null);
         }
 
-        private void OldOrderButton_Click(object sender, EventArgs e)
+        private void HandleOldOrder(object sender, EventArgs e)
         {
             if(this.kitboxData.Count != 0)
             {
-                // Warning delete actual order
+                string message = "Warning you are about to erase the Kitbox you have created. Are you sure?";
+                string caption = "Kitbox warning";
+                MessageBoxButtons button = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, caption, button);
+                if (result == DialogResult.Yes)
+                {
+                    this.ResetApp();
+                    string orderToFetch = this.oldOrderLayout.GetOldOrderName();
+                    ClientOrder oldOrder = new ClientOrder();
+                    oldOrder.FetchOldOrder(orderToFetch);
+
+                    this.confirmOrderLayout.Order = oldOrder;
+                    this.Controls.Add(this.confirmOrderLayout);
+                    this.confirmOrderLayout.BringToFront();
+                }
             }
-            // Handle the fetched order.
         }
 
         private void AddKitbox_Click(object sender, EventArgs e)
@@ -77,23 +90,10 @@ namespace userInterface
             }
         }
 
-        private void HandleOldOrder(object sender, EventArgs e)
-        {
-            string orderToFetch = this.oldOrderLayout.GetOldOrderName();
-            ClientOrder oldOrder = new ClientOrder();
-            oldOrder.FetchOldOrder(orderToFetch);
-
-            this.confirmOrderLayout.Order = oldOrder;
-            this.Controls.Add(this.confirmOrderLayout);
-            this.confirmOrderLayout.BringToFront();
-
-        }
-
         private void RemoveLayerButton_Click(object sender, EventArgs e)
         {
             /*
-             * Remove the current selected layer in the 
-             * 
+             * Remove the current selected layer in the selected Kitbox.
              */
             this.selectedGeneralDataPanel.RemoveLayer();
         }
@@ -108,21 +108,31 @@ namespace userInterface
 
         private void order_Click(object sender, EventArgs e)
         {
-            ClientOrder order = new ClientOrder();
-            // KITBOXLIS<COMPONENTLIS<code>>>
-            List<List<List<string>>> bill = new List<List<List<string>>> { };
-            foreach (GeneralDataPanel panel in this.kitboxData)
+            if (!(this.selectedGeneralDataPanel.LayerCount == 0))
             {
-                KitBox kitBox = panel.GetKitBox();
-                bill.Add(kitBox.GetCodes());
-                panel.ClearKitbox();
+                ClientOrder order = new ClientOrder();
+                // KITBOXLIS<COMPONENTLIS<code>>>
+                List<List<List<string>>> bill = new List<List<List<string>>> { };
+                foreach (GeneralDataPanel panel in this.kitboxData)
+                {
+                    KitBox kitBox = panel.GetKitBox();
+                    bill.Add(kitBox.GetCodes());
+                    panel.ClearKitbox();
+                }
+
+                order.ClearedBill = Utils.ClearBill(bill);
+                this.confirmOrderLayout.Order = order;
+
+                this.Controls.Add(this.confirmOrderLayout);
+                this.confirmOrderLayout.BringToFront();
             }
-
-            order.ClearedBill = Utils.ClearBill(bill);
-            this.confirmOrderLayout.Order = order;
-
-            this.Controls.Add(this.confirmOrderLayout);
-            this.confirmOrderLayout.BringToFront();
+            else
+            {
+                string message = "Please add layer to your Kitbox before ordering ";
+                string caption = "Kitbox warning";
+                MessageBoxButtons button = MessageBoxButtons.OK;
+                MessageBox.Show(message, caption, button);
+            }
         }
 
         private void ResetApp()
