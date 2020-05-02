@@ -133,11 +133,11 @@
     <Compile Include="pck\order\Order.cs" />
     <Compile Include="pck\components\panel\Panel.cs" />
     <Compile Include="pck\order\SupplierOrder.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="KitboxApp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="KitboxApp.Designer.cs">
+      <DependentUpon>KitboxApp.cs</DependentUpon>
     </Compile>
     <Compile Include="pck\uiRadioButton\CustomRadioButton.cs">
       <SubType>Component</SubType>
@@ -148,8 +148,8 @@
     <Compile Include="pck\utils\Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="KitboxApp.resx">
+      <DependentUpon>KitboxApp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

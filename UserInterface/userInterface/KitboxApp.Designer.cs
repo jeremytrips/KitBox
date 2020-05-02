@@ -1,6 +1,6 @@
 ﻿namespace userInterface
 {
-    partial class Form1
+    partial class KitboxApp
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

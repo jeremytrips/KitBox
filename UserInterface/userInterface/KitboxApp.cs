@@ -11,8 +11,9 @@ using System.Windows.Forms;
 
 namespace userInterface
 {
-    public partial class Form1 : Form
+    public partial class KitboxApp : Form
     {
+
         private ConfirmOrderLayout confirmOrderLayout;
         private List<GeneralDataPanel> kitboxData = new List<GeneralDataPanel> { };
         private GeneralDataPanel selectedGeneralDataPanel;
@@ -25,7 +26,7 @@ namespace userInterface
         private List<string> availbleDoorPanelColor = Database.FetchDoorPanelAvailableColor();
         private List<int> availableAngleHeight = Database.FetchAvailableAngleHeight();
 
-        public Form1()
+        public KitboxApp()
         {
             InitializeComponent();
             this.oldOrderLayout = new OldOrderLayout(this.HandleOldOrder, "Enter user name");
@@ -36,7 +37,7 @@ namespace userInterface
 
         private void HandleOldOrder(object sender, EventArgs e)
         {
-            if(this.kitboxData.Count != 0)
+            if (this.kitboxData.Count != 0)
             {
                 string message = "Warning you are about to erase the Kitbox you have created. Are you sure?";
                 string caption = "Kitbox warning";
