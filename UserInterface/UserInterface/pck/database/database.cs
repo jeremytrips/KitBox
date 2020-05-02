@@ -45,6 +45,29 @@ namespace userInterface
             }
         }
 
+        internal static Dictionary<string, int> FetchClearedBill(int id)
+        {
+            Dictionary<string, int> clearedBill = new Dictionary<string, int> { };
+            MySqlDataReader rdr = Fetch(string.Format("SELECT code, quantity FROM client_order_component WHERE id_order = {0} ", id));
+            while (rdr.Read())
+            {
+                clearedBill.Add(rdr.GetString(0), rdr.GetInt16(1));
+            }
+            return clearedBill;
+        }
+
+        internal static List<object> FetchUserData(string oldOrderName)
+        {
+            List<object> userData = new List<object> { };
+            MySqlDataReader rdr = Fetch(string.Format("SELECT id_order, order_name FROM client_order WHERE order_name LIKE '{0}';", oldOrderName));
+            while(rdr.Read())
+            {
+                userData.Add(rdr.GetInt16(0));
+                userData.Add(rdr.GetString(1));
+            }
+            return userData;
+        }
+
         internal static List<int> FetchAvailableAngleHeight()
         {
             List<int> list = new List<int> { };
@@ -177,9 +200,9 @@ namespace userInterface
             return a;
         }
 
-        public static int GetNumberOfOrder()
+        public static short GetNumberOfOrder()
         {
-            int i = 0;
+            short i = 0;
             MySqlDataReader rdr = Fetch("SELECT COUNT(*) FROM kitbox.client_order;");
             while(rdr.Read())
             {

@@ -74,14 +74,14 @@ namespace userInterface
 
         private void HandleOldOrder(object sender, EventArgs e)
         {
-            /* TODO:    
-                        - fetch data from the database using the orderToFetch string
-                        - Add a columns name 'order_name' wich will be used to retreive the 
-                                string querry = "SELECT * FROM order"
-                        - use user name and fecth a list of old order to display in a list.
-                                string querry = "SELECT * FROM order WHERE "user_id"=id of the user 
-             */
             string orderToFetch = this.oldOrderLayout.GetOldOrderName();
+            ClientOrder oldOrder = new ClientOrder();
+            oldOrder.FetchOldOrder(orderToFetch);
+
+            this.confirmOrderLayout.Order = oldOrder;
+            this.Controls.Add(this.confirmOrderLayout);
+            this.confirmOrderLayout.BringToFront();
+
         }
 
         private void RemoveLayerButton_Click(object sender, EventArgs e)

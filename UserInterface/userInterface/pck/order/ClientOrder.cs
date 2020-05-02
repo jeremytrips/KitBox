@@ -7,7 +7,7 @@ namespace userInterface
 	{
 		User user;
 		private DateTime date = DateTime.Now;
-		private int id = Database.GetNumberOfOrder();
+		private short id = Database.GetNumberOfOrder();
 		private Dictionary<string, int> clearedBill;
 		private List<List<object>> billDescription;
 		private double price;
@@ -48,5 +48,13 @@ namespace userInterface
 				Database.SaveOrder(keyValuePair, this.id);
 			}
 		}
-	}
+
+        internal void FetchOldOrder(string oldOrderName)
+        {
+			List<object> userData = Database.FetchUserData(oldOrderName);
+			this.id = (short)userData[0];
+			this.clearedBill = Database.FetchClearedBill(this.id);
+			this.billDescription = Database.HandleOrder(this.clearedBill);
+        }
+    }
 }

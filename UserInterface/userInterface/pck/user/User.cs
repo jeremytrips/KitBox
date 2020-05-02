@@ -12,7 +12,7 @@ namespace userInterface
         private string address;
         private string phoneNumber;
 
-        private bool saveOrder;
+        private bool saveOrder = false;
         private string orderName = "no_name";
 
         public User(string name, string address, string phoneNumber, bool saveOrder, string orderName) 
@@ -22,6 +22,13 @@ namespace userInterface
             this.phoneNumber = phoneNumber;
             this.saveOrder = saveOrder;
             this.OrderName = orderName;
+        }
+        
+        public User(string name, string address, string phoneNumber) 
+        {
+            this.name = name;
+            this.address = address;
+            this.phoneNumber = phoneNumber;
         }
 
         public string OrderName { get => orderName; set => orderName = value; }
