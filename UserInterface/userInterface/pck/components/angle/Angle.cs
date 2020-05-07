@@ -8,7 +8,7 @@ namespace userInterface
     {
         private Color color = Color.White;
         private bool cutted = false;
-        protected string attribute = "COR";
+        private const string attribute = "COR";
 
         public Color Color { get => color; set => color = value; }
         public bool Cutted { get => cutted; set => cutted = value; }
@@ -19,8 +19,8 @@ namespace userInterface
 
         public override string GetCode()
         {
-            string dec = this.Cutted ? "DEC" : "";
-            return this.attribute + this.height.ToString() + ColorMapper.MapPrefix(this.Color) + dec;
+            string dec = this.cutted ? "DEC" : "";
+            return attribute + this.height.ToString() + ColorMapper.MapPrefix(this.Color) + dec;
 
         }
 

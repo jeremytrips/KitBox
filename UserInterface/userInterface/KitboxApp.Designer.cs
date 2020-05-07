@@ -33,7 +33,7 @@
             this.RemoveLayerButton = new System.Windows.Forms.Button();
             this.AddLayerButton = new System.Windows.Forms.Button();
             this.order = new System.Windows.Forms.Button();
-            this.reset = new System.Windows.Forms.Button();
+            this.removeKitBoxButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // kitBoxToOrderTabs
@@ -48,9 +48,9 @@
             // 
             // addKitBoxButton
             // 
-            this.addKitBoxButton.Location = new System.Drawing.Point(156, 588);
+            this.addKitBoxButton.Location = new System.Drawing.Point(243, 603);
             this.addKitBoxButton.Name = "addKitBoxButton";
-            this.addKitBoxButton.Size = new System.Drawing.Size(150, 67);
+            this.addKitBoxButton.Size = new System.Drawing.Size(112, 49);
             this.addKitBoxButton.TabIndex = 0;
             this.addKitBoxButton.Text = "Add a KitBox";
             this.addKitBoxButton.UseVisualStyleBackColor = true;
@@ -86,27 +86,28 @@
             this.order.UseVisualStyleBackColor = true;
             this.order.Click += new System.EventHandler(this.order_Click);
             // 
-            // reset
+            // removeKitBoxButton
             // 
-            this.reset.Location = new System.Drawing.Point(932, 3);
-            this.reset.Name = "reset";
-            this.reset.Size = new System.Drawing.Size(75, 23);
-            this.reset.TabIndex = 8;
-            this.reset.Text = "temp";
-            this.reset.UseVisualStyleBackColor = true;
+            this.removeKitBoxButton.Location = new System.Drawing.Point(42, 603);
+            this.removeKitBoxButton.Name = "removeKitBoxButton";
+            this.removeKitBoxButton.Size = new System.Drawing.Size(113, 49);
+            this.removeKitBoxButton.TabIndex = 9;
+            this.removeKitBoxButton.Text = "Remove a KitBox";
+            this.removeKitBoxButton.UseVisualStyleBackColor = true;
+            this.removeKitBoxButton.Click += new System.EventHandler(this.removeKitBoxButton_Click);
             // 
-            // Form1
+            // KitboxApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 681);
-            this.Controls.Add(this.reset);
+            this.Controls.Add(this.removeKitBoxButton);
             this.Controls.Add(this.order);
             this.Controls.Add(this.AddLayerButton);
             this.Controls.Add(this.RemoveLayerButton);
             this.Controls.Add(this.addKitBoxButton);
             this.Controls.Add(this.kitBoxToOrderTabs);
-            this.Name = "Form1";
+            this.Name = "KitboxApp";
             this.Text = "s";
             this.ResumeLayout(false);
 
@@ -120,7 +121,7 @@
         private System.Windows.Forms.Button RemoveLayerButton;
         private System.Windows.Forms.Button AddLayerButton;
         private System.Windows.Forms.Button order;
-        private System.Windows.Forms.Button reset;
+        private System.Windows.Forms.Button removeKitBoxButton;
     }
 }
 

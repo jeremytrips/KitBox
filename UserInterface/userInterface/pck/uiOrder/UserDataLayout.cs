@@ -35,7 +35,12 @@ namespace userInterface
             };
         }
 
-        internal User User { get => user; set => user = value; }
+        internal User User { get
+            {
+                Console.WriteLine("giving User from userdatalayout");
+                return user;
+            }
+            set => user = value; }
 
         public bool SaveUserData()
         {
@@ -54,6 +59,15 @@ namespace userInterface
             }
             return false;
 
+        }
+
+        internal void Reset()
+        {
+            this.user = null;
+            foreach (TextBox tb in this.textinputs)
+            {
+                tb.Text = "";
+            }
         }
 
         private void MountLayout()

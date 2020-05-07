@@ -6,8 +6,7 @@ namespace userInterface
 {
     class Layer : Block
     {
-        private Door doorType = new ClassicDoor(Color.White);
-        private Cup cup = new Cup();
+        private Door doorType;
         private BackPanel backPanel = new BackPanel();
         private LeftRightPanel leftRightPanel = new LeftRightPanel();
         private TopBottomPanel topBottomPanel = new TopBottomPanel();
@@ -35,6 +34,14 @@ namespace userInterface
                 base.Height = value;
                 this.backPanel.Height = value;
                 this.leftRightPanel.Height = value;
+                if(value>=62)
+                {
+                    this.doorType = new ClassicDoor(Color.White);
+                }
+                else
+                {
+                    this.doorType = null;
+                }
             }
 
         }
@@ -84,9 +91,16 @@ namespace userInterface
             codes.Add(this.leftRightPanel.GetCode());
             codes.Add(this.topBottomPanel.GetCode());
             codes.Add(this.cleat.GetCode());
-            if(this.doorType != null) { 
-                codes.Add(this.doorType.GetCode());
-                codes.Add(this.cup.GetCode());
+            if(this.doorType != null) {
+                if (this.doorType is GlassDoor)
+                {
+                    codes.Add(this.doorType.GetCode());
+                } else
+                {
+                    codes.Add(this.doorType.GetCode());
+                    codes.Add(this.doorType.GetCupCode());
+                }
+                
             }
             codes.Add(this.frontSleeper.GetCode());
             codes.Add(this.sideSleeper.GetCode());

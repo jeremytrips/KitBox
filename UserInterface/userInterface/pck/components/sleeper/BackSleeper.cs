@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace userInterface { 
     class BackSleeper: Sleeper
     {
-        private readonly string secAttribue = "R";
+        private const string secAttribue = "R";
         public BackSleeper()
         {
         }
@@ -19,7 +19,7 @@ namespace userInterface {
 
         public override string GetCode()
         {
-            return this.attribute + this.secAttribue + this.width;
+            return attribute + secAttribue + this.width;
         }
     }
 }

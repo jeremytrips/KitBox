@@ -16,21 +16,21 @@ namespace userInterface
         public ClassicDoor(Color doorColor)
         {
             this.color = doorColor;
-        }   
+        }
 
         public override void DebugPrint()
         {
             this.GetCode();
         }
 
-        public string GetCupCode()
-        {
-            return this.cup.GetCode();
-        }
-
         public override string GetCode()
         {
-            return this.attribute + this.height.ToString() + WidthMapper.MapDoorWidth(this.width) + ColorMapper.MapPrefix(this.color) ; 
+            return string.Concat(attribute, this.height.ToString(), WidthMapper.MapDoorWidth(this.width), ColorMapper.MapPrefix(this.color));
+        }
+
+        public override string GetCupCode()
+        {
+            return this.cup.GetCode();
         }
     }
 }

@@ -71,6 +71,25 @@ namespace userInterface
             this.kitBoxToOrderTabs.SelectedTab = generalDataPanel.GetKitBoxTab();
         }
 
+        private void removeKitBoxButton_Click(object sender, EventArgs e)
+        {
+            if (this.kitboxData.Count() > 1)
+            {
+                this.Controls.Remove(this.selectedGeneralDataPanel);
+                this.kitboxData.Remove(this.selectedGeneralDataPanel);
+                this.kitBoxToOrderTabs.TabPages.Remove(this.selectedGeneralDataPanel.GetKitBoxTab());
+
+                this.selectedGeneralDataPanel = this.kitboxData.Last();
+                this.kitBoxToOrderTabs.SelectedTab = this.selectedGeneralDataPanel.GetKitBoxTab();
+                try
+                {
+                    this.Controls.Add(this.selectedGeneralDataPanel);
+
+                }
+                catch { }
+            }
+        }
+
         private void SetKitBoxData(object sender, EventArgs e)
         {
             /*
@@ -109,27 +128,37 @@ namespace userInterface
 
         private void order_Click(object sender, EventArgs e)
         {
-            if (!(this.selectedGeneralDataPanel.LayerCount == 0))
+            try
             {
-                ClientOrder order = new ClientOrder();
-                // KITBOXLIS<COMPONENTLIS<code>>>
-                List<List<List<string>>> bill = new List<List<List<string>>> { };
-                foreach (GeneralDataPanel panel in this.kitboxData)
+                if (!(this.selectedGeneralDataPanel.LayerCount == 0))
                 {
-                    KitBox kitBox = panel.GetKitBox();
-                    bill.Add(kitBox.GetCodes());
-                    panel.ClearKitbox();
+                    ClientOrder order = new ClientOrder();
+                    // KITBOXLIS<COMPONENTLIS<code>>>
+                    List<List<List<string>>> bill = new List<List<List<string>>> { };
+                    foreach (GeneralDataPanel panel in this.kitboxData)
+                    {
+                        KitBox kitBox = panel.GetKitBox();
+                        bill.Add(kitBox.GetCodes());
+                        panel.ClearKitbox();
+                    }
+
+                    order.ClearedBill = Utils.ClearBill(bill);
+                    this.confirmOrderLayout.Order = order;
+
+                    this.Controls.Add(this.confirmOrderLayout);
+                    this.confirmOrderLayout.BringToFront();
                 }
-
-                order.ClearedBill = Utils.ClearBill(bill);
-                this.confirmOrderLayout.Order = order;
-
-                this.Controls.Add(this.confirmOrderLayout);
-                this.confirmOrderLayout.BringToFront();
+                else
+                {
+                    string message = "Please add layer to your Kitbox before ordering ";
+                    string caption = "Kitbox warning";
+                    MessageBoxButtons button = MessageBoxButtons.OK;
+                    MessageBox.Show(message, caption, button);
+                }
             }
-            else
+            catch
             {
-                string message = "Please add layer to your Kitbox before ordering ";
+                string message = "Something went wrong please try again!";
                 string caption = "Kitbox warning";
                 MessageBoxButtons button = MessageBoxButtons.OK;
                 MessageBox.Show(message, caption, button);
@@ -145,8 +174,9 @@ namespace userInterface
             }
             kitboxData.Clear();
             selectedGeneralDataPanel = null;
-
+            this.confirmOrderLayout.Reset();
             this.kitBoxToOrderTabs.TabPages.Clear();
+            this.AddKitbox_Click(null, null);
         }
     }
 } 

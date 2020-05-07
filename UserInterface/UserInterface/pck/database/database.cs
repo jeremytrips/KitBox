@@ -60,7 +60,7 @@ namespace userInterface
         {
             List<object> userData = new List<object> { };
             MySqlDataReader rdr = Fetch(string.Format("SELECT id_order, order_name FROM client_order WHERE order_name LIKE '{0}';", oldOrderName));
-            while(rdr.Read())
+            while (rdr.Read())
             {
                 userData.Add(rdr.GetInt16(0));
                 userData.Add(rdr.GetString(1));
@@ -72,7 +72,7 @@ namespace userInterface
         {
             List<int> list = new List<int> { };
             MySqlDataReader rdr = Fetch(" select distinct height from kitbox.component where reference like 'Corni %';");
-            while(rdr.Read())
+            while (rdr.Read())
             {
                 list.Add(rdr.GetInt16(0));
             }
@@ -93,8 +93,8 @@ namespace userInterface
             rdr = Fetch("select distinct width from kitbox.component where reference like 'Pann%';");                  // Read width without door
             width = ReadInt(rdr);
             rdr = Fetch("select distinct depth from kitbox.component where reference like 'Pann%';");                 // Read depth
-            depth = ReadInt(rdr);  
-            
+            depth = ReadInt(rdr);
+
             return new List<List<int>> { depth, height, doorWidth, width };
         }
 
@@ -197,6 +197,7 @@ namespace userInterface
                 }
                 a.Add(orderEntry);
             }
+            test(data);
             return a;
         }
 
@@ -204,7 +205,7 @@ namespace userInterface
         {
             short i = 0;
             MySqlDataReader rdr = Fetch("SELECT COUNT(*) FROM kitbox.client_order;");
-            while(rdr.Read())
+            while (rdr.Read())
             {
                 i = rdr.GetInt16(0);
             }
@@ -255,6 +256,26 @@ namespace userInterface
             }
         }
 
+        public static void test(Dictionary<string, int> keyValue)
+        {
+            List<string> keys = keyValue.Keys.ToList<string>();
+            List<string> found = new List<string> { };
+            foreach(string l in keyValue.Keys)
+            {
+                MySqlDataReader rdr = Fetch(string.Format("select code from kitbox.component Where code like '{0}';", l));
+                while(rdr.Read())
+                {
+                    found.Add(rdr.GetString(0));
+                }
+            }
+            Console.WriteLine(string.Format("{0} in keys {1} in found", keys.Count, found.Count));
+
+            IEnumerable<string> differenceQuery = keys.Except(found);
+            foreach(string l in differenceQuery)
+            {
+                Console.WriteLine(l);
+            }
+        }
         
     }
 }

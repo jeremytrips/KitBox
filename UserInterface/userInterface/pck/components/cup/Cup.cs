@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 namespace userInterface { 
     class Cup: Component
     {
-        protected string attribute = "COUPEL";
+        protected const string attribute = "COUPEL";
 
-    public override void DebugPrint()
+        public override void DebugPrint()
     {
         Console.WriteLine(this.GetCode());
     }
 
     public override string GetCode()
     {
-        return this.attribute;
+        return attribute;
     }
 }
 }

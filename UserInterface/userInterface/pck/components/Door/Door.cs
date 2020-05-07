@@ -7,6 +7,8 @@ namespace userInterface
     abstract class Door : Component
 
     {
-        protected string attribute = "POR";    
+        protected const string attribute = "POR";
+
+        public abstract string GetCupCode();
     }
 }

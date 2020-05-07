@@ -64,6 +64,34 @@ namespace userInterface
             this.displayOrderPanel.Controls.Add(StringToForms(Math.Round(this.totalPrice, 2).ToString()), 5, index + 1);
         }
 
+        internal void Reset()
+        {
+            while (this.displayUserPanel.Controls.Count > 0)
+            {
+                this.displayUserPanel.Controls[0].Dispose();
+            }
+            this.displayUserPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+            this.displayUserPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
+
+            while (this.displayOrderPanel.Controls.Count > 0)
+            {
+                this.displayOrderPanel.Controls[0].Dispose();
+            }
+            this.displayOrderPanel.RowCount = 1;
+            this.displayOrderPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            this.displayOrderPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            this.displayOrderPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 79F));
+            this.displayOrderPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 76F));
+            this.displayOrderPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 73F));
+            this.displayOrderPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 66F));
+            this.displayOrderPanel.Controls.Add(this.label6, 0, 0);
+            this.displayOrderPanel.Controls.Add(this.label7, 1, 0);
+            this.displayOrderPanel.Controls.Add(this.label8, 2, 0);
+            this.displayOrderPanel.Controls.Add(this.label9, 3, 0);
+            this.displayOrderPanel.Controls.Add(this.label10, 4, 0);
+            this.displayOrderPanel.Controls.Add(this.label11, 5, 0);
+        }
+
         private Label StringToForms (string text)
         {
             return new Label

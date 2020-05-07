@@ -8,7 +8,7 @@ namespace userInterface
 {
     class FrontSleeper:Sleeper
     {
-        private readonly string secAttribue = "F";
+        private const string secAttribue = "F";
         public FrontSleeper()
         {
         }
@@ -20,7 +20,7 @@ namespace userInterface
 
         public override string GetCode()
         {
-            return this.attribute + this.secAttribue + this.width;
+            return attribute + secAttribue + this.width;
         }
     }
 }

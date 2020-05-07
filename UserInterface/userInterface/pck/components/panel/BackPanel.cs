@@ -17,7 +17,7 @@ namespace userInterface
 
         public override string GetCode()
         {
-            return this.attribute + secAttribute + this.height.ToString() + this.width.ToString() + ColorMapper.MapPrefix(this.color) ;
+            return attribute + secAttribute + this.height.ToString() + this.width.ToString() + ColorMapper.MapPrefix(this.color) ;
         }
 
         public override void DebugPrint()

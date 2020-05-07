@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace userInterface
 {
-    /* Class that groups all cleats*/
     class Cleat : Component
     {
+        private const string attribute = "TAS";
 
-        const string attribute = "TAS";
-        /*Builder*/
         public Cleat()
         {}
 

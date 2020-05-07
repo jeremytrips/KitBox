@@ -18,6 +18,6 @@ namespace userInterface
                 color = value;
             }
         }
-        protected string attribute = "PA";
+        protected const string attribute = "PA";
     }
 }

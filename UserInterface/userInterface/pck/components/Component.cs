@@ -17,9 +17,6 @@ namespace userInterface
         public int Depth { get => depth; set => depth = value; }
         public int Height { get => height; set => height = value; }
 
-        protected string description;
-
-        //public abstract Dictionary<String, Component> getData();
         public abstract string GetCode();
         public abstract void DebugPrint();
 

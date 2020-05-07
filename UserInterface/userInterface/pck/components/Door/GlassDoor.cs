@@ -3,10 +3,8 @@ using System.Collections.Generic;
 
 namespace userInterface
 {
-    /*Inheritance of the abstract class door*/
     class GlassDoor : Door
     {
-        /*Builder*/
         public GlassDoor()
         {}
 
@@ -17,7 +15,12 @@ namespace userInterface
 
         public override string GetCode()
         {
-            return this.attribute + this.height + WidthMapper.MapDoorWidth(this.width) + "VE";
+            return attribute + this.height + WidthMapper.MapDoorWidth(this.width) + "VE";
+        }
+
+        public override string GetCupCode()
+        {
+            throw new NotImplementedException();
         }
     }
 }

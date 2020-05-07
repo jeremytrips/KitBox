@@ -9,10 +9,10 @@ namespace userInterface
 {
     class ConfirmOrderLayout: System.Windows.Forms.Panel
     {
-        UserDataLayout userDatalayout = new UserDataLayout();
-        DisplayOrderLayout displayOrderLayout = new DisplayOrderLayout();
-        Button continueButton = new Button();
-        ClientOrder order;
+        private UserDataLayout userDatalayout = new UserDataLayout();
+        private DisplayOrderLayout displayOrderLayout = new DisplayOrderLayout();
+        private Button continueButton = new Button();
+        private ClientOrder order;
         private Action resetApp;
 
         public ClientOrder Order
@@ -30,15 +30,11 @@ namespace userInterface
             this.resetApp = resetApp;
         }
 
-        public ConfirmOrderLayout()
-        {
-            
-        }
-
         private void SwitchLayout(object sender, EventArgs e)
         {
             if (this.userDatalayout.SaveUserData())
             {
+                Console.WriteLine("mabite fdp");
                 this.order.User = this.userDatalayout.User;
                 this.displayOrderLayout.Order = this.order;
                 this.Controls.Remove(this.userDatalayout);
@@ -47,7 +43,8 @@ namespace userInterface
                 this.continueButton.Click -= this.SwitchLayout;
                 this.continueButton.Click += new EventHandler(this.ConfirmOrder);
                 this.continueButton.Text = "Continue and Pay";
-            } else
+            } 
+            else
             {
                 string message = "Please fill at least your name, address and phone number.";
                 string caption = "Kitbox warning";
@@ -65,6 +62,14 @@ namespace userInterface
             this.order.SaveOrder();
             this.Parent.Controls.Remove(this);
             this.resetApp();
+        }
+
+        internal void Reset()
+        {
+            this.displayOrderLayout.Reset();
+            this.userDatalayout.Reset();
+            this.Controls.Remove(this.displayOrderLayout);
+            this.Controls.Add(this.userDatalayout);
         }
 
         private void MountLayout()
