@@ -36,6 +36,7 @@ namespace userInterface
             {
                 Console.WriteLine("mabite fdp");
                 this.order.User = this.userDatalayout.User;
+                Console.WriteLine(this.userDatalayout.User);
                 this.displayOrderLayout.Order = this.order;
                 this.Controls.Remove(this.userDatalayout);
                 this.Controls.Add(this.displayOrderLayout);
@@ -70,6 +71,8 @@ namespace userInterface
             this.userDatalayout.Reset();
             this.Controls.Remove(this.displayOrderLayout);
             this.Controls.Add(this.userDatalayout);
+            this.continueButton.Click += this.SwitchLayout;
+            this.continueButton.Click -= this.ConfirmOrder;
         }
 
         private void MountLayout()
