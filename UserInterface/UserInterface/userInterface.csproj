@@ -146,9 +146,6 @@
     <Compile Include="pck\uiKitBoxData\GeneralDataPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="pck\uiKitboxTabControl\PanelBlock.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="pck\uiKitboxTabControl\KitbocxTab.cs">
       <SubType>Component</SubType>
     </Compile>

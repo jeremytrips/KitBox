@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace userInterface
 {
+    /*
+     * Content of the tab layout
+     */
     class KitBoxTab : TabPage
     {
         static int id = 0; 
