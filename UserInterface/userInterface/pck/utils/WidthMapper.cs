@@ -18,6 +18,7 @@ namespace userInterface
 
         public static string MapDoorWidth(int width)
         {
+            Console.WriteLine(width);
             return widthMapper[width];
         }
     }

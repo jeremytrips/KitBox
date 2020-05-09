@@ -25,6 +25,7 @@ namespace userInterface
 
         public override string GetCode()
         {
+            Console.WriteLine("classic door");
             return string.Concat(attribute, this.height.ToString(), WidthMapper.MapDoorWidth(this.width), ColorMapper.MapPrefix(this.color));
         }
 

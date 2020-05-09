@@ -9,7 +9,7 @@ namespace userInterface
 {
     class GeneralDataPanel : DataPanel
     {
-        private List<List<int>> availableKitboxDimensions; //{depth, height, doorWidth, width}
+        private List<List<int>> availableKitboxDimensions; // { depth, height, doorWidth, width }
         private List<string> availablePanelColorList;
         private List<string> availableDoorPanelColorList;
         private List<string> availableAngleColor;
@@ -94,7 +94,7 @@ namespace userInterface
             {
                 int index = this.BlockDataPanelList.Count;
                 EventHandler blockDisplayClickHandler = new System.EventHandler((object sender, EventArgs e) => this.HandlePanelClick(sender, e, index));
-                LayerDataPanel newBlockDataPanel = new LayerDataPanel(index, this.kitbox.Width, this.kitbox.Depth, this.availablePanelColorList, this.availableKitboxDimensions[2], this.availableDoorPanelColorList, blockDisplayClickHandler);
+                LayerDataPanel newBlockDataPanel = new LayerDataPanel(index, this.kitbox.Width, this.kitbox.Depth, this.availablePanelColorList, this.availableKitboxDimensions[1], this.availableDoorPanelColorList, blockDisplayClickHandler);
 
                 newBlockDataPanel.DisplayDoorLayout(this.kitbox.Width > 64);
 

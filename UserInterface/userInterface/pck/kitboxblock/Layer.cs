@@ -34,9 +34,11 @@ namespace userInterface
                 base.Height = value;
                 this.backPanel.Height = value;
                 this.leftRightPanel.Height = value;
-                if(value>=62)
+                if(value<62)
                 {
                     this.doorType = new ClassicDoor(Color.White);
+                    this.doorType.Height = value;
+                    Console.WriteLine(doorType.Height);
                 }
                 else
                 {

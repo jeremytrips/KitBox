@@ -16,7 +16,8 @@ namespace userInterface
         {
             RadioButtonLayout<T>.i += 1;
             this.MountLayout(y);
-            this.CreateRadioButton(handler, data);       }
+            this.CreateRadioButton(handler, data);       
+        }
         
         private void CreateRadioButton(EventHandler handler, List<T> data)
         {
@@ -35,6 +36,7 @@ namespace userInterface
                 this.radioButtonList.Add(rb);
                 this.Controls.Add(rb);
             }
+            this.radioButtonList[0].AutoCheck = true;
         }
 
         private void MountLayout(int y)
@@ -54,6 +56,11 @@ namespace userInterface
                 }
             }
             return null;
+        }
+
+        internal void SetNullChecked()
+        {
+            throw new NotImplementedException();
         }
     }
 }

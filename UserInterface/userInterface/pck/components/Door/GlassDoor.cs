@@ -15,6 +15,7 @@ namespace userInterface
 
         public override string GetCode()
         {
+            Console.WriteLine("Glass door");
             return attribute + this.height + WidthMapper.MapDoorWidth(this.width) + "VE";
         }
 

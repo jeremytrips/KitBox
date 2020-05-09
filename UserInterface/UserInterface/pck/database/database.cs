@@ -88,11 +88,11 @@ namespace userInterface
 
             MySqlDataReader rdr = Fetch("select height from kitbox.component where reference like 'Tasseau';");         // Read height
             height = ReadInt(rdr);
-            rdr = Fetch("select distinct width from kitbox.component where reference like 'Porte%';");                // Read widthwithdoor
+            rdr = Fetch("select distinct width from kitbox.component where reference like 'Porte%';");                  // Read width with door
             doorWidth = ReadInt(rdr);
-            rdr = Fetch("select distinct width from kitbox.component where reference like 'Pann%';");                  // Read width without door
+            rdr = Fetch("select distinct width from kitbox.component where reference like 'Pann%';");                   // Read width without door
             width = ReadInt(rdr);
-            rdr = Fetch("select distinct depth from kitbox.component where reference like 'Pann%';");                 // Read depth
+            rdr = Fetch("select distinct depth from kitbox.component where reference like 'Pann%';");                   // Read depth
             depth = ReadInt(rdr);
 
             return new List<List<int>> { depth, height, doorWidth, width };

@@ -44,6 +44,10 @@ namespace userInterface
         private void FillData()
         {
             int index = 0;
+            foreach(List<object> l in this.billDescription)
+            {
+                Console.WriteLine(string.Join(Environment.NewLine, l));
+            }
             foreach (List<object> l in this.billDescription)
             {
                 index = this.displayOrderPanel.RowCount;

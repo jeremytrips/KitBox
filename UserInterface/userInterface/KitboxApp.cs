@@ -128,9 +128,7 @@ namespace userInterface
 
         private void order_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (!(this.selectedGeneralDataPanel.LayerCount == 0))
+            if (!(this.selectedGeneralDataPanel.LayerCount == 0))
                 {
                     ClientOrder order = new ClientOrder();
                     // KITBOXLIS<COMPONENTLIS<code>>>
@@ -155,14 +153,7 @@ namespace userInterface
                     MessageBoxButtons button = MessageBoxButtons.OK;
                     MessageBox.Show(message, caption, button);
                 }
-            }
-            catch
-            {
-                string message = "Something went wrong please try again!";
-                string caption = "Kitbox warning";
-                MessageBoxButtons button = MessageBoxButtons.OK;
-                MessageBox.Show(message, caption, button);
-            }
+            
         }
 
         private void ResetApp()
