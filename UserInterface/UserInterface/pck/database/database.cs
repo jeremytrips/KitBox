@@ -154,11 +154,6 @@ namespace userInterface
             return colorList;
         }
 
-        internal static void HandleOrder()
-        {
-            throw new NotImplementedException();
-        }
-
         internal static List<string> FetchDoorPanelAvailableColor()
         {
             MySqlDataReader rdr = Fetch("SELECT DISTINCT color FROM component WHERE code LIKE 'POR%';");
@@ -197,7 +192,7 @@ namespace userInterface
                 }
                 a.Add(orderEntry);
             }
-            test(data);
+            CheckCodeFound(data);
             return a;
         }
 
@@ -256,7 +251,17 @@ namespace userInterface
             }
         }
 
-        public static void test(Dictionary<string, int> keyValue)
+        internal static void HandleStock(KeyValuePair<string, int> component)
+        {
+            MySqlConnection dataBaseConnection = new MySqlConnection(connectionString);
+            string query = string.Format("UPDATE component SET stock = stock - (SELECT number_by_box FROM (SELECT * FROM component WHERE code LIKE '{0}') AS nbr) WHERE code like '{0}';", component.Key);
+            MySqlCommand command = new MySqlCommand(query, dataBaseConnection);
+            dataBaseConnection.Open();
+            command.ExecuteNonQuery();
+        }
+
+
+        public static void CheckCodeFound(Dictionary<string, int> keyValue)
         {
             List<string> keys = keyValue.Keys.ToList<string>();
             List<string> found = new List<string> { };

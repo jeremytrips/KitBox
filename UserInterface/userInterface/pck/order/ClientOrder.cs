@@ -46,6 +46,7 @@ namespace userInterface
 			foreach (KeyValuePair < string, int> keyValuePair in this.clearedBill)
 			{
 				Database.SaveOrder(keyValuePair, this.id);
+				Database.HandleStock(keyValuePair);
 			}
 		}
 
