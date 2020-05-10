@@ -200,54 +200,55 @@ namespace userInterface
             this.Controls.Add(this.avaiblableAngleColorList);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.saveDimensionButton);
-            this.BackColor = System.Drawing.Color.AntiqueWhite;
             this.Location = new System.Drawing.Point(30, 100);
             this.Size = new System.Drawing.Size(400, 465);
 
             // Label 1 mounting
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
-            this.label1.Location = new System.Drawing.Point(98, 0);
-            this.label1.Size = new System.Drawing.Size(210, 39);
-            this.label1.Text = "General Data";
+            this.label1.TextAlign = ContentAlignment.MiddleCenter;
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.label1.Location = new System.Drawing.Point(30, 0);
+            this.label1.Size = new System.Drawing.Size(400, 37);
+            this.label1.Text = "Configure your KITBOX";
 
             // Label 2 mounting
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 66);
+            this.label2.Location = new System.Drawing.Point(34, 58);
             this.label2.Size = new System.Drawing.Size(65, 13);
-            this.label2.Text = "KitBox width: ";
+            this.label2.Text = "Width of your KitBox: ";
 
             // Label 3 mounting
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(236, 66);
+            this.label3.Location = new System.Drawing.Point(34, 88);
             this.label3.Size = new System.Drawing.Size(69, 13);
-            this.label3.Text = "KitBox depth: ";
+            this.label3.Text = "Depth of your Kitbox: ";
 
             // Label 4 mounting
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(27, 114);
+            this.label4.Location = new System.Drawing.Point(34, 118);
             this.label4.Size = new System.Drawing.Size(69, 13);
-            this.label4.Text = "KitBox angle Color: ";
+            this.label4.Text = "Color of the angle iron: ";
 
             // Save button mounting
-            this.saveDimensionButton.Location = new Point(239, 130);
+            this.saveDimensionButton.Location = new Point(155, 142);
             this.saveDimensionButton.Size = new Size(124, 21);
             this.saveDimensionButton.Text = "Set dimensions";
             this.saveDimensionButton.Click += new EventHandler(this.SaveDimension);
 
             // width ComboBox mounting
             this.availableWidthList.FormattingEnabled = false;
-            this.availableWidthList.Location = new System.Drawing.Point(30, 82);
+            this.availableWidthList.Location = new System.Drawing.Point(155, 55);
             this.availableWidthList.Size = new System.Drawing.Size(121, 21);
 
             // depth ComBox mounting
             this.availableDepthList.FormattingEnabled = true;
-            this.availableDepthList.Location = new System.Drawing.Point(239, 82);
+            this.availableDepthList.Location = new System.Drawing.Point(155, 85);
             this.availableDepthList.Size = new System.Drawing.Size(121, 21);
 
             // color ComboBox mounting
             this.avaiblableAngleColorList.FormattingEnabled = true;
-            this.avaiblableAngleColorList.Location = new System.Drawing.Point(30, 130);
+            this.avaiblableAngleColorList.Location = new System.Drawing.Point(155, 115);
             this.avaiblableAngleColorList.Size = new System.Drawing.Size(121, 21);
 
         }
