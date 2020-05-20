@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.StockPage = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -36,14 +37,9 @@
             this.OrderPage = new System.Windows.Forms.TabPage();
             this.MagasinGroupBcx = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.listOrderProgress = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listOrderCompleted = new System.Windows.Forms.ListBox();
-            this.Orders = new System.Windows.Forms.GroupBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.button5 = new System.Windows.Forms.Button();
-            this.listOfOrders = new System.Windows.Forms.ListBox();
             this.listOutStock = new System.Windows.Forms.ListBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -59,6 +55,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnRefreshOrder = new System.Windows.Forms.Button();
+            this.kitboxDataSet = new InterfaceMagasinier.kitboxDataSet();
+            this.clientorderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.client_orderTableAdapter = new InterfaceMagasinier.kitboxDataSetTableAdapters.client_orderTableAdapter();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.StockPage.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -67,9 +68,12 @@
             this.MagasinGroupBcx.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.Orders.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kitboxDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientorderBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -157,10 +161,12 @@
             // MagasinGroupBcx
             // 
             this.MagasinGroupBcx.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.MagasinGroupBcx.Controls.Add(this.button5);
             this.MagasinGroupBcx.Controls.Add(this.btnRefreshOrder);
+            this.MagasinGroupBcx.Controls.Add(this.button1);
             this.MagasinGroupBcx.Controls.Add(this.groupBox4);
+            this.MagasinGroupBcx.Controls.Add(this.textBox4);
             this.MagasinGroupBcx.Controls.Add(this.groupBox1);
-            this.MagasinGroupBcx.Controls.Add(this.Orders);
             this.MagasinGroupBcx.Location = new System.Drawing.Point(3, 8);
             this.MagasinGroupBcx.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MagasinGroupBcx.Name = "MagasinGroupBcx";
@@ -172,90 +178,47 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.listOrderProgress);
+            this.groupBox4.Controls.Add(this.dataGridView1);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.groupBox4.Location = new System.Drawing.Point(566, 363);
+            this.groupBox4.Location = new System.Drawing.Point(-3, 0);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox4.Size = new System.Drawing.Size(533, 344);
+            this.groupBox4.Size = new System.Drawing.Size(1117, 356);
             this.groupBox4.TabIndex = 25;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Order in progress";
             // 
-            // listOrderProgress
-            // 
-            this.listOrderProgress.FormattingEnabled = true;
-            this.listOrderProgress.ItemHeight = 36;
-            this.listOrderProgress.Location = new System.Drawing.Point(12, 44);
-            this.listOrderProgress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.listOrderProgress.Name = "listOrderProgress";
-            this.listOrderProgress.Size = new System.Drawing.Size(518, 292);
-            this.listOrderProgress.TabIndex = 24;
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.listOrderCompleted);
+            this.groupBox1.Controls.Add(this.dataGridView2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.groupBox1.Location = new System.Drawing.Point(566, 12);
+            this.groupBox1.Location = new System.Drawing.Point(-3, 364);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(533, 343);
+            this.groupBox1.Size = new System.Drawing.Size(1117, 353);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Order completed";
             // 
-            // listOrderCompleted
-            // 
-            this.listOrderCompleted.FormattingEnabled = true;
-            this.listOrderCompleted.ItemHeight = 36;
-            this.listOrderCompleted.Location = new System.Drawing.Point(12, 44);
-            this.listOrderCompleted.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.listOrderCompleted.Name = "listOrderCompleted";
-            this.listOrderCompleted.Size = new System.Drawing.Size(521, 292);
-            this.listOrderCompleted.TabIndex = 24;
-            // 
-            // Orders
-            // 
-            this.Orders.Controls.Add(this.button1);
-            this.Orders.Controls.Add(this.textBox4);
-            this.Orders.Controls.Add(this.vScrollBar1);
-            this.Orders.Controls.Add(this.button5);
-            this.Orders.Controls.Add(this.listOfOrders);
-            this.Orders.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.Orders.Location = new System.Drawing.Point(11, 12);
-            this.Orders.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Orders.Name = "Orders";
-            this.Orders.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Orders.Size = new System.Drawing.Size(546, 766);
-            this.Orders.TabIndex = 1;
-            this.Orders.TabStop = false;
-            this.Orders.Text = "Orders";
-            // 
             // textBox4
             // 
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.textBox4.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox4.Location = new System.Drawing.Point(12, 700);
+            this.textBox4.Location = new System.Drawing.Point(8, 733);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox4.MinimumSize = new System.Drawing.Size(112, 30);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(315, 41);
+            this.textBox4.Size = new System.Drawing.Size(245, 41);
             this.textBox4.TabIndex = 21;
-            this.textBox4.Text = "Search...";
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(520, 40);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(23, 655);
-            this.vScrollBar1.TabIndex = 3;
-            this.vScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.VScrollBar1_Scroll);
+            this.textBox4.Text = "Search ...";
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button5.Location = new System.Drawing.Point(333, 701);
+            this.button5.Location = new System.Drawing.Point(298, 733);
             this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(184, 41);
@@ -263,17 +226,6 @@
             this.button5.Text = "Show More ...";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.Button5_Click_1);
-            // 
-            // listOfOrders
-            // 
-            this.listOfOrders.FormattingEnabled = true;
-            this.listOfOrders.ItemHeight = 36;
-            this.listOfOrders.Location = new System.Drawing.Point(12, 40);
-            this.listOfOrders.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.listOfOrders.Name = "listOfOrders";
-            this.listOfOrders.Size = new System.Drawing.Size(505, 652);
-            this.listOfOrders.TabIndex = 10;
-            this.listOfOrders.SelectedIndexChanged += new System.EventHandler(this.ListBox1_SelectedIndexChanged);
             // 
             // listOutStock
             // 
@@ -388,7 +340,7 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.button1.Image = global::InterfaceMagasinier.Properties.Resources.loupe;
-            this.button1.Location = new System.Drawing.Point(290, 701);
+            this.button1.Location = new System.Drawing.Point(216, 733);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(37, 41);
@@ -420,14 +372,48 @@
             // btnRefreshOrder
             // 
             this.btnRefreshOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefreshOrder.Location = new System.Drawing.Point(970, 717);
+            this.btnRefreshOrder.Location = new System.Drawing.Point(979, 733);
             this.btnRefreshOrder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRefreshOrder.Name = "btnRefreshOrder";
-            this.btnRefreshOrder.Size = new System.Drawing.Size(126, 38);
+            this.btnRefreshOrder.Size = new System.Drawing.Size(126, 41);
             this.btnRefreshOrder.TabIndex = 23;
             this.btnRefreshOrder.Text = "Refresh";
             this.btnRefreshOrder.UseVisualStyleBackColor = true;
             this.btnRefreshOrder.Click += new System.EventHandler(this.btnRefreshOrder_Click);
+            // 
+            // kitboxDataSet
+            // 
+            this.kitboxDataSet.DataSetName = "kitboxDataSet";
+            this.kitboxDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // clientorderBindingSource
+            // 
+            this.clientorderBindingSource.DataMember = "client_order";
+            this.clientorderBindingSource.DataSource = this.kitboxDataSet;
+            // 
+            // client_orderTableAdapter
+            // 
+            this.client_orderTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(11, 44);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.RowTemplate.Height = 28;
+            this.dataGridView1.Size = new System.Drawing.Size(1091, 311);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(11, 47);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersWidth = 62;
+            this.dataGridView2.RowTemplate.Height = 28;
+            this.dataGridView2.Size = new System.Drawing.Size(1097, 306);
+            this.dataGridView2.TabIndex = 0;
             // 
             // StoreKeeper
             // 
@@ -446,14 +432,17 @@
             this.groupBox2.ResumeLayout(false);
             this.OrderPage.ResumeLayout(false);
             this.MagasinGroupBcx.ResumeLayout(false);
+            this.MagasinGroupBcx.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.Orders.ResumeLayout(false);
-            this.Orders.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kitboxDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientorderBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -466,17 +455,12 @@
         private System.Windows.Forms.GroupBox MagasinGroupBcx;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.GroupBox Orders;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
-        private System.Windows.Forms.ListBox listOfOrders;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ListBox listOfComponents;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ListBox listOrderProgress;
-        private System.Windows.Forms.ListBox listOrderCompleted;
         private System.Windows.Forms.ListBox listOutStock;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -491,6 +475,11 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnRefreshOrder;
+        private kitboxDataSet kitboxDataSet;
+        private System.Windows.Forms.BindingSource clientorderBindingSource;
+        private kitboxDataSetTableAdapters.client_orderTableAdapter client_orderTableAdapter;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }
 
