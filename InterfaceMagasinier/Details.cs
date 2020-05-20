@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace InterfaceMagasinier
 {
-    public partial class Form1 : Form
+    public partial class Details : Form
     {
-        public Form1()
+        public Details()
         {
             InitializeComponent();
         }

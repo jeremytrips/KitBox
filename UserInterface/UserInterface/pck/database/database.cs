@@ -12,7 +12,7 @@ namespace userInterface
 
     public class Database
     {
-        private static string connectionString = @"server=localhost;port=3306;user=root;database=kitbox;password=Mgbgt1979";
+        private static string connectionString = @"server=localhost;port=3306;user=root;database=kitbox;password=Pouroqui1475";
 
         private static MySqlDataReader Fetch(string query)
         {

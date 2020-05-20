@@ -94,8 +94,43 @@ namespace InterfaceMagasinier
 
         private void Button5_Click_1(object sender, EventArgs e)
         {
-            var newForm = new Form1();
+            var newForm = new Details();
             newForm.Show();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRefreshOrder_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

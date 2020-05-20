@@ -1,6 +1,6 @@
 ﻿namespace InterfaceMagasinier
 {
-    partial class Form1
+    partial class Details
     {
         /// <summary>
         /// Required designer variable.
