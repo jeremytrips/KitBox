@@ -12,6 +12,9 @@ namespace InterfaceMagasinier
 {
     public partial class StoreKeeper : Form
     {
+        private string id_Order;
+        private string Order_name;
+        private string date;
         public StoreKeeper()
         {
             InitializeComponent();
@@ -29,7 +32,15 @@ namespace InterfaceMagasinier
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if(dataGridViewOrderProgress.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                dataGridViewOrderProgress.CurrentRow.Selected = true;
+                id_Order = dataGridViewOrderProgress.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
+                Order_name = dataGridViewOrderProgress.Rows[e.RowIndex].Cells[4].FormattedValue.ToString();
+                date = dataGridViewOrderProgress.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
 
+
+            }
         }
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -49,6 +60,8 @@ namespace InterfaceMagasinier
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'kitboxDataSet.component' table. You can move, or remove it, as needed.
+            this.componentTableAdapter.Fill(this.kitboxDataSet.component);
             // TODO: This line of code loads data into the 'kitboxDataSet.client_order' table. You can move, or remove it, as needed.
             this.client_orderTableAdapter.Fill(this.kitboxDataSet.client_order);
 
@@ -71,7 +84,7 @@ namespace InterfaceMagasinier
 
         private void Button5_Click_1(object sender, EventArgs e)
         {
-            var newForm = new Details();
+            var newForm = new Details(id_Order, Order_name, date);
             newForm.Show();
         }
 
@@ -103,6 +116,26 @@ namespace InterfaceMagasinier
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void clientorderBindingSource1_CurrentChanged(object sender, EventArgs e)
         {
 
         }

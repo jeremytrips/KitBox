@@ -12,7 +12,7 @@ CREATE TABLE `client_order` (
 	`id_order` INT NOT NULL,
 	`date` DATE NOT NULL,
 	`price` FLOAT NOT NULL,
-	`already_paid` INT NOT NULL,
+	`already_paid` FLOAT NOT NULL,
 	`order_name` varchar(25) NOT NULL UNIQUE,
 	PRIMARY KEY (`id`)
 );
