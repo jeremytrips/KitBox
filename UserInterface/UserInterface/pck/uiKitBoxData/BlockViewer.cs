@@ -80,7 +80,7 @@ namespace userInterface
             this.index = pos_y;
             this.Size = new System.Drawing.Size(521, 53);
             int a = 399 - (pos_y * 55);
-            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Location = new System.Drawing.Point(0, a);
 
@@ -114,7 +114,7 @@ namespace userInterface
             this.doorIndicator.Name = "doorIndicator";
             this.doorIndicator.Size = new System.Drawing.Size(31, 13);
             this.doorIndicator.TabIndex = 1;
-            this.doorIndicator.Text = "nope";
+            this.doorIndicator.Text = "";
             // 
             // label2
             // 
@@ -132,7 +132,7 @@ namespace userInterface
             this.doorColorIndicator.Name = "doorColorIndicator";
             this.doorColorIndicator.Size = new System.Drawing.Size(31, 13);
             this.doorColorIndicator.TabIndex = 3;
-            this.doorColorIndicator.Text = "nope";
+            this.doorColorIndicator.Text = "";
             // 
             // label3
             // 
@@ -150,7 +150,7 @@ namespace userInterface
             this.panelColorIndicator.Name = "panelColorIndicator";
             this.panelColorIndicator.Size = new System.Drawing.Size(31, 13);
             this.panelColorIndicator.TabIndex = 5;
-            this.panelColorIndicator.Text = "nope";
+            this.panelColorIndicator.Text = "";
             // 
             // label5
             // 

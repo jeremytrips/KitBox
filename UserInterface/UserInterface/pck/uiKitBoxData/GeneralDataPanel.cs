@@ -22,7 +22,7 @@ namespace userInterface
         private int numberOfBLock = 0;
 
         // Kitbox that is currently create by the user.
-        private KitBox kitbox ;
+        private KitBox kitbox;
 
         // Tab in the TabBox it is the actual representation of the kibtox on the interface
         private KitBoxTab kitboxTab;
@@ -40,7 +40,7 @@ namespace userInterface
 
         public int LayerCount { get => this.numberOfBLock; }
 
-        public GeneralDataPanel(List<List<int>> dimensions, List<int>availableAngleHeight, List<string> availableAngleColor, List<string> availablePanelColor, List<string> availableDoorPanelColor) : base()
+        public GeneralDataPanel(List<List<int>> dimensions, List<int> availableAngleHeight, List<string> availableAngleColor, List<string> availablePanelColor, List<string> availableDoorPanelColor) : base()
         {
             this.avaiblableAngleColorList.SelectedIndexChanged += new EventHandler(this.SetAngleColor);
             this.kitbox = new KitBox();
@@ -51,7 +51,7 @@ namespace userInterface
             this.availablePanelColorList = availablePanelColor;
             this.availableDoorPanelColorList = availableDoorPanelColor;
             this.availableAngleColor = availableAngleColor;
-            this.kitbox.AvailableAngleHeight = availableAngleHeight; 
+            this.kitbox.AvailableAngleHeight = availableAngleHeight;
             this.MountLayout();
             this.SetComboBox();
         }
@@ -80,7 +80,7 @@ namespace userInterface
 
         public KitBox GetKitBox()
         {
-            foreach(LayerDataPanel dataPanel in this.BlockDataPanelList)
+            foreach (LayerDataPanel dataPanel in this.BlockDataPanelList)
             {
                 this.kitbox.AddBlock(dataPanel.GetBlock());
             }
@@ -100,7 +100,7 @@ namespace userInterface
 
                 this.BlockDataPanelList.Add(newBlockDataPanel);
                 this.selectedBlockDataPanel = newBlockDataPanel;
-                foreach(LayerDataPanel temp in this.BlockDataPanelList)
+                foreach (LayerDataPanel temp in this.BlockDataPanelList)
                 {
                     this.Controls.Remove(temp);
                 }
@@ -117,8 +117,8 @@ namespace userInterface
         }
 
         internal void Clear()
-        { 
-            foreach(LayerDataPanel ldp in this.BlockDataPanelList)
+        {
+            foreach (LayerDataPanel ldp in this.BlockDataPanelList)
             {
                 this.Controls.Remove(ldp);
             }
@@ -152,7 +152,7 @@ namespace userInterface
 
             this.kitbox.Width = width;
             this.kitbox.Depth = depth;
-            
+
             this.AddLayer();
             this.Controls.Remove(this.saveDimensionButton);
             this.avaiblableAngleColorList.Enabled = false;
@@ -191,7 +191,7 @@ namespace userInterface
         private void MountLayout()
         {
             // Panel mounting
-            this.BackColor = System.Drawing.Color.RoyalBlue;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.label3);
             this.Controls.Add(this.availableDepthList);
             this.Controls.Add(this.label2);

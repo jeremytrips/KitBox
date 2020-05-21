@@ -39,7 +39,7 @@
             // kitBoxToOrderTabs
             // 
             this.kitBoxToOrderTabs.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.kitBoxToOrderTabs.Location = new System.Drawing.Point(450, 90);
+            this.kitBoxToOrderTabs.Location = new System.Drawing.Point(456, 89);
             this.kitBoxToOrderTabs.Name = "kitBoxToOrderTabs";
             this.kitBoxToOrderTabs.SelectedIndex = 0;
             this.kitBoxToOrderTabs.Size = new System.Drawing.Size(530, 480);
@@ -48,9 +48,9 @@
             // 
             // addKitBoxButton
             // 
-            this.addKitBoxButton.Location = new System.Drawing.Point(243, 603);
+            this.addKitBoxButton.Location = new System.Drawing.Point(652, 584);
             this.addKitBoxButton.Name = "addKitBoxButton";
-            this.addKitBoxButton.Size = new System.Drawing.Size(112, 49);
+            this.addKitBoxButton.Size = new System.Drawing.Size(112, 31);
             this.addKitBoxButton.TabIndex = 0;
             this.addKitBoxButton.Text = "Add a KitBox";
             this.addKitBoxButton.UseVisualStyleBackColor = true;
@@ -58,39 +58,40 @@
             // 
             // RemoveLayerButton
             // 
-            this.RemoveLayerButton.Location = new System.Drawing.Point(456, 575);
+            this.RemoveLayerButton.Location = new System.Drawing.Point(456, 631);
             this.RemoveLayerButton.Name = "RemoveLayerButton";
-            this.RemoveLayerButton.Size = new System.Drawing.Size(146, 23);
+            this.RemoveLayerButton.Size = new System.Drawing.Size(146, 31);
             this.RemoveLayerButton.TabIndex = 5;
-            this.RemoveLayerButton.Text = "Remove layer on the kitbox";
+            this.RemoveLayerButton.Text = "Remove layer";
             this.RemoveLayerButton.UseVisualStyleBackColor = true;
             this.RemoveLayerButton.Click += new System.EventHandler(this.RemoveLayerButton_Click);
             // 
             // AddLayerButton
             // 
-            this.AddLayerButton.Location = new System.Drawing.Point(840, 575);
+            this.AddLayerButton.Location = new System.Drawing.Point(456, 584);
             this.AddLayerButton.Name = "AddLayerButton";
-            this.AddLayerButton.Size = new System.Drawing.Size(146, 23);
+            this.AddLayerButton.Size = new System.Drawing.Size(146, 31);
             this.AddLayerButton.TabIndex = 6;
-            this.AddLayerButton.Text = "Add a layer on the kitbox";
+            this.AddLayerButton.Text = "Add a new layer";
             this.AddLayerButton.UseVisualStyleBackColor = true;
             this.AddLayerButton.Click += new System.EventHandler(this.AddLayerButton_Click);
             // 
             // order
             // 
-            this.order.Location = new System.Drawing.Point(732, 631);
+            this.order.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.order.Location = new System.Drawing.Point(816, 584);
             this.order.Name = "order";
-            this.order.Size = new System.Drawing.Size(147, 38);
+            this.order.Size = new System.Drawing.Size(170, 78);
             this.order.TabIndex = 7;
-            this.order.Text = "Order kitbox";
+            this.order.Text = "Confirm";
             this.order.UseVisualStyleBackColor = true;
             this.order.Click += new System.EventHandler(this.order_Click);
             // 
             // removeKitBoxButton
             // 
-            this.removeKitBoxButton.Location = new System.Drawing.Point(42, 603);
+            this.removeKitBoxButton.Location = new System.Drawing.Point(652, 631);
             this.removeKitBoxButton.Name = "removeKitBoxButton";
-            this.removeKitBoxButton.Size = new System.Drawing.Size(113, 49);
+            this.removeKitBoxButton.Size = new System.Drawing.Size(113, 31);
             this.removeKitBoxButton.TabIndex = 9;
             this.removeKitBoxButton.Text = "Remove a KitBox";
             this.removeKitBoxButton.UseVisualStyleBackColor = true;

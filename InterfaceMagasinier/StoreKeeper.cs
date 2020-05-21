@@ -49,6 +49,8 @@ namespace InterfaceMagasinier
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'kitboxDataSet.client_order' table. You can move, or remove it, as needed.
+            this.client_orderTableAdapter.Fill(this.kitboxDataSet.client_order);
 
         }
 
@@ -62,31 +64,6 @@ namespace InterfaceMagasinier
 
         }
 
-        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CheckBox2_CheckedChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void VScrollBar2_Scroll(object sender, ScrollEventArgs e)
-        {
-
-        }
-
         private void ListOfComponents_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -94,8 +71,40 @@ namespace InterfaceMagasinier
 
         private void Button5_Click_1(object sender, EventArgs e)
         {
-            var newForm = new Form1();
+            var newForm = new Details();
             newForm.Show();
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void btnRefreshOrder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
