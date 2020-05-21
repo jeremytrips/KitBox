@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="userInterface.GeneralDataPanel" Collapsed="true">
+    <Position X="4.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAggBkAhAABABABAAAQCAAACUAgAIAACBiEAA=</HashCode>
+      <FileName>pck\uiKitBoxData\GeneralDataPanel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="kitboxTab" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="userInterface.BlockViewer" Collapsed="true">
+    <Position X="6.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAggAABgAABBAAAAAAAAgAAIBAAACAAAEAgAhBAYI=</HashCode>
+      <FileName>pck\uiKitBoxData\BlockViewer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userInterface.LayerDataPanel" Collapsed="true">
+    <Position X="6.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAABAgQAAAAAAEAAAAAAAABAgAAACgEAhAAAAAQ=</HashCode>
+      <FileName>pck\uiKitBoxData\LayerDataPanel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="blockViewer" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="userInterface.KitBoxTab" Collapsed="true">
+    <Position X="4.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAEAgA=</HashCode>
+      <FileName>pck\uiKitboxTabControl\KitbocxTab.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

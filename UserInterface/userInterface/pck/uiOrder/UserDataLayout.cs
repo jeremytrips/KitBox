@@ -37,7 +37,6 @@ namespace userInterface
 
         internal User User { get
             {
-                Console.WriteLine("giving User from userdatalayout");
                 return user;
             }
             set => user = value; }

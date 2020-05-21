@@ -32,7 +32,6 @@ namespace userInterface
             this.oldOrderLayout = new OldOrderLayout(this.HandleOldOrder, "Enter user name");
             this.Controls.Add(this.oldOrderLayout);
             this.confirmOrderLayout = new ConfirmOrderLayout(this.ResetApp);
-            this.AddKitbox_Click(null, null);
         }
 
         private void HandleOldOrder(object sender, EventArgs e)
@@ -49,11 +48,17 @@ namespace userInterface
                     string orderToFetch = this.oldOrderLayout.GetOldOrderName();
                     ClientOrder oldOrder = new ClientOrder();
                     oldOrder.FetchOldOrder(orderToFetch);
-
                     this.confirmOrderLayout.Order = oldOrder;
                     this.Controls.Add(this.confirmOrderLayout);
                     this.confirmOrderLayout.BringToFront();
                 }
+            } else {
+                string orderToFetch = this.oldOrderLayout.GetOldOrderName();
+                ClientOrder oldOrder = new ClientOrder();
+                oldOrder.FetchOldOrder(orderToFetch);
+                this.confirmOrderLayout.Order = oldOrder;
+                this.Controls.Add(this.confirmOrderLayout);
+                this.confirmOrderLayout.BringToFront();
             }
         }
 
@@ -163,11 +168,13 @@ namespace userInterface
                 gdp.Clear();
                 this.Controls.Remove(gdp);
             }
+            this.Controls.Remove(this.confirmOrderLayout);
+            this.confirmOrderLayout = new ConfirmOrderLayout(this.ResetApp);
             kitboxData.Clear();
             selectedGeneralDataPanel = null;
             this.confirmOrderLayout.Reset();
             this.kitBoxToOrderTabs.TabPages.Clear();
-            this.AddKitbox_Click(null, null);
+            
         }
     }
 } 

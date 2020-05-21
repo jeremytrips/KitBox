@@ -51,7 +51,16 @@ namespace userInterface
             MySqlDataReader rdr = Fetch(string.Format("SELECT code, quantity FROM client_order_component WHERE id_order = {0} ", id));
             while (rdr.Read())
             {
-                clearedBill.Add(rdr.GetString(0), rdr.GetInt16(1));
+                string component = rdr.GetString(0);
+                int number = rdr.GetInt16(1);
+                if (clearedBill.ContainsKey(component))
+                {
+                    clearedBill[component] = clearedBill[component] + number;
+                }
+                else
+                {
+                    clearedBill.Add(rdr.GetString(0), rdr.GetInt16(1));
+                }
             }
             return clearedBill;
         }
@@ -212,6 +221,7 @@ namespace userInterface
             MySqlConnection dataBaseConnection = new MySqlConnection(connectionString);
             string query = "INSERT INTO client_order(id_order, date, price, already_paid, order_name) VALUES" +
                                     "(?id_order, ?date, ?price, ?already_paid, ?order_name);";
+            Console.WriteLine(alreadyPaid);
             MySqlCommand command = new MySqlCommand(query, dataBaseConnection);
             try
             {

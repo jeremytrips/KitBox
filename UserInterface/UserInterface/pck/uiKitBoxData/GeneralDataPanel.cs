@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace userInterface
 {
-    class GeneralDataPanel : DataPanel
+    class GeneralDataPanel : System.Windows.Forms.Panel
     {
         private List<List<int>> availableKitboxDimensions; // { depth, height, doorWidth, width }
         private List<string> availablePanelColorList;

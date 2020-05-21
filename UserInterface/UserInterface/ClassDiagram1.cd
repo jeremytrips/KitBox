@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="userInterface.Angle">
-    <Position X="1.75" Y="6" Width="1.5" />
+    <Position X="3.5" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAgAACAIAAAgACBAAA=</HashCode>
       <FileName>pck\components\angle\Angle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="userInterface.Cleat">
-    <Position X="10.75" Y="5" Width="1.5" />
+    <Position X="11.5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAACBAAA=</HashCode>
       <FileName>pck\components\cleat\Cleat.cs</FileName>
@@ -22,30 +22,30 @@
     </TypeIdentifier>
   </Class>
   <Class Name="userInterface.Cup">
-    <Position X="19.75" Y="5" Width="1.5" />
+    <Position X="18.25" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAACBAAA=</HashCode>
       <FileName>pck\components\cup\Cup.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="userInterface.ClassicDoor">
-    <Position X="22" Y="6.75" Width="1.5" />
+    <Position X="20" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAICAAAAAAACBAAA=</HashCode>
       <FileName>pck\components\Door\ClassicDoor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="userInterface.Door">
-    <Position X="23.25" Y="5" Width="1.5" />
+    <Position X="21.25" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>pck\components\Door\Door.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="userInterface.GlassDoor">
-    <Position X="24.25" Y="6.5" Width="1.5" />
+    <Position X="22.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACBAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAACBAAA=</HashCode>
       <FileName>pck\components\Door\GlassDoor.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -78,28 +78,28 @@
     </TypeIdentifier>
   </Class>
   <Class Name="userInterface.BackSleeper">
-    <Position X="4" Y="7" Width="1.5" />
+    <Position X="5.25" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACBAAE=</HashCode>
       <FileName>pck\components\sleeper\BackSleeper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="userInterface.FrontSleeper">
-    <Position X="6.25" Y="7" Width="1.5" />
+    <Position X="7.5" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACBAAE=</HashCode>
       <FileName>pck\components\sleeper\FrontSleeper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="userInterface.SideSleeper">
-    <Position X="8.5" Y="7" Width="1.5" />
+    <Position X="9.75" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACBAAE=</HashCode>
       <FileName>pck\components\sleeper\SideSleeper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="userInterface.Sleeper">
-    <Position X="6.25" Y="5" Width="1.5" />
+    <Position X="7.5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>pck\components\sleeper\Sleeper.cs</FileName>
@@ -108,7 +108,7 @@
   <Class Name="userInterface.Database" Collapsed="true">
     <Position X="30" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAQAAoSAAEUAAEAAAAAAAAIAAACIAAIAAA=</HashCode>
+      <HashCode>AAAAAAAQAAAQAAoSAAEUAAEAAAAAAAAIAAACIAAIAAA=</HashCode>
       <FileName>pck\database\database.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -147,13 +147,6 @@
       <FileName>pck\order\Order.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="userInterface.DataPanel" Collapsed="true">
-    <Position X="29.75" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>pck\uiKitBoxData\absDataPanel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="userInterface.BlockViewer" Collapsed="true">
     <Position X="28.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
@@ -171,7 +164,7 @@
   <Class Name="userInterface.LayerDataPanel" Collapsed="true">
     <Position X="30.75" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAAAAABAgQAAAAAAEAAAAAAAgBAgAAACgEAhAAAAAQ=</HashCode>
+      <HashCode>IAAAAAABAgQAAAAAAEAAAAAAAABAgAAACgEAhAAAAAQ=</HashCode>
       <FileName>pck\uiKitBoxData\LayerDataPanel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -206,14 +199,14 @@
   <Class Name="userInterface.ConfirmOrderLayout" Collapsed="true">
     <Position X="33.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEACEABQgAAAYAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAEACEABQgAABYAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>pck\uiOrder\ConfirOrderLayout.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="userInterface.DisplayOrderLayout" Collapsed="true">
     <Position X="35.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>MAEIAQADAgQAABAQAAAEAAJAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <HashCode>MAEIAQADAgQABBAQAAAEAAJAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>pck\uiOrder\DisplayOrderLayout.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -234,7 +227,7 @@
   <Class Name="userInterface.RadioButtonLayout&lt;T&gt;" Collapsed="true">
     <Position X="26.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAIgAAAgAAAAAAAAAAAAAAAAAAoAAAAAAAAAA=</HashCode>
+      <HashCode>AAAEAAAAIgAAAgAAAAAAAAAAAAAAAIAAoAAAAAAAAAA=</HashCode>
       <FileName>pck\uiRadioButton\RadioButtonLayout.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -287,12 +280,5 @@
       <FileName>pck\uiRadioButton\CustomRadioButton.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="userInterface.IUiData" Collapsed="true">
-    <Position X="26.5" Y="5.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAABEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>pck\uiKitBoxData\IUiData.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

@@ -35,6 +35,11 @@ namespace userInterface
             get => order; set
             {
                 order = value;
+                Console.WriteLine(order.ClearedBill.Count());
+                //foreach (KeyValuePair<string, int> a in order.ClearedBill)
+                //{
+                //    Console.WriteLine(a.Key);
+                //}
                 this.billDescription = value.BillDescription;
                 this.FillData();
                 this.FillUserData();
@@ -44,10 +49,10 @@ namespace userInterface
         private void FillData()
         {
             int index = 0;
-            foreach(List<object> l in this.billDescription)
-            {
-                Console.WriteLine(string.Join(Environment.NewLine, l));
-            }
+            //foreach(List<object> l in this.billDescription)
+            //{
+            //    Console.WriteLine(string.Join(Environment.NewLine, l));
+            //}
             foreach (List<object> l in this.billDescription)
             {
                 index = this.displayOrderPanel.RowCount;
@@ -70,10 +75,7 @@ namespace userInterface
 
         internal void Reset()
         {
-            while (this.displayUserPanel.Controls.Count > 0)
-            {
-                this.displayUserPanel.Controls[0].Dispose();
-            }
+            //this.displayOrderPanel = new TableLayoutPanel();
             this.displayUserPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
             this.displayUserPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
 

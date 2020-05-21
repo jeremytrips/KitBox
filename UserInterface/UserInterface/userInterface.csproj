@@ -101,6 +101,7 @@
     <Compile Include="pck\components\cup\Cup.cs" />
     <Compile Include="pck\components\Door\ClassicDoor.cs" />
     <Compile Include="pck\components\Door\GlassDoor.cs" />
+    <Compile Include="pck\uiKitBoxData\IlayerDataPanel.cs" />
     <Compile Include="pck\uiOrder\BackOrderAlert.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -136,10 +137,6 @@
     <Compile Include="pck\uiOldOrder\CustomTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="pck\uiKitBoxData\absDataPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="pck\uiKitBoxData\IUiData.cs" />
     <Compile Include="pck\uiKitBoxData\LayerDataPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -184,6 +181,7 @@
     </Compile>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

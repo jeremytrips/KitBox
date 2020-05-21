@@ -20,6 +20,11 @@ namespace userInterface
             set
             {
                 order = value;
+                Console.WriteLine(order.ClearedBill.Count());
+                //foreach (KeyValuePair<string, int> a in order.ClearedBill)
+                //{
+                //    Console.WriteLine(a.Key);
+                //}
             }
         }
 
@@ -34,9 +39,8 @@ namespace userInterface
         {
             if (this.userDatalayout.SaveUserData())
             {
-                Console.WriteLine("mabite fdp");
+                this.displayOrderLayout = new DisplayOrderLayout();
                 this.order.User = this.userDatalayout.User;
-                Console.WriteLine(this.userDatalayout.User);
                 this.displayOrderLayout.Order = this.order;
                 this.Controls.Remove(this.userDatalayout);
                 this.Controls.Add(this.displayOrderLayout);
@@ -60,19 +64,20 @@ namespace userInterface
             string caption = "Kitbox payement";
             MessageBoxButtons button = MessageBoxButtons.OK;
             DialogResult result = MessageBox.Show(message, caption, button);
-            this.order.SaveOrder();
-            this.Parent.Controls.Remove(this);
-            this.resetApp();
+            if (result == DialogResult.OK) {
+                this.order.SaveOrder();
+                this.resetApp();
+            }
         }
 
         internal void Reset()
         {
-            this.displayOrderLayout.Reset();
-            this.userDatalayout.Reset();
-            this.Controls.Remove(this.displayOrderLayout);
-            this.Controls.Add(this.userDatalayout);
-            this.continueButton.Click += this.SwitchLayout;
-            this.continueButton.Click -= this.ConfirmOrder;
+            //this.displayOrderLayout.Reset();
+            //this.userDatalayout.Reset();
+            //this.Controls.Remove(this.displayOrderLayout);
+            //this.Controls.Add(this.userDatalayout);
+            //this.continueButton.Click += new EventHandler(this.SwitchLayout);
+            //this.continueButton.Click -= this.ConfirmOrder;
         }
 
         private void MountLayout()

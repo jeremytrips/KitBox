@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace userInterface
 {
-    class LayerDataPanel: DataPanel
+    class LayerDataPanel: System.Windows.Forms.Panel
     {
         /*
          * BlockDataPanel 
