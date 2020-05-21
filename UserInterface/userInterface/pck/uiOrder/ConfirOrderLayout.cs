@@ -66,18 +66,7 @@ namespace userInterface
             DialogResult result = MessageBox.Show(message, caption, button);
             if (result == DialogResult.OK) {
                 this.order.SaveOrder();
-                this.resetApp();
             }
-        }
-
-        internal void Reset()
-        {
-            //this.displayOrderLayout.Reset();
-            //this.userDatalayout.Reset();
-            //this.Controls.Remove(this.displayOrderLayout);
-            //this.Controls.Add(this.userDatalayout);
-            //this.continueButton.Click += new EventHandler(this.SwitchLayout);
-            //this.continueButton.Click -= this.ConfirmOrder;
         }
 
         private void MountLayout()

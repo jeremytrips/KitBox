@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace userInterface
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Location = new System.Drawing.Point(300, 10);
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#ff6666");
             this.Name = "panel1";
             this.Size = new System.Drawing.Size(600, 120);
             // 

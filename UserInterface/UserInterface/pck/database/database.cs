@@ -12,7 +12,7 @@ namespace userInterface
 
     public class Database
     {
-        private static string connectionString = @"server=localhost;port=3306;user=root;database=kitbox;password=Pouroqui1475";
+        private static string connectionString = @"server=localhost;port=3306;user=root;database=kitbox;password=Mgbgt1979";
 
         private static MySqlDataReader Fetch(string query)
         {
@@ -270,6 +270,15 @@ namespace userInterface
             command.ExecuteNonQuery();
         }
 
+        public static bool CheckOldOrderExistance(string oldOrderName)
+        {
+            MySqlDataReader rdr = Fetch(String.Format("select count(*) from client_order where order_name='{0}';", oldOrderName));
+            while (rdr.Read())
+            {
+                return rdr.GetBoolean(0);
+            }
+            return false;
+        }
 
         public static void CheckCodeFound(Dictionary<string, int> keyValue)
         {

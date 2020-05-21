@@ -44,15 +44,17 @@ namespace userInterface
                 DialogResult result = MessageBox.Show(message, caption, button);
                 if (result == DialogResult.Yes)
                 {
-                    this.ResetApp();
-                    string orderToFetch = this.oldOrderLayout.GetOldOrderName();
-                    ClientOrder oldOrder = new ClientOrder();
-                    oldOrder.FetchOldOrder(orderToFetch);
-                    this.confirmOrderLayout.Order = oldOrder;
-                    this.Controls.Add(this.confirmOrderLayout);
-                    this.confirmOrderLayout.BringToFront();
+                    this.ResetApp();  
                 }
-            } else {
+            }
+            else if (!Database.CheckOldOrderExistance(this.oldOrderLayout.GetOldOrderName()))
+            {
+                string message = "The Kitbox you're searching for do not exist";
+                string caption = "Kitbox warning";
+                DialogResult result = MessageBox.Show(message, caption);
+            }
+            else
+            {
                 string orderToFetch = this.oldOrderLayout.GetOldOrderName();
                 ClientOrder oldOrder = new ClientOrder();
                 oldOrder.FetchOldOrder(orderToFetch);
@@ -172,7 +174,6 @@ namespace userInterface
             this.confirmOrderLayout = new ConfirmOrderLayout(this.ResetApp);
             kitboxData.Clear();
             selectedGeneralDataPanel = null;
-            this.confirmOrderLayout.Reset();
             this.kitBoxToOrderTabs.TabPages.Clear();
             
         }
