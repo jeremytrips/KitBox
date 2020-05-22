@@ -3,35 +3,42 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using userInterface;
 
 namespace InterfaceMagasinier
 {
     public partial class Details : Form
     {
-        public Details()
+        private string id_Order;
+        private string Order_name;
+        private string date;
+        public Details(string id_order, string order_name, string date)
         {
+            this.id_Order = id_order;
+            this.Order_name = order_name;
+            this.date = date;
+
+           
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'kitboxDataSet.client_order' table. You can move, or remove it, as needed.
-            this.client_orderTableAdapter.Fill(this.kitboxDataSet.client_order);
-            // TODO: This line of code loads data into the 'kitboxDataSet.component' table. You can move, or remove it, as needed.
-            this.componentTableAdapter.Fill(this.kitboxDataSet.component);
-            // TODO: This line of code loads data into the 'kitboxDataSet.client_order_component' table. You can move, or remove it, as needed.
-            this.client_order_componentTableAdapter.Fill(this.kitboxDataSet.client_order_component);
+            
+            this.labelOrderName.Text = this.Order_name;
+            this.LabelIdName.Text = this.id_Order;
+            this.labelDate.Text = this.date;
 
-
-        }
-
-        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
+            Dictionary<string, int> GetDetails = Database.FetchClearedBill(Int16.Parse(this.id_Order));
+            foreach (var item in GetDetails.Keys)
+            {
+                this.dataGridView1.Rows.Add(item, GetDetails[item]);
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -50,7 +57,38 @@ namespace InterfaceMagasinier
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+
+        PrintPreviewDialog prntprvw = new PrintPreviewDialog();
+        PrintDocument prntdoc = new PrintDocument();
+        Bitmap bmp;
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            Print(this.panel1);
+            
+        }
+        public void Print(Panel pnl)
+        {
+            PrinterSettings ps = new PrinterSettings();
+            panel1 = pnl;  
+            getprintarea(pnl);
+            prntprvw.Document = prntdoc;
+            prntdoc.PrintPage += new PrintPageEventHandler(prntdoc_printpage);
+            prntprvw.ShowDialog();
+
+        }
+
+        public void prntdoc_printpage(object sender, PrintPageEventArgs e)
+        {
+            Rectangle pagearea = e.PageBounds;
+            e.Graphics.DrawImage(bmp, (pagearea.Width / 2) - (this.panel1.Width / 2), this.panel1.Location.Y);
+        }
+        public void getprintarea(Panel pnl)
+        {
+            bmp = new Bitmap(pnl.Width, pnl.Height);
+            pnl.DrawToBitmap(bmp, new Rectangle(0, 0, pnl.Width, pnl.Height));
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
@@ -58,21 +96,6 @@ namespace InterfaceMagasinier
         private void label5_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            e.Graphics.DrawImage(bmp, 0, 0);
-        }
-
-        Bitmap bmp;
-        private void btnPrint_Click(object sender, EventArgs e)
-        {
-            Graphics g = this.CreateGraphics();
-            bmp = new Bitmap(this.Size.Width, this.Size.Height, g);
-            Graphics mg = Graphics.FromImage(bmp);
-            mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
-            printPreviewDialog1.ShowDialog();
         }
     }
 } 
