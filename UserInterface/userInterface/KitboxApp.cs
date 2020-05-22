@@ -31,36 +31,51 @@ namespace userInterface
             InitializeComponent();
             this.oldOrderLayout = new OldOrderLayout(this.HandleOldOrder, "Enter user name");
             this.Controls.Add(this.oldOrderLayout);
-            this.confirmOrderLayout = new ConfirmOrderLayout(this.ResetApp);
+            this.confirmOrderLayout = new ConfirmOrderLayout(this.ResetApp, this.BackFromConfirmOrder);
+            this.AddKitbox_Click(null, null);
+        }
+
+        public void BackFromConfirmOrder(object sender, EventArgs e)
+        {
+            this.Controls.Remove(this.confirmOrderLayout);
+            this.confirmOrderLayout = new ConfirmOrderLayout(this.ResetApp, this.BackFromConfirmOrder  );
         }
 
         private void HandleOldOrder(object sender, EventArgs e)
         {
-            if (this.kitboxData.Count != 0)
-            {
-                string message = "Warning you are about to erase the Kitbox you have created. Are you sure?";
-                string caption = "Kitbox warning";
-                MessageBoxButtons button = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, caption, button);
-                if (result == DialogResult.Yes)
+            string name = this.oldOrderLayout.GetOldOrderName();
+            Console.WriteLine(name);
+            if (name != "") {
+                Console.WriteLine("t");
+                if (!Database.CheckOldOrderExistance(name))
                 {
-                    this.ResetApp();  
+                    Console.WriteLine("nop");
+                    string message = "The Kitbox you're searching for do not exist";
+                    string caption = "Kitbox warning";
+                    MessageBox.Show(message, caption);
                 }
-            }
-            else if (!Database.CheckOldOrderExistance(this.oldOrderLayout.GetOldOrderName()))
-            {
-                string message = "The Kitbox you're searching for do not exist";
-                string caption = "Kitbox warning";
-                DialogResult result = MessageBox.Show(message, caption);
-            }
-            else
-            {
-                string orderToFetch = this.oldOrderLayout.GetOldOrderName();
-                ClientOrder oldOrder = new ClientOrder();
-                oldOrder.FetchOldOrder(orderToFetch);
-                this.confirmOrderLayout.Order = oldOrder;
-                this.Controls.Add(this.confirmOrderLayout);
-                this.confirmOrderLayout.BringToFront();
+                else
+                {
+                    Console.WriteLine("yup");
+                    if (this.kitboxData.Count != 0)
+                    {
+                        string message = "Warning you are about to erase the Kitbox you have created. Are you sure?";
+                        string caption = "Kitbox warning";
+                        MessageBoxButtons button = MessageBoxButtons.YesNo;
+                        DialogResult result = MessageBox.Show(message, caption, button);
+                        if (result == DialogResult.Yes)
+                        {
+                            this.ResetApp();
+                            ClientOrder oldOrder = new ClientOrder();
+                            oldOrder.FetchOldOrder(name);
+                            this.confirmOrderLayout.Order = oldOrder;
+                            this.Controls.Add(this.confirmOrderLayout);
+                            this.confirmOrderLayout.BringToFront();
+                        }
+
+                    }
+
+                }
             }
         }
 
@@ -171,11 +186,12 @@ namespace userInterface
                 this.Controls.Remove(gdp);
             }
             this.Controls.Remove(this.confirmOrderLayout);
-            this.confirmOrderLayout = new ConfirmOrderLayout(this.ResetApp);
+            this.confirmOrderLayout = new ConfirmOrderLayout(this.ResetApp, this.BackFromConfirmOrder);
             kitboxData.Clear();
             selectedGeneralDataPanel = null;
             this.kitBoxToOrderTabs.TabPages.Clear();
-            
+            this.AddKitbox_Click(null, null);
+
         }
     }
 } 

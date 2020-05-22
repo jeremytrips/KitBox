@@ -12,8 +12,10 @@ namespace userInterface
         private UserDataLayout userDatalayout = new UserDataLayout();
         private DisplayOrderLayout displayOrderLayout = new DisplayOrderLayout();
         private Button continueButton = new Button();
+        private Button backButton = new Button();
         private ClientOrder order;
         private Action resetApp;
+        private EventHandler backAction;
 
         public ClientOrder Order
         {
@@ -28,11 +30,12 @@ namespace userInterface
             }
         }
 
-        public ConfirmOrderLayout(Action resetApp) 
-        {
+        public ConfirmOrderLayout(Action resetApp, EventHandler backAction)
+        { 
+            this.resetApp = resetApp;
+            this.backAction = backAction;
             this.MountLayout();
             this.Controls.Add(userDatalayout);
-            this.resetApp = resetApp;
         }
 
         private void SwitchLayout(object sender, EventArgs e)
@@ -74,6 +77,7 @@ namespace userInterface
         private void MountLayout()
         {
             this.Controls.Add(this.continueButton);
+            this.Controls.Add(this.backButton);
             // 
             // continueButton
             // 
@@ -88,6 +92,14 @@ namespace userInterface
             this.Location = new System.Drawing.Point(0, 0);
             this.Size = new System.Drawing.Size(1024, 720);
             this.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+
+            //
+            // BackButton
+            //
+            this.backButton.Location = new System.Drawing.Point(10, 10);
+            this.backButton.Size = new System.Drawing.Size(120, 64);
+            this.backButton.Text = "Back";
+            this.backButton.Click += new EventHandler(this.backAction);
         }
     }
 }
