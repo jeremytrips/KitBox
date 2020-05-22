@@ -1155,8 +1155,6 @@ namespace InterfaceMagasinier {
             
             private global::System.Data.DataColumn columnorder_quantity;
             
-            private global::System.Data.DataColumn columnhas_been_ordered;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public componentDataTable() {
@@ -1280,14 +1278,8 @@ namespace InterfaceMagasinier {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn has_been_orderedColumn {
-                get {
-                    return this.columnhas_been_ordered;
-                }
-            }
             
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+           
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1323,7 +1315,7 @@ namespace InterfaceMagasinier {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public componentRow AddcomponentRow(string code, int height, int width, int depth, string reference, string color, int stock, int stock_min_required, float price, int number_by_box, int order_quantity, bool has_been_ordered) {
+            public componentRow AddcomponentRow(string code, int height, int width, int depth, string reference, string color, int stock, int stock_min_required, float price, int number_by_box, int order_quantity) {
                 componentRow rowcomponentRow = ((componentRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         code,
@@ -1336,8 +1328,7 @@ namespace InterfaceMagasinier {
                         stock_min_required,
                         price,
                         number_by_box,
-                        order_quantity,
-                        has_been_ordered};
+                        order_quantity};
                 rowcomponentRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcomponentRow);
                 return rowcomponentRow;
@@ -1378,7 +1369,6 @@ namespace InterfaceMagasinier {
                 this.columnprice = base.Columns["price"];
                 this.columnnumber_by_box = base.Columns["number_by_box"];
                 this.columnorder_quantity = base.Columns["order_quantity"];
-                this.columnhas_been_ordered = base.Columns["has_been_ordered"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1406,8 +1396,7 @@ namespace InterfaceMagasinier {
                 base.Columns.Add(this.columnnumber_by_box);
                 this.columnorder_quantity = new global::System.Data.DataColumn("order_quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnorder_quantity);
-                this.columnhas_been_ordered = new global::System.Data.DataColumn("has_been_ordered", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnhas_been_ordered);
+                
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columncode}, true));
                 this.columncode.AllowDBNull = false;
@@ -1424,7 +1413,6 @@ namespace InterfaceMagasinier {
                 this.columnprice.AllowDBNull = false;
                 this.columnnumber_by_box.AllowDBNull = false;
                 this.columnorder_quantity.AllowDBNull = false;
-                this.columnhas_been_ordered.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2975,17 +2963,9 @@ namespace InterfaceMagasinier {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool has_been_ordered {
-                get {
-                    return ((bool)(this[this.tablecomponent.has_been_orderedColumn]));
-                }
-                set {
-                    this[this.tablecomponent.has_been_orderedColumn] = value;
-                }
-            }
             
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            
+            
             public bool IscolorNull() {
                 return this.IsNull(this.tablecomponent.colorColumn);
             }
@@ -4488,11 +4468,10 @@ namespace InterfaceMagasinier.kitboxDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("price", "price");
             tableMapping.ColumnMappings.Add("number_by_box", "number_by_box");
             tableMapping.ColumnMappings.Add("order_quantity", "order_quantity");
-            tableMapping.ColumnMappings.Add("has_been_ordered", "has_been_ordered");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `component` WHERE ((`code` = @p1) AND (`height` = @p2) AND (`width` = @p3) AND (`depth` = @p4) AND (`reference` = @p5) AND ((@p6 = 1 AND `color` IS NULL) OR (`color` = @p7)) AND (`stock` = @p8) AND (`stock_min_required` = @p9) AND (`price` = @p10) AND (`number_by_box` = @p11) AND (`order_quantity` = @p12) AND (`has_been_ordered` = @p13))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `component` WHERE ((`code` = @p1) AND (`height` = @p2) AND (`width` = @p3) AND (`depth` = @p4) AND (`reference` = @p5) AND ((@p6 = 1 AND `color` IS NULL) OR (`color` = @p7)) AND (`stock` = @p8) AND (`stock_min_required` = @p9) AND (`price` = @p10) AND (`number_by_box` = @p11) AND (`order_quantity` = @p12))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -4596,7 +4575,6 @@ namespace InterfaceMagasinier.kitboxDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "has_been_ordered";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
@@ -4699,12 +4677,11 @@ namespace InterfaceMagasinier.kitboxDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "has_been_ordered";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `component` SET `code` = @p1, `height` = @p2, `width` = @p3, `depth` = @p4, `reference` = @p5, `color` = @p6, `stock` = @p7, `stock_min_required` = @p8, `price` = @p9, `number_by_box` = @p10, `order_quantity` = @p11, `has_been_ordered` = @p12 WHERE ((`code` = @p13) AND (`height` = @p14) AND (`width` = @p15) AND (`depth` = @p16) AND (`reference` = @p17) AND ((@p18 = 1 AND `color` IS NULL) OR (`color` = @p19)) AND (`stock` = @p20) AND (`stock_min_required` = @p21) AND (`price` = @p22) AND (`number_by_box` = @p23) AND (`order_quantity` = @p24) AND (`has_been_ordered` = @p25))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `component` SET `code` = @p1, `height` = @p2, `width` = @p3, `depth` = @p4, `reference` = @p5, `color` = @p6, `stock` = @p7, `stock_min_required` = @p8, `price` = @p9, `number_by_box` = @p10, `order_quantity` = @p11 WHERE ((`code` = @p13) AND (`height` = @p14) AND (`width` = @p15) AND (`depth` = @p16) AND (`reference` = @p17) AND ((@p18 = 1 AND `color` IS NULL) OR (`color` = @p19)) AND (`stock` = @p20) AND (`stock_min_required` = @p21) AND (`price` = @p22) AND (`number_by_box` = @p23) AND (`order_quantity` = @p24))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -4799,7 +4776,6 @@ namespace InterfaceMagasinier.kitboxDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "has_been_ordered";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -4904,7 +4880,6 @@ namespace InterfaceMagasinier.kitboxDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "has_been_ordered";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
@@ -4923,7 +4898,7 @@ namespace InterfaceMagasinier.kitboxDataSetTableAdapters {
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT `code`, `height`, `width`, `depth`, `reference`, `color`, `stock`, `stock_" +
-                "min_required`, `price`, `number_by_box`, `order_quantity`, `has_been_ordered` FR" +
+                "min_required`, `price`, `number_by_box`, `order_quantity` FR" +
                 "OM `component`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }

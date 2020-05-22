@@ -79,7 +79,7 @@ insert into kitbox.supplier(id_supplier, name, address) values
 
 
 INSERT INTO kitbox.component(code, height, width, depth, reference, color, stock, stock_min_required, price, number_by_box, order_quantity, to_order) VALUES
-("COR46BL",46,0,0,"Cornieres","Blanc",89,32,0.45,4,32,0),
+("COR46BL",46,0,0,"Cornieres","Blanc",82,32,0.45,4,32,0),
 ("﻿COR36BL",36,0,0,"Cornieres","Blanc",84,32,0.35,4,32,0),
 ("COR56BL",56,0,0,"Cornieres","Blanc",89,32,0.55,4,32,0),
 ("COR72BL",72,0,0,"Cornieres","Blanc",82,32,0.66,4,32,0),

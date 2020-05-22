@@ -21,16 +21,6 @@ namespace InterfaceMagasinier
             InitializeComponent();
         }
 
-        private void GroupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CheckedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if(dataGridViewOrderProgress.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
@@ -44,46 +34,34 @@ namespace InterfaceMagasinier
             }
         }
 
-        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void Button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-   
-
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'kitboxDataSet.price' table. You can move, or remove it, as needed.
+            this.priceTableAdapter.Fill(this.kitboxDataSet.price);
+            // TODO: This line of code loads data into the 'kitboxDataSet.supplier_order_component' table. You can move, or remove it, as needed.
+            this.supplier_order_componentTableAdapter.Fill(this.kitboxDataSet.supplier_order_component);
+            // TODO: This line of code loads data into the 'kitboxDataSet.supplier_order' table. You can move, or remove it, as needed.
+            this.supplier_orderTableAdapter.Fill(this.kitboxDataSet.supplier_order);
+            // TODO: This line of code loads data into the 'kitboxDataSet.supplier' table. You can move, or remove it, as needed.
+            this.supplierTableAdapter.Fill(this.kitboxDataSet.supplier);
+            refresh();
+        }
+
+        private void refresh()
+        {
+            Database.CheckStock();
+            this.dataGridViewOutStock.Rows.Clear();
             // TODO: This line of code loads data into the 'kitboxDataSet.component' table. You can move, or remove it, as needed.
             this.componentTableAdapter.Fill(this.kitboxDataSet.component);
             // TODO: This line of code loads data into the 'kitboxDataSet.client_order' table. You can move, or remove it, as needed.
             this.client_orderTableAdapter.Fill(this.kitboxDataSet.client_order);
 
 
-
-            Dictionary<string, int> OutofStock = Database.fet();
+            Dictionary<string, int> OutofStock = Database.FetchOutOfStock();
             foreach (var item in OutofStock.Keys)
             {
                 this.dataGridViewOutStock.Rows.Add(item, OutofStock[item]);
             }
-
-          
-
-}
-
-        private void MagasinGroupBcx_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void ListOfComponents_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void Button5_Click_1(object sender, EventArgs e)
@@ -92,59 +70,23 @@ namespace InterfaceMagasinier
             newForm.Show();
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
+            string code = textBox1.Text;
+            int number = Int16.Parse(textBox2.Text);
+            Database.updatestock(code, number);
+            refresh();
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-
+            string code = textBox5.Text;
+            int number = Int16.Parse(textBox3.Text);
+            Database.updateprice(code, number);
+            refresh();
         }
 
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox5_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void btnRefreshOrder_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void clientorderBindingSource1_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

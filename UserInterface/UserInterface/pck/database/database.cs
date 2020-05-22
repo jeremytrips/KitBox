@@ -312,7 +312,7 @@ namespace userInterface
             }
         }
 
-        public static Dictionary<string, int > FetchOutOfStock()
+        internal static Dictionary<string, int> FetchOutOfStock()
         {
             Dictionary<string, int> OutOfStock = new Dictionary<string, int> { };
             MySqlDataReader rdr = Fetch(string.Format("SELECT code, stock, height, width, depth, reference, color, price, order_quantity, to_order FROM component;"));
@@ -335,5 +335,15 @@ namespace userInterface
             return OutOfStock;
         }
         
+        public static void updatestock(string code, int number)
+        {
+            MySqlConnection dataBaseConnection = new MySqlConnection(connectionString);
+            string query = string.Format("UPDATE component.stock set stock = {0} WHERE code = {1}", number, code);
+            MySqlCommand command = new MySqlCommand(query, dataBaseConnection);
+            dataBaseConnection.Open();
+            command.ExecuteNonQuery();
+            dataBaseConnection.Close();
+        }
+            
     }
 }
