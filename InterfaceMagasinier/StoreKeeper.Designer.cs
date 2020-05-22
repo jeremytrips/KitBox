@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabSupplier = new System.Windows.Forms.TabControl();
             this.OrderPage = new System.Windows.Forms.TabPage();
             this.MagasinGroupBcx = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
@@ -85,7 +85,8 @@
             this.Width = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Depth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabControl1.SuspendLayout();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabSupplier.SuspendLayout();
             this.OrderPage.SuspendLayout();
             this.MagasinGroupBcx.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -105,21 +106,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.clientorderBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tabSupplier
             // 
-            this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabControl1.Controls.Add(this.OrderPage);
-            this.tabControl1.Controls.Add(this.StockPage);
-            this.tabControl1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.ItemSize = new System.Drawing.Size(71, 30);
-            this.tabControl1.Location = new System.Drawing.Point(12, 13);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1302, 1221);
-            this.tabControl1.TabIndex = 0;
+            this.tabSupplier.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            this.tabSupplier.Controls.Add(this.OrderPage);
+            this.tabSupplier.Controls.Add(this.StockPage);
+            this.tabSupplier.Controls.Add(this.tabPage1);
+            this.tabSupplier.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.tabSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabSupplier.ItemSize = new System.Drawing.Size(71, 30);
+            this.tabSupplier.Location = new System.Drawing.Point(12, 13);
+            this.tabSupplier.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabSupplier.Name = "tabSupplier";
+            this.tabSupplier.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tabSupplier.SelectedIndex = 0;
+            this.tabSupplier.Size = new System.Drawing.Size(1302, 1221);
+            this.tabSupplier.TabIndex = 0;
             // 
             // OrderPage
             // 
@@ -646,18 +648,28 @@
             this.Color.Name = "Color";
             this.Color.Width = 150;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 34);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1294, 1183);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
             // StoreKeeper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(1317, 1247);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabSupplier);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "StoreKeeper";
             this.Text = "StoreKeeper";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.tabSupplier.ResumeLayout(false);
             this.OrderPage.ResumeLayout(false);
             this.MagasinGroupBcx.ResumeLayout(false);
             this.MagasinGroupBcx.PerformLayout();
@@ -684,7 +696,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabSupplier;
         private System.Windows.Forms.TabPage StockPage;
         private System.Windows.Forms.TabPage OrderPage;
         private System.Windows.Forms.GroupBox MagasinGroupBcx;
@@ -740,6 +752,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Width;
         private System.Windows.Forms.DataGridViewTextBoxColumn Depth;
         private System.Windows.Forms.DataGridViewTextBoxColumn Color;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }
 

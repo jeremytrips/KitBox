@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using userInterface;
 
 namespace InterfaceMagasinier
 {
@@ -62,21 +63,15 @@ namespace InterfaceMagasinier
             // TODO: This line of code loads data into the 'kitboxDataSet.client_order' table. You can move, or remove it, as needed.
             this.client_orderTableAdapter.Fill(this.kitboxDataSet.client_order);
 
-            Dictionary<string, int> GetDetails = userInterface.Database.FetchClearedBill(Int16.Parse(this.id_Order));
-            foreach (var item in GetDetails.Keys)
+
+
+            Dictionary<string, int> OutofStock = Database.fet();
+            foreach (var item in OutofStock.Keys)
             {
-                this.dataGridViewOutStock.Rows.Add(item, GetDetails[item]);
+                this.dataGridViewOutStock.Rows.Add(item, OutofStock[item]);
             }
 
-            /*private string OutOfStock;
-
-            foreach(DataGridViewRow row in dataGridViewStock.Rows)
-            {
-                 if(dataGridViewStock.Rows[e.RowIndex].Cells[1].Value<MySqlDataReader rdr = Fetch(String.Format("SELECT stock_min_required FROM kitbox.component WHERE code LIKE '{0}';", component)); )
-            {
-               OutOfStock  = dataGridViewOrderStock.Rows[e.RowIndex].FormattedValue.ToString();
-
-            }*/
+          
 
 }
 
