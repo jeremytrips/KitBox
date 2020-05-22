@@ -57,6 +57,7 @@ namespace userInterface
         internal void FetchOldOrder(string oldOrderName)
         {
 			List<object> userData = Database.FetchUserData(oldOrderName);
+			
 			this.clearedBill = Database.FetchClearedBill((short)userData[0]);
 			this.billDescription = Database.HandleOrder(this.clearedBill);
         }

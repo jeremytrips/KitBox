@@ -12,7 +12,7 @@ namespace userInterface
 
     public class Database
     {
-        private static string connectionString = @"server=localhost;port=3306;user=root;database=kitbox;password=Pouroqui1475";
+        private static string connectionString = @"server=localhost;port=3306;user=root;database=kitbox;password=Mgbgt1979";
 
         private static MySqlDataReader Fetch(string query)
         {
@@ -268,6 +268,17 @@ namespace userInterface
             MySqlCommand command = new MySqlCommand(query, dataBaseConnection);
             dataBaseConnection.Open();
             command.ExecuteNonQuery();
+            dataBaseConnection.Close();
+        }
+
+        public static void CheckStock()
+        {
+            MySqlConnection dataBaseConnection = new MySqlConnection(connectionString);
+            string querry = "update component set to_order= stock<stock_min_required;";
+            MySqlCommand command = new MySqlCommand(querry, dataBaseConnection);
+            dataBaseConnection.Open();
+            command.ExecuteNonQuery();
+            dataBaseConnection.Close();
         }
 
         public static bool CheckOldOrderExistance(string oldOrderName)

@@ -51,7 +51,8 @@ namespace userInterface
             {
                 this.Controls.Remove(this.avaiblableDoorColor);
                 this.layer.DoorType = null;
-            }else
+            }
+            else
             {
                 this.Controls.Add(this.avaiblableDoorColor);
                 this.SetDoorColor(null, null);
@@ -84,9 +85,9 @@ namespace userInterface
         private void MountLayout(List<int> availablePanelHeight, List<string> availablePanelColor, List<string> avaiblableDoorColor)
         {
             avaiblableDoorColor.Add("No door");  
-            this.availablePanelHeight = new RadioButtonLayout<int>(0,this.SetLayerHeight, availablePanelHeight);
-            this.availablePanelColor = new RadioButtonLayout<string>(100, this.SetPanelColor, availablePanelColor);
-            this.avaiblableDoorColor = new RadioButtonLayout<string>(200, this.SetDoorColor, avaiblableDoorColor);
+            this.availablePanelHeight = new RadioButtonLayout<int>(0,this.SetLayerHeight, availablePanelHeight, "Height of layer:");
+            this.availablePanelColor = new RadioButtonLayout<string>(100, this.SetPanelColor, availablePanelColor, "Color of the door:");
+            this.avaiblableDoorColor = new RadioButtonLayout<string>(200, this.SetDoorColor, avaiblableDoorColor, "Color of the panels:");
 
             this.Controls.Add(this.availablePanelHeight);
             this.Controls.Add(this.availablePanelColor);

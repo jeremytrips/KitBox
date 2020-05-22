@@ -10,15 +10,14 @@ namespace userInterface
     {
         static int i;
         private List<System.Windows.Forms.RadioButton> radioButtonList = new List<System.Windows.Forms.RadioButton>();
+        private string text;
         
 
-        public RadioButtonLayout(int y , System.EventHandler handler, List<T> data): base()
+        public RadioButtonLayout(int y , System.EventHandler handler, List<T> data, string text): base()
         {
-            RadioButtonLayout<T>.i += 1;
+            this.text = text;
             this.MountLayout(y);
             this.CreateRadioButton(handler, data);
-            
-            
         }
         
         private void CreateRadioButton(EventHandler handler, List<T> data)
@@ -46,38 +45,18 @@ namespace userInterface
 
         private void MountLayout(int y)
         {
-         
-
             this.Location = new System.Drawing.Point(0, y);
             this.Size = new System.Drawing.Size(400, 100);
             this.BackColor = System.Drawing.SystemColors.Control;
           
             
-                System.Windows.Forms.Label LabelHeight = new System.Windows.Forms.Label();
-                LabelHeight.AutoSize = true;
-                LabelHeight.Location = new System.Drawing.Point(34, 20);
-                LabelHeight.Size = new System.Drawing.Size(108, 13);
-                LabelHeight.Text = "Height of layer:";
-                this.Controls.Add(LabelHeight);
-            
-            
-            
-                System.Windows.Forms.Label LabelCD = new System.Windows.Forms.Label();
-                LabelCD.AutoSize = true;
-                LabelCD.Location = new System.Drawing.Point(34, 40);
-                LabelCD.Size = new System.Drawing.Size(108, 13);
-                LabelCD.Text = "Color of the door:";
-                this.Controls.Add(LabelCD);
-            
-            
-                System.Windows.Forms.Label LabelCP = new System.Windows.Forms.Label();
-                LabelCP.AutoSize = true;
-                LabelCP.Location = new System.Drawing.Point(34, 60);
-                LabelCP.Size = new System.Drawing.Size(108, 13);
-                LabelCP.Text = "Color of the panels:";
-                this.Controls.Add(LabelCP);
-            
-           
+            System.Windows.Forms.Label label = new System.Windows.Forms.Label();
+            label.AutoSize = true;
+            label.Location = new System.Drawing.Point(34, 20);
+            label.Size = new System.Drawing.Size(108, 13);
+            label.Text = this.text;
+            this.Controls.Add(label);
+                       
         }
 
         public string GetChecked()
