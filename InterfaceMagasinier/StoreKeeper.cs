@@ -53,10 +53,7 @@ namespace InterfaceMagasinier
 
         }
 
-        private void CheckBox2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+   
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -65,17 +62,29 @@ namespace InterfaceMagasinier
             // TODO: This line of code loads data into the 'kitboxDataSet.client_order' table. You can move, or remove it, as needed.
             this.client_orderTableAdapter.Fill(this.kitboxDataSet.client_order);
 
-        }
+            Dictionary<string, int> GetDetails = userInterface.Database.FetchClearedBill(Int16.Parse(this.id_Order));
+            foreach (var item in GetDetails.Keys)
+            {
+                this.dataGridViewOutStock.Rows.Add(item, GetDetails[item]);
+            }
+
+            /*private string OutOfStock;
+
+            foreach(DataGridViewRow row in dataGridViewStock.Rows)
+            {
+                 if(dataGridViewStock.Rows[e.RowIndex].Cells[1].Value<MySqlDataReader rdr = Fetch(String.Format("SELECT stock_min_required FROM kitbox.component WHERE code LIKE '{0}';", component)); )
+            {
+               OutOfStock  = dataGridViewOrderStock.Rows[e.RowIndex].FormattedValue.ToString();
+
+            }*/
+
+}
 
         private void MagasinGroupBcx_Enter(object sender, EventArgs e)
         {
 
         }
 
-        private void VScrollBar1_Scroll(object sender, ScrollEventArgs e)
-        {
-
-        }
 
         private void ListOfComponents_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -139,5 +148,11 @@ namespace InterfaceMagasinier
         {
 
         }
+
+        private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
+

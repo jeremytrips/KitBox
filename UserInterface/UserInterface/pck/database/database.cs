@@ -300,6 +300,29 @@ namespace userInterface
                 Console.WriteLine(l);
             }
         }
+
+        public static Dictionary<string, int > FetchOutOfStock()
+        {
+            Dictionary<string, int> OutOfStock = new Dictionary<string, int> { };
+            MySqlDataReader rdr = Fetch(string.Format("SELECT code, stock, height, width, depth, reference, color, price, order_quantity, to_order FROM component;"));
+            while (rdr.Read())
+            {
+                if(rdr.GetBoolean(9)== true)
+                {
+                    OutOfStock.Add("code", rdr.GetInt16(0));
+                    OutOfStock.Add("stock", rdr.GetInt16(1));
+                    OutOfStock.Add("height", rdr.GetInt16(2));
+                    OutOfStock.Add("width", rdr.GetInt16(3));
+                    OutOfStock.Add("depth", rdr.GetInt16(4));
+                    OutOfStock.Add("reference", rdr.GetInt16(5));
+                    OutOfStock.Add("color", rdr.GetInt16(6));
+                    OutOfStock.Add("price", rdr.GetInt16(7));
+                    OutOfStock.Add("order_quantity", rdr.GetInt16(8));
+                    OutOfStock.Add("to_order", rdr.GetInt16(9));
+                }
+            }
+            return OutOfStock;
+        }
         
     }
 }
