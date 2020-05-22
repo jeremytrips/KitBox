@@ -34,6 +34,7 @@
             this.AddLayerButton = new System.Windows.Forms.Button();
             this.order = new System.Windows.Forms.Button();
             this.removeKitBoxButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // kitBoxToOrderTabs
@@ -97,11 +98,21 @@
             this.removeKitBoxButton.UseVisualStyleBackColor = true;
             this.removeKitBoxButton.Click += new System.EventHandler(this.removeKitBoxButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(636, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(181, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Click on a particular layer to modify it.";
+            // 
             // KitboxApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 681);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.removeKitBoxButton);
             this.Controls.Add(this.order);
             this.Controls.Add(this.AddLayerButton);
@@ -111,6 +122,7 @@
             this.Name = "KitboxApp";
             this.Text = "s";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -123,6 +135,7 @@
         private System.Windows.Forms.Button AddLayerButton;
         private System.Windows.Forms.Button order;
         private System.Windows.Forms.Button removeKitBoxButton;
+        private System.Windows.Forms.Label label1;
     }
 }
 

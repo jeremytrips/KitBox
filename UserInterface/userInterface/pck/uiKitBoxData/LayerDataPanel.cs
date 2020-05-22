@@ -86,7 +86,6 @@ namespace userInterface
             // Mounting layout
             this.Location = new System.Drawing.Point(0, 165);
             this.Size = new System.Drawing.Size(400, 300);
-            this.BackColor = System.Drawing.Color.Red;
         }
 
         public Block GetBlock()
