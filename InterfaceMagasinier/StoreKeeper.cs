@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using userInterface;
 
 namespace InterfaceMagasinier
 {
@@ -53,10 +54,7 @@ namespace InterfaceMagasinier
 
         }
 
-        private void CheckBox2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+   
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -65,17 +63,23 @@ namespace InterfaceMagasinier
             // TODO: This line of code loads data into the 'kitboxDataSet.client_order' table. You can move, or remove it, as needed.
             this.client_orderTableAdapter.Fill(this.kitboxDataSet.client_order);
 
-        }
+
+
+            Dictionary<string, int> OutofStock = Database.fet();
+            foreach (var item in OutofStock.Keys)
+            {
+                this.dataGridViewOutStock.Rows.Add(item, OutofStock[item]);
+            }
+
+          
+
+}
 
         private void MagasinGroupBcx_Enter(object sender, EventArgs e)
         {
 
         }
 
-        private void VScrollBar1_Scroll(object sender, ScrollEventArgs e)
-        {
-
-        }
 
         private void ListOfComponents_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -139,5 +143,11 @@ namespace InterfaceMagasinier
         {
 
         }
+
+        private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
+
