@@ -32,6 +32,7 @@ namespace userInterface
             this.layer = new Layer(width, depth);
             this.blockViewer = new BlockViewer(heightOfBlockViewer);
             this.blockViewer.Click += clickHandler;
+            this.layer.Height = availableHeight[0];
         }
 
         private void SetPanelColor(object sender, EventArgs e)
