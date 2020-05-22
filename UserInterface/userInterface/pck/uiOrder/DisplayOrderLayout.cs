@@ -35,7 +35,6 @@ namespace userInterface
             get => order; set
             {
                 order = value;
-                Console.WriteLine(order.ClearedBill.Count());
                 this.billDescription = value.BillDescription;
                 this.FillData();
                 this.FillUserData();

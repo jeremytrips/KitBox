@@ -12,7 +12,7 @@ CREATE TABLE `client_order` (
 	`id_order` INT NOT NULL,
 	`date` DATE NOT NULL,
 	`price` FLOAT NOT NULL,
-	`already_paid` INT NOT NULL,
+	`already_paid` FLOAT NOT NULL,
 	`order_name` varchar(25) NOT NULL UNIQUE,
 	PRIMARY KEY (`id`)
 );
@@ -39,7 +39,7 @@ CREATE TABLE `component` (
 	`price` FLOAT NOT NULL,
 	`number_by_box` INT NOT NULL,
 	`order_quantity` INT NOT NULL,
-	`has_been_ordered` BOOLEAN NOT NULL,
+	`to_order` BOOLEAN NOT NULL,
 	PRIMARY KEY (`code`)
 );
 
@@ -78,7 +78,7 @@ insert into kitbox.supplier(id_supplier, name, address) values
 (2, "TraitBois SPRL", "Ebenistes reunis Chemin des 2 Maisons, 140 5150 : Floriffoux");
 
 
-INSERT INTO kitbox.component(code, height, width, depth, reference, color, stock, stock_min_required, price, number_by_box, order_quantity, has_been_ordered) VALUES
+INSERT INTO kitbox.component(code, height, width, depth, reference, color, stock, stock_min_required, price, number_by_box, order_quantity, to_order) VALUES
 ("COR46BL",46,0,0,"Cornieres","Blanc",89,32,0.45,4,32,0),
 ("﻿COR36BL",36,0,0,"Cornieres","Blanc",84,32,0.35,4,32,0),
 ("COR56BL",56,0,0,"Cornieres","Blanc",89,32,0.55,4,32,0),

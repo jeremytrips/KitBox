@@ -268,6 +268,17 @@ namespace userInterface
             MySqlCommand command = new MySqlCommand(query, dataBaseConnection);
             dataBaseConnection.Open();
             command.ExecuteNonQuery();
+            dataBaseConnection.Close();
+        }
+
+        public static void CheckStock()
+        {
+            MySqlConnection dataBaseConnection = new MySqlConnection(connectionString);
+            string querry = "update component set to_order= stock<stock_min_required;";
+            MySqlCommand command = new MySqlCommand(querry, dataBaseConnection);
+            dataBaseConnection.Open();
+            command.ExecuteNonQuery();
+            dataBaseConnection.Close();
         }
 
         public static bool CheckOldOrderExistance(string oldOrderName)

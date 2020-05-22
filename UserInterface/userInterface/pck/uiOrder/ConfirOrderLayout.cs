@@ -66,6 +66,8 @@ namespace userInterface
             DialogResult result = MessageBox.Show(message, caption, button);
             if (result == DialogResult.OK) {
                 this.order.SaveOrder();
+                Database.CheckStock();
+                this.resetApp();
             }
         }
 

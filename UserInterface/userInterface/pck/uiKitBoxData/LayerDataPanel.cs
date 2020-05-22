@@ -51,7 +51,8 @@ namespace userInterface
             {
                 this.Controls.Remove(this.avaiblableDoorColor);
                 this.layer.DoorType = null;
-            }else
+            }
+            else
             {
                 this.Controls.Add(this.avaiblableDoorColor);
                 this.SetDoorColor(null, null);
