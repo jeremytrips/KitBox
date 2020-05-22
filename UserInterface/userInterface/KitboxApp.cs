@@ -46,18 +46,15 @@ namespace userInterface
             string name = this.oldOrderLayout.GetOldOrderName();
             Console.WriteLine(name);
             if (name != "") {
-                Console.WriteLine("t");
                 if (!Database.CheckOldOrderExistance(name))
                 {
-                    Console.WriteLine("nop");
                     string message = "The Kitbox you're searching for do not exist";
                     string caption = "Kitbox warning";
                     MessageBox.Show(message, caption);
                 }
                 else
                 {
-                    Console.WriteLine("yup");
-                    if (this.kitboxData.Count != 0)
+                    if (this.kitboxData.Count != 0 )
                     {
                         string message = "Warning you are about to erase the Kitbox you have created. Are you sure?";
                         string caption = "Kitbox warning";

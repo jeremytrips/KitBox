@@ -32,6 +32,7 @@ namespace userInterface
             this.layer = new Layer(width, depth);
             this.blockViewer = new BlockViewer(heightOfBlockViewer);
             this.blockViewer.Click += clickHandler;
+            this.layer.Height = availableHeight[0];
         }
 
         private void SetPanelColor(object sender, EventArgs e)
@@ -47,17 +48,8 @@ namespace userInterface
             int height = Int16.Parse(this.availablePanelHeight.GetChecked());
             this.layer.Height = height;
             this.blockViewer.LayerHeight = height;
-            if(height>=62)
-            {
-                this.Controls.Remove(this.avaiblableDoorColor);
-                this.layer.DoorType = null;
-            }
-            else
-            {
-                this.Controls.Add(this.avaiblableDoorColor);
-                this.SetDoorColor(null, null);
-            }
         }
+        
         private void SetDoorColor(object sender, EventArgs e)
         {
             string color = this.avaiblableDoorColor.GetChecked();
@@ -95,7 +87,6 @@ namespace userInterface
             // Mounting layout
             this.Location = new System.Drawing.Point(0, 165);
             this.Size = new System.Drawing.Size(400, 300);
-            this.BackColor = System.Drawing.Color.Red;
         }
 
         public Block GetBlock()
