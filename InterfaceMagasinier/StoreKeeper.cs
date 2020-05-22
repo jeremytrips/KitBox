@@ -36,14 +36,6 @@ namespace InterfaceMagasinier
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'kitboxDataSet.price' table. You can move, or remove it, as needed.
-            this.priceTableAdapter.Fill(this.kitboxDataSet.price);
-            // TODO: This line of code loads data into the 'kitboxDataSet.supplier_order_component' table. You can move, or remove it, as needed.
-            this.supplier_order_componentTableAdapter.Fill(this.kitboxDataSet.supplier_order_component);
-            // TODO: This line of code loads data into the 'kitboxDataSet.supplier_order' table. You can move, or remove it, as needed.
-            this.supplier_orderTableAdapter.Fill(this.kitboxDataSet.supplier_order);
-            // TODO: This line of code loads data into the 'kitboxDataSet.supplier' table. You can move, or remove it, as needed.
-            this.supplierTableAdapter.Fill(this.kitboxDataSet.supplier);
             refresh();
         }
 
@@ -53,9 +45,20 @@ namespace InterfaceMagasinier
             this.dataGridViewOutStock.Rows.Clear();
             // TODO: This line of code loads data into the 'kitboxDataSet.component' table. You can move, or remove it, as needed.
             this.componentTableAdapter.Fill(this.kitboxDataSet.component);
-            // TODO: This line of code loads data into the 'kitboxDataSet.client_order' table. You can move, or remove it, as needed.
-            this.client_orderTableAdapter.Fill(this.kitboxDataSet.client_order);
+            // TODO: This line of code loads data into the 'kitboxDataSet.price' table. You can move, or remove it, as needed.
+            this.priceTableAdapter.Fill(this.kitboxDataSet.price);
+            // TODO: This line of code loads data into the 'kitboxDataSet.supplier_order_component' table. You can move, or remove it, as needed.
+            this.supplier_order_componentTableAdapter.Fill(this.kitboxDataSet.supplier_order_component);
+            // TODO: This line of code loads data into the 'kitboxDataSet.supplier_order' table. You can move, or remove it, as needed.
+            this.supplier_orderTableAdapter.Fill(this.kitboxDataSet.supplier_order);
+            // TODO: This line of code loads data into the 'kitboxDataSet.supplier' table. You can move, or remove it, as needed.
+            this.supplierTableAdapter.Fill(this.kitboxDataSet.supplier);
 
+            List<List<object>> unclosed_orders = Database.FetchUnclosedOrders(Database.GetNumberOfOrder());
+            foreach(var item in unclosed_orders)
+            {
+                this.dataGridViewOrderProgress.Rows.Add();
+            }
 
             Dictionary<string, int> OutofStock = Database.FetchOutOfStock();
             foreach (var item in OutofStock.Keys)
@@ -86,10 +89,18 @@ namespace InterfaceMagasinier
             refresh();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void btnRefreshOrder_Click(object sender, EventArgs e)
         {
-
+            refresh();
         }
+
+        private void textBox4_TextChanged_1(object sender, EventArgs e)
+        {
+            DataView DV = new DataView(kitboxDataSet.client_order);
+            DV.RowFilter = string.Format("order_name like '%{0}%'", textBox4.Text);
+            dataGridViewOrderProgress.DataSource = DV;
+        }
+
     }
 }
 

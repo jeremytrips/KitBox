@@ -117,6 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="idorder.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="datum.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="prices.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="already_paid.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="name.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="closedorder.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Code.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Stock.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="componentBindingSource4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1304, 98</value>
+  </metadata>
   <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -132,29 +159,6 @@
   <metadata name="priceBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1606, 146</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        dAAAEnQB3mYfeAAAAvpJREFUSEutlkEvq0EUhv0kaXtbEiKRIiUsWUjY2FW0dCGxZ8HWpn6AHRuRCH6B
-        2/9g2y7YiQQ19z4vp6Zjvq8f6Zu87ZyZM/POnDlz2pFut+tifHt7E2n7eH9/7/XHmGWMNSRsIsbX11cN
-        +uh0Ou7h4eHT+kA4L4ms59toRoUNzWbTLS4uutHRUZfL5Xrc2NhwNzc3n17ZN2CMCoOrqytXLBZdoVBw
-        4+Pjbnt72x0eHrr9/X23trYmccaWlpbc4+Oj5vhrZGGfMDg+PtbCExMT7vLyUn0hCB2byOfz2sD9/b36
-        /YUHUcIsBDgpogsLC7JB2lW0Wn8lPDY25l5eXtQX+oZES6HGsEQivJzUEE4KCbhrTl6tVmXH/EL2hMHJ
-        yYl2b+ENnZMISDYSsN1uy475+ZQwH4DsJZFALLxJBHd3d9o0rwDE/HxKWJ7/wY53dnbUjjkn0a6J3Njc
-        3FQ75hdSwhQHJh4dHWWe6BNMTk66lZUVtWM+ISVMRUL44OAg80SfgMxeXV1VO+YTcsQP1fr6utoxxySC
-        p6cnzd/b25Md8zP2PSdAZjLZbN85jeD8/FxP6uLiQnbMz2ef8PX1tTLzJ+G2FzEzM6MaAIhgzNenhPnA
-        ADwpdt5qtWSHE3ya6O7uriuVSu709FS2rZfGb8IUfE5dKPxxt7e36gP+KXwgSqWbnZ2V/fz8rO8s4t9+
-        JCj4ZCgn594pDj5IpLOzM1cul3XSubk5NzU1pU1UKhX9koFB4n3CEFDwqb0UFSJA0vFO2RBtNuWHF9Hp
-        6Wk3Pz+vTTQaH4UoTfybMDRQeymDVCSKA++UJ2PZCwgvJ0WUHIFp4n3PKYlp4N5ZANTrdYmZ8Jd4Q+Oh
-        uITDzp/SxKnzWcWHIgxNnPDGxfvDPjRh+CXeyHTyoQnDQeK1Wk3j+EmYTIst9BuaeHjnvHv+lQISc6gn
-        NoYnR3R5eVl99hpSn1MSs0TIxGu1rd5JgY1FhdMW/sm1mDjw672E7ejQH/Bp/b8Z49vX+GDX/QOvQqLv
-        oSqL4gAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <metadata name="clientorderBindingSource2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>2759, 26</value>
-  </metadata>
   <metadata name="clientorderBindingSource2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>2759, 26</value>
   </metadata>
@@ -163,24 +167,6 @@
   </metadata>
   <metadata name="kitboxDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>26, 26</value>
-  </metadata>
-  <metadata name="Code.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Stock.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Code.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Stock.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="componentBindingSource4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1304, 98</value>
-  </metadata>
-  <metadata name="componentBindingSource4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1304, 98</value>
   </metadata>
   <metadata name="componentBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1533, 26</value>
@@ -233,7 +219,13 @@
   <metadata name="priceTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 194</value>
   </metadata>
+  <metadata name="clientorderBindingSource3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>168, 194</value>
+  </metadata>
+  <metadata name="kitboxDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>26, 26</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>121</value>
+    <value>84</value>
   </metadata>
 </root>

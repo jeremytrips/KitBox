@@ -43,8 +43,7 @@ namespace InterfaceMagasinier
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            //Close order => déplace dans Closed Orders
-
+            Database.CloseOrder(this.Order_name);
         }
 
         private void Button2_Click(object sender, EventArgs e)
