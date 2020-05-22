@@ -6,7 +6,7 @@ namespace userInterface
 {
     class Layer : Block
     {
-        private Door doorType;
+        private Door doorType = null;
         private BackPanel backPanel = new BackPanel();
         private LeftRightPanel leftRightPanel = new LeftRightPanel();
         private TopBottomPanel topBottomPanel = new TopBottomPanel();
@@ -34,16 +34,6 @@ namespace userInterface
                 base.Height = value;
                 this.backPanel.Height = value;
                 this.leftRightPanel.Height = value;
-                if(value<62)
-                {
-                    this.doorType = new ClassicDoor(Color.White);
-                    this.doorType.Height = value;
-                    Console.WriteLine(doorType.Height);
-                }
-                else
-                {
-                    this.doorType = null;
-                }
             }
 
         }

@@ -47,17 +47,8 @@ namespace userInterface
             int height = Int16.Parse(this.availablePanelHeight.GetChecked());
             this.layer.Height = height;
             this.blockViewer.LayerHeight = height;
-            if(height>=62)
-            {
-                this.Controls.Remove(this.avaiblableDoorColor);
-                this.layer.DoorType = null;
-            }
-            else
-            {
-                this.Controls.Add(this.avaiblableDoorColor);
-                this.SetDoorColor(null, null);
-            }
         }
+        
         private void SetDoorColor(object sender, EventArgs e)
         {
             string color = this.avaiblableDoorColor.GetChecked();
