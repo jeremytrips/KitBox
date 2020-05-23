@@ -44,6 +44,7 @@ namespace InterfaceMagasinier
         private void Button1_Click(object sender, EventArgs e)
         {
             Database.CloseOrder(this.Order_name);
+            this.Close();
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -62,13 +63,13 @@ namespace InterfaceMagasinier
         Bitmap bmp;
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            Print(this.panel1);
+            Print(this.dataGridView1);
             
         }
-        public void Print(Panel pnl)
+        public void Print(DataGridView pnl)
         {
             PrinterSettings ps = new PrinterSettings();
-            panel1 = pnl;  
+            dataGridView1 = pnl;  
             getprintarea(pnl);
             prntprvw.Document = prntdoc;
             prntdoc.PrintPage += new PrintPageEventHandler(prntdoc_printpage);
@@ -81,7 +82,7 @@ namespace InterfaceMagasinier
             Rectangle pagearea = e.PageBounds;
             e.Graphics.DrawImage(bmp, (pagearea.Width / 2) - (this.panel1.Width / 2), this.panel1.Location.Y);
         }
-        public void getprintarea(Panel pnl)
+        public void getprintarea(DataGridView pnl)
         {
             bmp = new Bitmap(pnl.Width, pnl.Height);
             pnl.DrawToBitmap(bmp, new Rectangle(0, 0, pnl.Width, pnl.Height));
